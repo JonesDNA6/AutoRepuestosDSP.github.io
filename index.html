@@ -279,127 +279,143 @@
     </section>
 
 
-<section class="py-5 bg-light" id="productos">
+ <section class="py-5 bg-light" id="productos">
     <div class="container">
         <h2 class="section-title text-center mb-5">Nuestros Productos</h2>
         <div class="row mb-4">
             <div class="col-12">
                 <div class="d-flex flex-wrap justify-content-center gap-2">
-                    <button class="btn btn-outline-primary filter-btn active rounded-pill" data-filter="all">
-                        <i class="fas fa-th-large me-2"></i> Todos
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn rounded-pill" data-filter="repuestos">
-                        <i class="fas fa-cogs me-2"></i> Repuestos
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn rounded-pill" data-filter="lubricantes">
-                        <i class="fas fa-oil-can me-2"></i> Lubricantes
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn rounded-pill" data-filter="baterias">
-                        <i class="fas fa-car-battery me-2"></i> Baterías
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn rounded-pill" data-filter="llantas">
-                        <i class="fas fa-circle me-2"></i> Llantas
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn rounded-pill" data-filter="accesorios">
-                        <i class="fas fa-tools me-2"></i> Accesorios
-                    </button>
-                </div>
+    <button class="btn btn-outline-azul filter-btn active" data-filter="all">
+        <i class="fas fa-th-large me-2"></i> Todos
+    </button>
+    <button class="btn btn-outline-azul filter-btn" data-filter="repuestos">
+        <i class="fas fa-cogs me-2"></i> Repuestos
+    </button>
+    <button class="btn btn-outline-azul filter-btn" data-filter="lubricantes">
+        <i class="fas fa-oil-can me-2"></i> Lubricantes
+    </button>
+    <button class="btn btn-outline-azul filter-btn" data-filter="baterias">
+        <i class="fas fa-car-battery me-2"></i> Baterías
+    </button>
+    <button class="btn btn-outline-azul filter-btn" data-filter="llantas">
+        <i class="fas fa-circle me-2"></i> Llantas <!-- Cambia el icono aquí si es necesario -->
+    </button>
+    <button class="btn btn-outline-azul filter-btn" data-filter="accesorios">
+        <i class="fas fa-tools me-2"></i> Accesorios
+    </button>
+</div>
             </div>
         </div>
         <div class="row g-4 product-grid">
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="repuestos">
-                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Kit de Embrague">
-                    <div class="card-body d-flex flex-column">
-                        <span class="badge bg-primary text-white mb-2 rounded-pill">Nuevo</span>
-                        <h5 class="card-title text-primary fw-bold mb-3">Kit de Embrague</h5>
-                        <p class="card-text text-secondary small mb-3">Compatibilidad múltiples marcas, alta durabilidad.</p>
-                        <div class="mt-auto">
-                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
+            <!-- Producto 1 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="repuestos">
+                <div class="card h-100 product-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Kit de Embrague">
+                    <div class="card-body">
+                        <span class="badge bg-rojo mb-2">Nuevo</span>
+                        <h5 class="card-title">Kit de Embrague</h5>
+                        <p class="card-text text-gris">Compatibilidad múltiples marcas</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="h5 text-azul">$89.99</span>
+                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="lubricantes">
-                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Aceite Sintético 5W-30">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-primary fw-bold mb-3">Aceite Sintético 5W-30</h5>
-                        <p class="card-text text-secondary small mb-3">4L - Protección máxima para tu motor.</p>
-                        <div class="mt-auto">
-                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
+            <!-- Producto 2 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="lubricantes">
+                <div class="card h-100 product-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Aceite Sintético 5W-30">
+                    <div class="card-body">
+                        <h5 class="card-title">Aceite Sintético 5W-30</h5>
+                        <p class="card-text text-gris">4L - Protección máxima</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="h5 text-azul">$34.99</span>
+                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="baterias">
-                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Batería de Auto">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-primary fw-bold mb-3">Batería de Auto 12V</h5>
-                        <p class="card-text text-secondary small mb-3">Duración garantizada de 2 años, alta potencia.</p>
-                        <div class="mt-auto">
-                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
+            <!-- Producto 3 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="baterias">
+                <div class="card h-100 product-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Batería de Auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Batería de Auto 12V</h5>
+                        <p class="card-text text-gris">Duración garantizada de 2 años</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="h5 text-azul">$99.99</span>
+                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="llantas">
-                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Llantas de Auto">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-primary fw-bold mb-3">Llantas All-Season</h5>
-                        <p class="card-text text-secondary small mb-3">Tamaño 205/55R16 - Excelente tracción en todo clima.</p>
-                        <div class="mt-auto">
-                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
+            <!-- Producto 4 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="llantas">
+                <div class="card h-100 product-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Llantas de Auto">
+                    <div class="card-body">
+                        <h 5 class="card-title">Llantas All-Season</h5>
+                        <p class="card-text text-gris">Tamaño 205/55R16 - Excelente tracción</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="h5 text-azul">$79.99</span>
+                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="accesorios">
-                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Accesorios de Auto">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-primary fw-bold mb-3">Juego de Accesorios de Interior</h5>
-                        <p class="card-text text-secondary small mb-3">Incluye tapetes antideslizantes y fundas de asiento premium.</p>
-                        <div class="mt-auto">
-                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
+            <!-- Producto 5 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
+                <div class="card h-100 product-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Accesorios de Auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Juego de Accesorios de Interior</h5>
+                        <p class="card-text text-gris">Incluye tapetes y fundas de asiento</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="h5 text-azul">$49.99</span>
+                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="repuestos">
-                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Frenos de Auto">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-primary fw-bold mb-3">Juego de Frenos</h5>
-                        <p class="card-text text-secondary small mb-3">Compatible con varios modelos, mejora la seguridad.</p>
-                        <div class="mt-auto">
-                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
+            <!-- Producto 6 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="repuestos">
+                <div class="card h-100 product-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Frenos de Auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Juego de Frenos</h5>
+                        <p class="card-text text-gris">Compatible con varios modelos</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="h5 text-azul">$59.99</span>
+                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="lubricantes">
-                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Aceite de Motor">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-primary fw-bold mb-3">Aceite de Motor 10W-40</h5>
-                        <p class="card-text text-secondary small mb-3">5L - Protección superior y rendimiento óptimo.</p>
-                        <div class="mt-auto">
-                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
+            <!-- Producto 7 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="lubricantes">
+                <div class="card h-100 product-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Aceite de Motor">
+                    <div class="card-body">
+                        <h5 class="card-title">Aceite de Motor 10W-40</h5>
+                        <p class="card-text text-gris">5L - Protección y rendimiento</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="h5 text-azul">$29.99</span>
+                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="baterias">
-                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Batería de Gel">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-primary fw-bold mb-3">Batería de Gel 12V</h5>
-                        <p class="card-text text-secondary small mb-3">Ideal para vehículos modernos con alta demanda eléctrica.</p>
-                        <div class="mt-auto">
-                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
+            <!-- Producto 8 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="baterias">
+                <div class="card h-100 product-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Batería de Gel">
+                    <div class="card-body">
+                        <h5 class="card-title">Batería de Gel 12V</h5>
+                        <p class="card-text text-gris">Ideal para vehículos de alto rendimiento</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="h5 text-azul">$129.99</span>
+                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
                         </div>
                     </div>
                 </div>
@@ -408,6 +424,172 @@
     </div>
 </section>
 
+
+
+<section class="py-5 bg-light" id="marcas-section">
+    <div class="container-fluid">
+        <h2 class="section-title text-center mb-4">Nuestras Marcas Aliadas</h2>
+        <div class="brands-carousel-wrapper overflow-hidden">
+            <div class="brands-carousel d-flex flex-nowrap">
+                <div class="brand-item brand-hidden">
+                    <img src="https://via.placeholder.com/150x70/87CEEB/FFFFFF?Text=Marca+1" alt="Marca 1" class="img-fluid">
+                </div>
+                <div class="brand-item brand-hidden">
+                    <img src="https://via.placeholder.com/150x70/FA8072/FFFFFF?Text=Marca+2" alt="Marca 2" class="img-fluid">
+                </div>
+                <div class="brand-item brand-hidden">
+                    <img src="https://via.placeholder.com/150x70/98FB98/000000?Text=Marca+3" alt="Marca 3" class="img-fluid">
+                </div>
+                <div class="brand-item brand-hidden">
+                    <img src="https://via.placeholder.com/150x70/FFD700/000000?Text=Marca+4" alt="Marca 4" class="img-fluid">
+                </div>
+                <div class="brand-item brand-hidden">
+                    <img src="https://via.placeholder.com/150x70/ADD8E6/FFFFFF?Text=Marca+5" alt="Marca 5" class="img-fluid">
+                </div>
+                <div class="brand-item brand-hidden">
+                    <img src="https://via.placeholder.com/150x70/F08080/FFFFFF?Text=Marca+6" alt="Marca 6" class="img-fluid">
+                </div>
+                <div class="brand-item brand-hidden">
+                    <img src="https://via.placeholder.com/150x70/87CEEB/FFFFFF?Text=Marca+1" alt="Marca 1" class="img-fluid">
+                </div>
+                <div class="brand-item brand-hidden">
+                    <img src="https://via.placeholder.com/150x70/FA8072/FFFFFF?Text=Marca+2" alt="Marca 2" class="img-fluid">
+                </div>
+                <div class="brand-item brand-hidden">
+                    <img src="https://via.placeholder.com/150x70/98FB98/000000?Text=Marca+3" alt="Marca 3" class="img-fluid">
+                </div>
+                <div class="brand-item brand-hidden">
+                    <img src="https://via.placeholder.com/150x70/FFD700/000000?Text=Marca+4" alt="Marca 4" class="img-fluid">
+                </div>
+                <div class="brand-item brand-hidden">
+                    <img src="https://via.placeholder.com/150x70/ADD8E6/FFFFFF?Text=Marca+5" alt="Marca 5" class="img-fluid">
+                </div>
+                <div class="brand-item brand-hidden">
+                    <img src="https://via.placeholder.com/150x70/F08080/FFFFFF?Text=Marca+6" alt="Marca 6" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    #marcas-section {
+        position: relative;
+    }
+
+    .brands-carousel-wrapper {
+        position: relative;
+        overflow: hidden;
+        padding: 0 20px; /* Añadido padding horizontal al contenedor */
+    }
+
+    .brands-carousel {
+        display: flex;
+        flex-wrap: nowrap;
+        width: calc(180px * 12); /* Ancho total de las marcas */
+        animation: scroll-brands 15s linear infinite;
+        padding: 20px 0;
+        margin-left: 150px; /* Añadido margen izquierdo para separar del borde */
+    }
+
+    .brand-item {
+        padding: 0 15px;
+        opacity: 0;
+        transform: translateY(-50px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .brand-item.brand-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .brand-item img {
+        height: 70px;
+        object-fit: contain;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease-in-out;
+    }
+
+    .brand-item img:hover {
+        filter: grayscale(0%);
+    }
+
+    @keyframes scroll-brands {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-150px * 6)); /* Mueve solo el ancho de las marcas originales */
+        }
+    }
+
+    /* Ajustes para pantallas más pequeñas */
+    @media (max-width: 768px) {
+        .brands-carousel {
+            width: calc(100px * 12); /* Marcas más pequeñas en pantallas pequeñas */
+            animation-duration: 20s; /* Un poco más lento en pantallas pequeñas */
+            margin-left: 10px;
+        }
+        .brand-item img {
+            height: 50px;
+        }
+        .brand-item {
+            padding: 0 10px;
+        }
+        @keyframes scroll-brands {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-100px * 6)); /* Mueve el ancho ajustado */
+            }
+        }
+    }
+
+    @media (max-width: 576px) {
+        .brands-carousel {
+            width: calc(80px * 12);
+            animation-duration: 25s;
+            margin-left: 5px;
+        }
+        .brand-item img {
+            height: 40px;
+        }
+        @keyframes scroll-brands {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-80px * 6));
+            }
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const marcasSection = document.getElementById('marcas-section');
+        const brandItems = document.querySelectorAll('.brand-item');
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    brandItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('brand-visible');
+                        }, index * 150);
+                    });
+                    observer.unobserve(marcasSection);
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        sectionObserver.observe(marcasSection);
+    });
+</script>
 
 
 <section class="py-5 bg-light" id="sucursales">
