@@ -8,17 +8,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <style>
-        /* Variables de color */
+    /* Variables de color */
         :root {
-            --azul: #003366;
+            --azul: #005aa3;
             --rojo: #CC0000;
             --gris: #666666;
+        }
+
+        .section-title {
+            color: var(--azul);
         }
 
         /* Estilos generales */
         body {
             font-family: 'Arial', sans-serif;
         }
+
 
         /* Navbar */
         .navbar {
@@ -122,13 +127,25 @@
 
         /* Estilos de animación */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Footer */
@@ -145,6 +162,61 @@
         footer .social-links .btn:hover {
             background-color: white;
             color: var(--azul);
+        }
+
+        /* Estilos personalizados para la sección de productos */
+        #productos .section-title {
+            color: var(--azul);
+        }
+
+        #productos .filter-btn {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #productos .filter-btn.active,
+        #productos .filter-btn:hover {
+            background-color: var(--primary); /* Usando el color primario de Bootstrap */
+            color: white;
+            border-color: var(--primary);
+        }
+
+        #productos .product-card {
+            border: none;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        #productos .product-card:hover {
+            transform: scale(1.02);
+        }
+
+        #productos .card-title {
+            height: 50px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        #productos .card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #productos .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .slide-up-hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .slide-up-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -206,143 +278,127 @@
     </section>
 
 
- <section class="py-5 bg-light" id="productos">
+<section class="py-5 bg-light" id="productos">
     <div class="container">
         <h2 class="section-title text-center mb-5">Nuestros Productos</h2>
         <div class="row mb-4">
             <div class="col-12">
                 <div class="d-flex flex-wrap justify-content-center gap-2">
-    <button class="btn btn-outline-azul filter-btn active" data-filter="all">
-        <i class="fas fa-th-large me-2"></i> Todos
-    </button>
-    <button class="btn btn-outline-azul filter-btn" data-filter="repuestos">
-        <i class="fas fa-cogs me-2"></i> Repuestos
-    </button>
-    <button class="btn btn-outline-azul filter-btn" data-filter="lubricantes">
-        <i class="fas fa-oil-can me-2"></i> Lubricantes
-    </button>
-    <button class="btn btn-outline-azul filter-btn" data-filter="baterias">
-        <i class="fas fa-car-battery me-2"></i> Baterías
-    </button>
-    <button class="btn btn-outline-azul filter-btn" data-filter="llantas">
-        <i class="fas fa-circle me-2"></i> Llantas <!-- Cambia el icono aquí si es necesario -->
-    </button>
-    <button class="btn btn-outline-azul filter-btn" data-filter="accesorios">
-        <i class="fas fa-tools me-2"></i> Accesorios
-    </button>
-</div>
+                    <button class="btn btn-outline-primary filter-btn active rounded-pill" data-filter="all">
+                        <i class="fas fa-th-large me-2"></i> Todos
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn rounded-pill" data-filter="repuestos">
+                        <i class="fas fa-cogs me-2"></i> Repuestos
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn rounded-pill" data-filter="lubricantes">
+                        <i class="fas fa-oil-can me-2"></i> Lubricantes
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn rounded-pill" data-filter="baterias">
+                        <i class="fas fa-car-battery me-2"></i> Baterías
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn rounded-pill" data-filter="llantas">
+                        <i class="fas fa-circle me-2"></i> Llantas
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn rounded-pill" data-filter="accesorios">
+                        <i class="fas fa-tools me-2"></i> Accesorios
+                    </button>
+                </div>
             </div>
         </div>
         <div class="row g-4 product-grid">
-            <!-- Producto 1 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="repuestos">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Kit de Embrague">
-                    <div class="card-body">
-                        <span class="badge bg-rojo mb-2">Nuevo</span>
-                        <h5 class="card-title">Kit de Embrague</h5>
-                        <p class="card-text text-gris">Compatibilidad múltiples marcas</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$89.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="repuestos">
+                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Kit de Embrague">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-primary text-white mb-2 rounded-pill">Nuevo</span>
+                        <h5 class="card-title text-primary fw-bold mb-3">Kit de Embrague</h5>
+                        <p class="card-text text-secondary small mb-3">Compatibilidad múltiples marcas, alta durabilidad.</p>
+                        <div class="mt-auto">
+                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Producto 2 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="lubricantes">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Aceite Sintético 5W-30">
-                    <div class="card-body">
-                        <h5 class="card-title">Aceite Sintético 5W-30</h5>
-                        <p class="card-text text-gris">4L - Protección máxima</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$34.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="lubricantes">
+                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Aceite Sintético 5W-30">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-primary fw-bold mb-3">Aceite Sintético 5W-30</h5>
+                        <p class="card-text text-secondary small mb-3">4L - Protección máxima para tu motor.</p>
+                        <div class="mt-auto">
+                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Producto 3 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="baterias">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Batería de Auto">
-                    <div class="card-body">
-                        <h5 class="card-title">Batería de Auto 12V</h5>
-                        <p class="card-text text-gris">Duración garantizada de 2 años</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$99.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="baterias">
+                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Batería de Auto">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-primary fw-bold mb-3">Batería de Auto 12V</h5>
+                        <p class="card-text text-secondary small mb-3">Duración garantizada de 2 años, alta potencia.</p>
+                        <div class="mt-auto">
+                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Producto 4 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="llantas">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Llantas de Auto">
-                    <div class="card-body">
-                        <h 5 class="card-title">Llantas All-Season</h5>
-                        <p class="card-text text-gris">Tamaño 205/55R16 - Excelente tracción</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$79.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="llantas">
+                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Llantas de Auto">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-primary fw-bold mb-3">Llantas All-Season</h5>
+                        <p class="card-text text-secondary small mb-3">Tamaño 205/55R16 - Excelente tracción en todo clima.</p>
+                        <div class="mt-auto">
+                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Producto 5 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Accesorios de Auto">
-                    <div class="card-body">
-                        <h5 class="card-title">Juego de Accesorios de Interior</h5>
-                        <p class="card-text text-gris">Incluye tapetes y fundas de asiento</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$49.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="accesorios">
+                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Accesorios de Auto">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-primary fw-bold mb-3">Juego de Accesorios de Interior</h5>
+                        <p class="card-text text-secondary small mb-3">Incluye tapetes antideslizantes y fundas de asiento premium.</p>
+                        <div class="mt-auto">
+                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Producto 6 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="repuestos">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Frenos de Auto">
-                    <div class="card-body">
-                        <h5 class="card-title">Juego de Frenos</h5>
-                        <p class="card-text text-gris">Compatible con varios modelos</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$59.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="repuestos">
+                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Frenos de Auto">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-primary fw-bold mb-3">Juego de Frenos</h5>
+                        <p class="card-text text-secondary small mb-3">Compatible con varios modelos, mejora la seguridad.</p>
+                        <div class="mt-auto">
+                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Producto 7 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="lubricantes">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Aceite de Motor">
-                    <div class="card-body">
-                        <h5 class="card-title">Aceite de Motor 10W-40</h5>
-                        <p class="card-text text-gris">5L - Protección y rendimiento</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$29.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="lubricantes">
+                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Aceite de Motor">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-primary fw-bold mb-3">Aceite de Motor 10W-40</h5>
+                        <p class="card-text text-secondary small mb-3">5L - Protección superior y rendimiento óptimo.</p>
+                        <div class="mt-auto">
+                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Producto 8 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="baterias">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Batería de Gel">
-                    <div class="card-body">
-                        <h5 class="card-title">Batería de Gel 12V</h5>
-                        <p class="card-text text-gris">Ideal para vehículos de alto rendimiento</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$129.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item slide-up-hidden" data-category="baterias">
+                <div class="card h-100 product-card shadow-sm rounded-4 border-0">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top rounded-top-4" alt="Batería de Gel">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-primary fw-bold mb-3">Batería de Gel 12V</h5>
+                        <p class="card-text text-secondary small mb-3">Ideal para vehículos modernos con alta demanda eléctrica.</p>
+                        <div class="mt-auto">
+                            <a href="#contacto" class="btn btn-primary rounded-pill w-100"><i class="fas fa-clipboard-check me-2"></i> Cotizar</a>
                         </div>
                     </div>
                 </div>
@@ -351,225 +407,460 @@
     </div>
 </section>
 
-    <section class="py-5" id="sucursales">
-        <div class="container">
-            <h2 class="section-title text-center mb-5">Sucursales</h2>
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="branch-card card h-100">
-                        <div class="card-header bg-azul text-white">
-                            <h4>Sucursal Ivan</h4>
-                        </div>
-                        <div class="card-body">
-                            <img src="./Imagenes de referencia/sucursal-ivan-monteniegro.webp" alt="Sucursal-ivan-montenegro" class="img-fluid mb-3 rounded">
-                            
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h5 class="text-azul mb-3">Información</h5>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2"><i class="fas fa-map-marker-alt text-rojo me-2"></i> Del Parque Central 2c al sur, Managua</li>
-                                        <li class="mb-2"><i class="fas fa-phone text-rojo me-2"></i> +505 2222 2222</li>
-                                        <li class="mb-2"><i class="fas fa-envelope text-rojo me-2"></i> centro@autorepuestos.com</li>
-                                        <li class="mb-2"><i class="fas fa-clock text-rojo me-2"></i> Lunes-Sábado: 8:00 AM - 6:00 PM</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="map-container rounded overflow-hidden">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.678373885994!2d-86.25041812439454!3d12.14451228818849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f73fd8424a88c7d%3A0x3b80a4b3a6b9c5e1!2sParque%20Central!5e0!3m2!1ses-419!2sni!4v1708610188899!5m2!1ses-419!2sni" width="100%" height="200" class="iframe-style" allowfullscreen="" title="Mapa de la sucursal"></iframe>
-                                    </div>
-                                    <div class="social-links mt-3">
-                                       
-                                                             <a href="#" class="btn btn-outline-azul me-2" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Facebook</a>
-                        <a href="#" class="btn btn-outline-azul me-2" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
-                        <a href="https://wa.me/50522222222" class="btn btn-outline-azul" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+<section class="py-5 bg-light" id="sucursales">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Nuestras Sucursales</h2>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="branch-card card h-100 shadow-sm rounded-4 border-0">
+                    <div class="location-pin bg-rojo text-white rounded-top-4 py-2 text-center">
+                        <i class="fas fa-map-marker-alt me-2"></i> Ubicación
                     </div>
-                </div>
-                <!-- Sucursal Norte aquí (omitida por brevedad, mantener la estructura) -->
-
-                <div class="col-lg-6">
-                    <div class="branch-card card h-100">
-                        <div class="card-header bg-azul text-white">
-                            <h4>Sucursal Bello Horizonte</h4>
-                        </div>
-                        <div class="card-body">
-                            <img src="./Imagenes de referencia/sucursal-bello-horizonte.webp" alt="Sucursal Bello Horizonte" class="img-fluid mb-3 rounded">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h5 class="text-azul mb-3">Información</h5>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2"><i class="fas fa-map-marker-alt text-rojo me-2"></i> Del Parque Central 2c al sur, Managua</li>
-                                        <li class="mb-2"><i class="fas fa-phone text-rojo me-2"></i> +505 2222 2222</li>
-                                        <li class="mb-2"><i class="fas fa-envelope text-rojo me-2"></i> centro@autorepuestos.com</li>
-                                        <li class="mb-2"><i class="fas fa-clock text-rojo me-2"></i> Lunes-Sábado: 8:00 AM - 6:00 PM</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="map-container rounded overflow-hidden">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.678373885994!2d-86.25041812439454!3d12.14451228818849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f73fd8424a88c7d%3A0x3b80a4b3a6b9c5e1!2sParque%20Central!5e0!3m2!1ses-419!2sni!4v1708610188899!5m2!1ses-419!2sni" width="100%" height="200" class="iframe-style" allowfullscreen="" title="Mapa de la sucursal"></iframe>
-                                    </div>
-                                    <div class="social-links mt-3">
-                                        
-                                                             <a href="#" class="btn btn-outline-azul me-2" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Facebook</a>
-                        <a href="#" class="btn btn-outline-azul me-2" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
-                        <a href="https://wa.me/50522222222" class="btn btn-outline-azul" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                                    </div>
-                                </div>
+                    <div class="card-body p-4">
+                        <img src="./Imagenes de referencia/sucursal-ivan-monteniegro.webp" alt="Sucursal Ivan Montenegro" class="img-fluid mb-3 rounded-3">
+                        <h4 class="card-title mb-3 text-azul">Sucursal Ivan</h4>
+                        <ul class="list-unstyled mb-3">
+                            <li class="mb-2"><i class="fas fa-map-marker-alt text-rojo me-2"></i> Del Parque Central 2c al sur, Managua</li>
+                            <li class="mb-2"><i class="fas fa-phone text-rojo me-2"></i> <a href="tel:+50522222222">+505 2222 2222</a></li>
+                        </ul>
+                        <button class="btn btn-outline-azul btn-sm rounded-pill mb-3" data-bs-toggle="collapse" data-bs-target="#ivanDetails" aria-expanded="false" aria-controls="ivanDetails">
+                            <i class="fas fa-info-circle me-2"></i> Más Información
+                        </button>
+                        <div class="collapse" id="ivanDetails">
+                            <ul class="list-unstyled mb-3">
+                                <li class="mb-2"><i class="fas fa-envelope text-rojo me-2"></i> <a href="mailto:centro@autorepuestos.com">centro@autorepuestos.com</a></li>
+                                <li class="mb-2"><i class="fas fa-clock text-rojo me-2"></i> Lunes-Sábado: 8:00 AM - 6:00 PM</li>
+                            </ul>
+                            <h5 class="text-azul mb-3"><i class="fas fa-map-marked-alt me-2"></i> Ubicación en Mapa</h5>
+                            <div class="map-container rounded-3 overflow-hidden mb-3">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1627.4413206064492!2d-86.21933604070865!3d12.13023116497782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f73fe7d9aaaaaab%3A0x498681b365dff989!2sAuto%20Repuestos%20Dios%20se%20Proveera!5e0!3m2!1ses-419!2sni!4v1742539548830!5m2!1ses-419!2sni" width="100%" height="200" class="iframe-style" allowfullscreen="" title="Mapa de la sucursal"></iframe>
+                            </div>
+                            <h5 class="text-azul mb-3"><i class="fas fa-share-alt me-2"></i> Síguenos</h5>
+                            <div class="social-links">
+                                <a href="#" class="btn btn-sm btn-outline-azul me-2 rounded-pill" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Facebook</a>
+                                <a href="#" class="btn btn-sm btn-outline-azul me-2 rounded-pill" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
+                                <a href="https://wa.me/50522222222" class="btn btn-sm btn-outline-azul rounded-pill" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="col-lg-6">
+                <div class="branch-card card h-100 shadow-sm rounded-4 border-0">
+                    <div class="location-pin bg-azul text-white rounded-top-4 py-2 text-center">
+                        <i class="fas fa-map-marker-alt me-2"></i> Ubicación
+                    </div>
+                    <div class="card-body p-4">
+                        <img src="./Imagenes de referencia/sucursal-bello-horizonte.webp" alt="Sucursal Bello Horizonte" class="img-fluid mb-3 rounded-3">
+                        <h4 class="card-title mb-3 text-azul">Sucursal Bello Horizonte</h4>
+                        <ul class="list-unstyled mb-3">
+                            <li class="mb-2"><i class="fas fa-map-marker-alt text-rojo me-2"></i> [Dirección de Bello Horizonte]</li>
+                            <li class="mb-2"><i class="fas fa-phone text-rojo me-2"></i> <a href="tel:[Número de Bello Horizonte]">[Número de Bello Horizonte]</a></li>
+                        </ul>
+                        <button class="btn btn-outline-azul btn-sm rounded-pill mb-3" data-bs-toggle="collapse" data-bs-target="#belloHorizonteDetails" aria-expanded="false" aria-controls="belloHorizonteDetails">
+                            <i class="fas fa-info-circle me-2"></i> Más Información
+                        </button>
+                        <div class="collapse" id="belloHorizonteDetails">
+                            <ul class="list-unstyled mb-3">
+                                <li class="mb-2"><i class="fas fa-envelope text-rojo me-2"></i> <a href="mailto:[Correo de Bello Horizonte]">[Correo de Bello Horizonte]</a></li>
+                                <li class="mb-2"><i class="fas fa-clock text-rojo me-2"></i> Lunes-Sábado: [Horario de Bello Horizonte]</li>
+                            </ul>
+                            <h5 class="text-azul mb-3"><i class="fas fa-map-marked-alt me-2"></i> Ubicación en Mapa</h5>
+                            <div class="map-container rounded-3 overflow-hidden mb-3">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.4645521402267!2d-86.23302322406576!3d12.148743788096109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f73fdbea87267a7%3A0x79442bd5e47d4a0e!2sAuto%20Repuestos%20Dios%20se%20Proveera%20SUCURSAL%20BELLO%20HORIZONTE!5e0!3m2!1ses-419!2sni!4v1742539781191!5m2!1ses-419!2sni" width="100%" height="200" class="iframe-style" allowfullscreen="" title="Mapa de la sucursal"></iframe>
+                            </div>
+                            <h5 class="text-azul mb-3"><i class="fas fa-share-alt me-2"></i> Síguenos</h5>
+                            <div class="social-links">
+                                <a href="#" class="btn btn-sm btn-outline-azul me-2 rounded-pill" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Facebook</a>
+                                <a href="#" class="btn btn-sm btn-outline-azul me-2 rounded-pill" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
+                                <a href="https://wa.me/[Número de WhatsApp de Bello Horizonte]" class="btn btn-sm btn-outline-azul rounded-pill" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </div>
+</section>
 
 <section class="py-5 bg-light contact-section" id="contacto">
     <div class="container">
         <h2 class="section-title text-center mb-5">Contáctanos</h2>
-        <div class="row">
-            <div class="col-lg-6 mb-4">
-                <h5 class="section-subtitle mb-3">Formulario de Cotización</h5>
-                <form id="contactForm" novalidate>
-                    <div class="mb-3">
-                        <label for="firstName" class="form-label">Nombre <span class="required-asterisk">*</span></label>
-                        <input type="text" class="form-control" id="firstName" name="firstName" required>
-                        <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card shadow-sm border-0 rounded-4">
+                    <div class="card-body p-4 p-lg-5">
+                        <h5 class="section-subtitle mb-4 text-azul"><i class="fas fa-envelope fa-lg me-2"></i> Formulario de Cotización</h5>
+                        <form id="contactForm" novalidate>
+                            <div class="mb-3">
+                                <label for="firstName" class="form-label"><i class="fas fa-user me-2 text-rojo"></i> Nombre <span class="required-asterisk text-rojo">*</span></label>
+                                <input type="text" class="form-control rounded-pill" id="firstName" name="firstName" placeholder="Ingresa tu nombre" required>
+                                <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="lastName" class="form-label"><i class="fas fa-user-tag me-2 text-rojo"></i> Apellidos <span class="required-asterisk text-rojo">*</span></label>
+                                <input type="text" class="form-control rounded-pill" id="lastName" name="lastName" placeholder="Ingresa tus apellidos" required>
+                                <div class="invalid-feedback">Por favor, ingresa tus apellidos.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label"><i class="fas fa-envelope me-2 text-rojo"></i> Correo Electrónico <span class="required-asterisk text-rojo">*</span></label>
+                                <input type="email" class="form-control rounded-pill" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                                <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label"><i class="fas fa-phone me-2 text-rojo"></i> Número de Contacto <span class="required-asterisk text-rojo">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text rounded-pill bg-white border-end-0"><i class="fas fa-phone-alt"></i></span>
+                                    <input type="tel" class="form-control rounded-pill border-start-0" id="phone" name="phone" placeholder="Ej: +505 8888 8888" required>
+                                </div>
+                                <div class="invalid-feedback">Por favor, ingresa tu número de contacto.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label"><i class="fas fa-tools me-2 text-rojo"></i> Tipo de Producto <span class="required-asterisk text-rojo">*</span></label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="repuestos" id="repuestos" name="productType" required>
+                                    <label class="form-check-label" for="repuestos">Repuestos</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="accesorios" id="accesorios" name="productType">
+                                    <label class="form-check-label" for="accesorios">Accesorios</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="aceites" id="aceites" name="productType">
+                                    <label class="form-check-label" for="aceites">Aceites</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="llantas" id="llantas" name="productType">
+                                    <label class="form-check-label" for="llantas">Llantas</label>
+                                </div>
+                                <div class="invalid-feedback d-block">Selecciona al menos un tipo de producto.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="carBrand" class="form-label"><i class="fas fa-car me-2 text-rojo"></i> Marca de Carro</label>
+                                <input type="text" class="form-control rounded-pill" id="carBrand" name="carBrand" placeholder="Ej: Toyota">
+                            </div>
+                            <div class="mb-3">
+                                <label for="carModel" class="form-label"><i class="fas fa-car-alt me-2 text-rojo"></i> Modelo de Carro</label>
+                                <input type="text" class="form-control rounded-pill" id="carModel" name="carModel" placeholder="Ej: Hilux">
+                            </div>
+                            <div class="mb-3">
+                                <label for="carYear" class="form-label"><i class="fas fa-calendar-alt me-2 text-rojo"></i> Año de Carro</label>
+                                <input type="number" class="form-control rounded-pill" id="carYear" name="carYear" placeholder="Ej: 2023">
+                            </div>
+                            <div class="mb-3">
+                                <label for="details" class="form-label"><i class="fas fa-comment-dots me-2 text-rojo"></i> Más Detalles <span class="required-asterisk text-rojo">*</span></label>
+                                <textarea class="form-control rounded-3" id="details" name="details" rows="4" placeholder="Describe qué repuesto o accesorio necesitas" required></textarea>
+                                <div class="invalid-feedback">Por favor, ingresa los detalles de tu consulta.</div>
+                            </div>
+                            <button type="submit" class="btn submit-button rounded-pill"><i class="fas fa-paper-plane me-2"></i> Enviar Cotización</button>
+                            <div id="form-message" class="mt-3 text-success"></div>
+                        </form>
                     </div>
-                    <div class="mb-3">
-                        <label for="lastName" class="form-label">Apellidos <span class="required-asterisk">*</span></label>
-                        <input type="text" class="form-control" id="lastName" name="lastName" required>
-                        <div class="invalid-feedback">Por favor, ingresa tus apellidos.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Correo Electrónico <span class="required-asterisk">*</span></label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                        <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">Número de Contacto <span class="required-asterisk">*</span></label>
-                        <input type="tel" class="form-control" id="phone" name="phone" required>
-                        <div class="invalid-feedback">Por favor, ingresa tu número de contacto.</div>
-                    </div>
-                    <div class="mb-3" id="productType">
-                        <label class="form-label">Tipo de Producto <span class="required-asterisk">*</span></label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="repuestos" id="repuestos" name="productType" required>
-                            <label class="form-check-label" for="repuestos">Repuestos</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="accesorios" id="accesorios" name="productType">
-                            <label class="form-check-label" for="accesorios">Accesorios</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="aceites" id="aceites" name="productType">
-                            <label class="form-check-label" for="aceites">Aceites</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="llantas" id="llantas" name="productType">
-                            <label class="form-check-label" for="llantas">Llantas</label>
-                        </div>
-                        <div class="invalid-feedback">Selecciona al menos un tipo de producto.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="carBrand" class="form-label">Marca de Carro</label>
-                        <input type="text" class="form-control" id="carBrand" name="carBrand">
-                    </div>
-                    <div class="mb-3">
-                        <label for="carModel" class="form-label">Modelo de Carro</label>
-                        <input type="text" class="form-control" id="carModel" name="carModel">
-                    </div>
-                    <div class="mb-3">
-                        <label for="carYear" class="form-label">Año de Carro</label>
-                        <input type="number" class="form-control" id="carYear" name="carYear">
-                    </div>
-                    <div class="mb-3">
-                        <label for="details" class="form-label">Más Detalles <span class="required-asterisk">*</span></label>
-                        <textarea class="form-control" id="details" name="details" rows="4" required></textarea>
-                        <div class="invalid-feedback">Por favor, ingresa los detalles de tu consulta.</div>
-                    </div>
-                    <button type="submit" class="btn submit-button">Enviar Cotización</button>
-                    <div id="form-message" class="mt-3"></div>
-                </form>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <h5 class="section-subtitle mb-3">Síguenos en Redes Sociales</h5>
-                <p>¡Conéctate con nosotros para estar al tanto de nuestras novedades y ofertas!</p>
-                <div class="social-links contact-social mb-4">
-                    <a href="#" class="social-button facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Facebook</a>
-                    <a href="#" class="social-button instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
-                    <a href="https://wa.me/50522222222" class="social-button whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
-                <h5 class="section-subtitle mt-4 mb-3">Información de Contacto</h5>
-                <ul class="list-unstyled contact-info">
-                    <li class="mb-2"><i class="fas fa-map-marker-alt icon-rojo me-2"></i> [Tu Dirección Aquí]</li>
-                    <li class="mb-2"><i class="fas fa-phone icon-rojo me-2"></i> <a href="tel:+50522222222">+505 2222 2222</a></li>
-                    <li class="mb-2"><i class="fas fa-envelope icon-rojo me-2"></i> <a href="mailto:contacto@turepuestos.com">contacto@turepuestos.com</a></li>
-                </ul>
+            </div>
+            <div class="col-lg-6">
+                <div class="card shadow-sm border-0 rounded-4">
+                    <div class="card-body p-4 p-lg-5">
+                        <h5 class="section-subtitle mb-4 text-azul"><i class="fas fa-info-circle fa-lg me-2"></i> Información de Contacto</h5>
+                        <ul class="list-unstyled contact-info mb-4">
+                            <li class="mb-3"><i class="fas fa-map-marker-alt icon-rojo me-3 fa-fw"></i> [Tu Dirección Aquí]</li>
+                            <li class="mb-3"><i class="fas fa-phone icon-rojo me-3 fa-fw"></i> <a href="tel:+50522222222">+505 2222 2222</a></li>
+                            <li class="mb-3"><i class="fas fa-envelope icon-rojo me-3 fa-fw"></i> <a href="mailto:contacto@turepuestos.com">contacto@turepuestos.com</a></li>
+                            <li class="mb-3"><i class="fas fa-clock icon-rojo me-3 fa-fw"></i> Lunes a Viernes: 8:00 AM - 5:00 PM<br>Sábado: 8:00 AM - 12:00 PM</li>
+                        </ul>
+                        <h5 class="section-subtitle mb-3 text-azul"><i class="fas fa-share-alt fa-lg me-2"></i> Síguenos en Redes Sociales</h5>
+                        <p class="mb-3">¡Conéctate con nosotros para estar al tanto de nuestras novedades y ofertas!</p>
+                        <div class="social-links contact-social">
+                            <a href="#" class="social-button facebook rounded-pill" target="_blank" rel="noopener"><i class="fab fa-facebook-f fa-fw"></i> Facebook</a>
+                            <a href="#" class="social-button instagram rounded-pill" target="_blank" rel="noopener"><i class="fab fa-instagram fa-fw"></i> Instagram</a>
+                            <a href="https://wa.me/50522222222" class="social-button whatsapp rounded-pill" target="_blank" rel="noopener"><i class="fab fa-whatsapp fa-fw"></i> WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-   <section class="py-5 bg-light" id="nosotros">
+<style>
+    /* Estilos personalizados para la sección de contacto */
+    .contact-section .section-title {
+        color: var(--azul);
+    }
+
+    .contact-section .section-subtitle {
+        color: var(--azul);
+        font-weight: bold;
+    }
+
+    .contact-section .form-label {
+        font-weight: bold;
+        color: var(--gris);
+    }
+
+    .contact-section .form-control {
+        border: 1px solid #ced4da;
+    }
+
+    .contact-section .form-control:focus {
+        border-color: var(--rojo);
+        box-shadow: 0 0 0 0.25rem rgba(204, 0, 0, 0.25);
+    }
+
+    .contact-section .required-asterisk {
+        color: var(--rojo);
+    }
+
+    .contact-section .submit-button {
+        background-color: var(--rojo);
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+
+    .contact-section .submit-button:hover {
+        background-color: #ff0000;
+    }
+
+    .contact-section .contact-info li {
+        margin-bottom: 0.75rem;
+        color: var(--gris);
+    }
+
+    .contact-section .contact-info li i {
+        color: var(--rojo);
+    }
+
+    .contact-section .social-button {
+        display: inline-block;
+        padding: 0.75rem 1.25rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .contact-section .social-button:hover {
+        transform: translateY(-2px);
+    }
+
+    .contact-section .social-button.facebook {
+        background-color: #1877F2;
+    }
+
+    .contact-section .social-button.instagram {
+        background: #f09433;
+        background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+        background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+    }
+
+    .contact-section .social-button.whatsapp {
+        background-color: #25D366;
+    }
+</style>
+
+<script>
+    // JavaScript para la validación del formulario (Bootstrap)
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('#contactForm')
+
+        // Loop over them and prevent submission
+        Array.from(forms)
+            .forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        // Aquí puedes agregar la lógica para enviar el formulario (ej. AJAX)
+                        event.preventDefault(); // Evita la recarga de la página por ahora
+                        document.getElementById('form-message').innerText = '¡Mensaje enviado! Nos pondremos en contacto contigo pronto.';
+                        form.reset();
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+
+<style>
+    /* Estilos personalizados para la sección de sucursales */
+    .branch-card .location-pin {
+        border-radius: 1rem 1rem 0 0 !important; /* Redondea solo la parte superior */
+    }
+
+    .branch-card:nth-child(odd) .location-pin {
+        background-color: var(--rojo); /* Usa la variable de color */
+    }
+
+    .branch-card:nth-child(even) .location-pin {
+        background-color: var(--azul); /* Usa la variable de color */
+    }
+
+    .branch-card .card-body {
+        padding: 20px;
+    }
+
+    .branch-card .card-title {
+        color: var(--azul);
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    .branch-card .card-body ul li {
+        margin-bottom: 0.5rem;
+        color: var(--gris);
+    }
+
+    .branch-card .card-body ul li i {
+        color: var(--rojo);
+        margin-right: 0.5rem;
+    }
+
+    .map-container {
+        height: 150px; /* Altura más pequeña para el mapa colapsado */
+    }
+
+    .social-links .btn {
+        font-size: 0.85rem;
+    }
+
+    /* Estilos adicionales para mejorar la apariencia */
+    .section-title {
+        color: var(--azul);
+        font-weight: bold;
+    }
+
+    .bg-light {
+        background-color: #f8f9fa !important; /* Un gris claro de fondo */
+    }
+
+    .rounded-4 {
+        border-radius: 1rem !important;
+    }
+
+    .rounded-3 {
+        border-radius: 0.75rem !important;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    }
+
+    /* Estilos para el botón de "Más Información" */
+    .branch-card .card-body .btn-outline-azul {
+        color: var(--azul);
+        border-color: var(--azul);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .branch-card .card-body .btn-outline-azul:hover {
+        background-color: var(--azul);
+        color: white;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+
+
+  <section class="py-5 bg-light" id="nosotros">
     <div class="container">
-        <h2 class="section-title text-center mb-5 animate__animated">Sobre Nosotros</h2>
-        <div class="row align-items-center">
-            <div class="col-lg-6 col-md-12 mb-4">
-                <div class="about-image-wrapper">
+        <h2 class="section-title text-center mb-5 animate__animated animate__fadeIn">Sobre Nosotros</h2>
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6 col-md-12 order-lg-1 order-2">
+                <div class="about-content">
+                    <h3 class="text-azul mb-4 animate__animated animate__fadeInLeft">Nuestra Misión</h3>
+                    <p class="lead text-gris animate__animated animate__fadeInLeft animate__delay-1s">Proporcionar repuestos y accesorios automotrices de alta calidad a precios competitivos, asegurando que cada vehículo en Nicaragua rinda al máximo.</p>
+
+                    <h3 class="text-azul mt-4 mb-4 animate__animated animate__fadeInLeft animate__delay-2s">Nuestra Visión</h3>
+                    <p class="text-gris animate__animated animate__fadeInLeft animate__delay-3s">Convertirnos en los líderes indiscutibles en la distribución de autorepuestos en Nicaragua, siendo el aliado de confianza para conductores y talleres.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 mb-4 order-lg-2 order-1">
+                <div class="about-image-wrapper animate__animated animate__fadeInRight">
                     <img src="./Imagenes de referencia/sucursal-ivan-monteniegro.webp" alt="Equipo de AutoRepuestos Nicaragua" class="img-fluid rounded shadow-lg">
                 </div>
             </div>
-            <div class="col-lg-6 col-md-12">
-                <div class="about-content">
-                    <h3 class="text-azul mb-3 animate__animated">Nuestra Misión</h3>
-                    <p class="lead text-gris">Proporcionar repuestos y accesorios automotrices de alta calidad a precios competitivos, asegurando que cada vehículo en Nicaragua rinda al máximo.</p>
-                    
-                    <h3 class="text-azul mt-4 mb-3 animate__animated">Nuestra Visión</h3>
-                    <p class="text-gris">Convertirnos en los líderes indiscutibles en la distribución de autorepuestos en Nicaragua, siendo el aliado de confianza para conductores y talleres.</p>
-                    
-                    <h3 class="text-azul mt-4 mb-3 animate__animated">Nuestros Valores</h3>
-                    <ul class="list-unstyled values-list">
-                        <li class="mb-2"><span class="badge bg-azul text-white me-2">Calidad</span> Productos confiables y duraderos.</li>
-                        <li class="mb-2"><span class="badge bg-azul text-white me-2">Servicio</span> Atención excepcional y personalizada.</li>
-                        <li class="mb-2"><span class="badge bg-azul text-white me-2">Compromiso</span> Satisfacción total del cliente.</li>
-                        <li class="mb-2"><span class="badge bg-azul text-white me-2">Integridad</span> Honestidad en cada paso.</li>
-                    </ul>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="card shadow-sm border-0 rounded-4 h-100 animate__animated animate__fadeInUp">
+                    <div class="card-body p-4">
+                        <h4 class="text-azul mb-3"><i class="fas fa-handshake me-2 text-rojo"></i> Nuestros Valores</h4>
+                        <ul class="list-unstyled values-list">
+                            <li class="mb-3"><i class="fas fa-check-circle text-azul me-2"></i> <span class="fw-bold">Calidad:</span> Productos confiables y duraderos para tu vehículo.</li>
+                            <li class="mb-3"><i class="fas fa-users text-azul me-2"></i> <span class="fw-bold">Servicio:</span> Atención excepcional y personalizada para cada cliente.</li>
+                            <li class="mb-3"><i class="fas fa-thumbs-up text-azul me-2"></i> <span class="fw-bold">Compromiso:</span> Dedicación a la satisfacción total de nuestros clientes.</li>
+                            <li class="mb-3"><i class="fas fa-gavel text-azul me-2"></i> <span class="fw-bold">Integridad:</span> Actuamos con honestidad y transparencia en cada interacción.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-12 text-center">
-                <blockquote class="blockquote text-gris font-italic p-3 bg-white rounded shadow-sm">
-                    <p class="mb-0">“Gracias por elegir AutoRepuestos Dios Se Proveera, donde tu vehículo encuentra lo mejor.”</p>
-                </blockquote>
+            <div class="col-md-6">
+                <div class="card shadow-sm border-0 rounded-4 h-100 animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="card-body p-4 text-center">
+                        <i class="fas fa-quote-left text-rojo fa-2x mb-3"></i>
+                        <blockquote class="blockquote text-gris font-italic">
+                            <p class="mb-0">"Gracias por elegir AutoRepuestos Dios Se Proveerá, donde tu vehículo encuentra lo mejor."</p>
+                        </blockquote>
+                        <i class="fas fa-quote-right text-rojo fa-2x mt-3"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script  src="script.js"></script>
-</body>
+<style>
+    /* Estilos personalizados para la sección Sobre Nosotros */
+    #nosotros .section-title {
+        color: var(--azul);
+    }
 
-<footer class="py-4 bg-dark text-white">
-    <div class="container text-center">
-        <div class="social-links mb-3">
-            <a href="#" class="btn btn-outline-light btn-sm me-2" title="Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="btn btn-outline-light btn-sm me-2" title="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://wa.me/50522222222" class="btn btn-outline-light btn-sm" title="WhatsApp">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-        </div>
-        <p class="mb-0">© 2025 AutoRepuestos Dios Se Proveera. Todos los derechos reservados.</p>
-        <p class="mb-0">Creado por Johnny Andino</p>
-    </div>
-</footer>
-</html>
+    #nosotros .about-image-wrapper {
+        overflow: hidden;
+        border-radius: 0.5rem;
+    }
+
+    #nosotros .about-image-wrapper img {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    #nosotros .about-image-wrapper:hover img {
+        transform: scale(1.05);
+    }
+
+    #nosotros .about-content h3 {
+        color: var(--azul);
+    }
+
+    #nosotros .values-list li {
+        color: var(--gris);
+    }
+
+    #nosotros .values-list li i {
+        color: var(--rojo);
+        margin-right: 0.5rem;
+    }
+
+    #nosotros .badge {
+        font-size: 0.9rem;
+        padding: 0.5em 0.7em;
+    }
+
+    #nosotros blockquote {
+        border-left: none;
+    }
+</style>
