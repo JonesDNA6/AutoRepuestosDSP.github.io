@@ -138,6 +138,109 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const productTypeCheckboxes = document.querySelectorAll('input[name="productType"]');
+    const productTypeFeedback = document.querySelector('#productType .invalid-feedback');
+    const formMessage = document.getElementById('form-message');
+
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar el envío por defecto del formulario
+
+        // Validar el formulario
+        if (!contactForm.checkValidity()) {
+            contactForm.classList.add('was-validated');
+            return;
+        }
+
+        // Validar que al menos un tipo de producto esté seleccionado
+        let isProductTypeSelected = false;
+        productTypeCheckboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                isProductTypeSelected = true;
+            }
+        });
+
+        if (!isProductTypeSelected) {
+            productTypeFeedback.style.display = 'block';
+            return;
+        } else {
+            productTypeFeedback.style.display = 'none';
+        }
+
+        // Recopilar los datos del formulario
+        const formData = new FormData(contactForm);
+        const formDataObject = {};
+        formData.forEach((value, key) => {
+            if (key === 'productType') {
+                if (!formDataObject[key]) {
+                    formDataObject[key] = [];
+                }
+                formDataObject[key].push(value);
+            } else {
+                formDataObject[key] = value;
+            }
+        });
+
+        // Simulación de envío de datos (aquí iría tu lógica para enviar al servidor)
+        console.log('Datos del formulario:', formDataObject);
+        formMessage.textContent = 'Enviando su cotización...';
+
+        // Simulación de envío exitoso después de un breve retraso
+        setTimeout(() => {
+            formMessage.textContent = '¡Cotización enviada con éxito! Nos pondremos en contacto pronto.';
+            formMessage.className = 'success';
+            contactForm.reset(); // Limpiar el formulario
+            contactForm.classList.remove('was-validated'); // Remover la clase de validación
+        }, 2000);
+
+        // Si deseas enviar los datos a un servidor para procesar el correo,
+        // aquí usarías fetch o XMLHttpRequest para hacer una petición POST.
+        // Ejemplo conceptual con fetch:
+        /*
+        fetch('/enviar-cotizacion', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formDataObject)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                formMessage.textContent = '¡Cotización enviada con éxito! Nos pondremos en contacto pronto.';
+                formMessage.className = 'success';
+                contactForm.reset();
+                contactForm.classList.remove('was-validated');
+            } else {
+                formMessage.textContent = 'Hubo un error al enviar la cotización. Por favor, inténtalo de nuevo.';
+                formMessage.className = 'error';
+            }
+        })
+        .catch(error => {
+            console.error('Error al enviar la cotización:', error);
+            formMessage.textContent = 'Hubo un error al enviar la cotización. Por favor, inténtalo de nuevo.';
+            formMessage.className = 'error';
+        });
+        */
+    });
+
+    // Validación en tiempo real del tipo de producto (opcional)
+    productTypeCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            let isAnyChecked = false;
+            productTypeCheckboxes.forEach(cb => {
+                if (cb.checked) {
+                    isAnyChecked = true;
+                }
+            });
+            if (isAnyChecked) {
+                productTypeFeedback.style.display = 'none';
+            }
+        });
+    });
+});
 });
 
 // Bootstrap bundle (asegúrate de incluirlo en el HTML si no está ya)
