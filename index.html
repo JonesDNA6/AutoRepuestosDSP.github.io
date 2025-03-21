@@ -278,152 +278,186 @@
         </div>
     </section>
 
-
- <section class="py-5 bg-light" id="productos">
+<section class="py-5 bg-light" id="productos">
     <div class="container">
         <h2 class="section-title text-center mb-5">Nuestros Productos</h2>
+
+        <!-- Botones de selección de categorías -->
         <div class="row mb-4">
             <div class="col-12">
                 <div class="d-flex flex-wrap justify-content-center gap-2">
-    <button class="btn btn-outline-azul filter-btn active" data-filter="all">
-        <i class="fas fa-th-large me-2"></i> Todos
-    </button>
-    <button class="btn btn-outline-azul filter-btn" data-filter="repuestos">
-        <i class="fas fa-cogs me-2"></i> Repuestos
-    </button>
-    <button class="btn btn-outline-azul filter-btn" data-filter="lubricantes">
-        <i class="fas fa-oil-can me-2"></i> Lubricantes
-    </button>
-    <button class="btn btn-outline-azul filter-btn" data-filter="baterias">
-        <i class="fas fa-car-battery me-2"></i> Baterías
-    </button>
-    <button class="btn btn-outline-azul filter-btn" data-filter="llantas">
-        <i class="fas fa-circle me-2"></i> Llantas <!-- Cambia el icono aquí si es necesario -->
-    </button>
-    <button class="btn btn-outline-azul filter-btn" data-filter="accesorios">
-        <i class="fas fa-tools me-2"></i> Accesorios
-    </button>
-</div>
+                    <button class="btn btn-outline-primary filter-btn active" data-filter="all">
+                        <i class="fas fa-th-large me-2"></i> Todos
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="repuestos">
+                        <i class="fas fa-cogs me-2"></i> Repuestos
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="lubricantes">
+                        <i class="fas fa-oil-can me-2"></i> Lubricantes
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="baterias">
+                        <i class="fas fa-car-battery me-2"></i> Baterías
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="llantas">
+                        <i class="fas fa-circle me-2"></i> Llantas
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="accesorios">
+                        <i class="fas fa-tools me-2"></i> Accesorios
+                    </button>
+                </div>
             </div>
         </div>
+
+        <!-- Productos -->
         <div class="row g-4 product-grid">
             <!-- Producto 1 -->
             <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="repuestos">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Kit de Embrague">
+                <div class="card h-100 product-card animate-on-hover">
+                    <img src="https://via.placeholder.com/300x200?text=Kit+de+Embrague" 
+                         class="card-img-top" alt="Kit de Embrague">
                     <div class="card-body">
-                        <span class="badge bg-rojo mb-2">Nuevo</span>
                         <h5 class="card-title">Kit de Embrague</h5>
-                        <p class="card-text text-gris">Compatibilidad múltiples marcas</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$89.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
-                        </div>
+                        <p class="card-text text-muted">Compatibilidad con múltiples marcas.</p>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este kit de embrague es compatible con varias marcas y modelos, asegurando un rendimiento óptimo.">Cotizar</button>
                     </div>
                 </div>
             </div>
+
             <!-- Producto 2 -->
             <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="lubricantes">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Aceite Sintético 5W-30">
+                <div class="card h-100 product-card animate-on-hover">
+                    <img src="https://via.placeholder.com/300x200?text=Aceite+5W30" 
+                         class="card-img-top" alt="Aceite Sintético 5W30">
                     <div class="card-body">
-                        <h5 class="card-title">Aceite Sintético 5W-30</h5>
-                        <p class="card-text text-gris">4L - Protección máxima</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$34.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
-                        </div>
+                        <h5 class="card-title">Aceite Sintético 5W30</h5>
+                        <p class="card-text text-muted">Protección máxima para motores modernos.</p>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este aceite sintético proporciona una excelente protección y rendimiento para motores modernos.">Cotizar</button>
                     </div>
                 </div>
             </div>
+
             <!-- Producto 3 -->
             <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="baterias">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Batería de Auto">
+                <div class="card h-100 product-card animate-on-hover">
+                    <img src="https://via.placeholder.com/300x200?text=Bateria+12V" 
+                         class="card-img-top" alt="Batería de Auto 12V">
                     <div class="card-body">
                         <h5 class="card-title">Batería de Auto 12V</h5>
-                        <p class="card-text text-gris">Duración garantizada de 2 años</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$99.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
-                        </div>
+                        <p class="card-text text-muted">Duración garantizada de 2 años.</p>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Esta batería de 12V ofrece una duración garantizada de 2 años, ideal para tu vehículo.">Cotizar</button>
                     </div>
                 </div>
             </div>
+
             <!-- Producto 4 -->
             <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="llantas">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Llantas de Auto">
+                <div class="card h-100 product-card animate-on-hover">
+                    <img src="https://via.placeholder.com/300x200?text=Llantas+All+Season" 
+                         class="card-img-top" alt="Llantas All Season">
                     <div class="card-body">
-                        <h 5 class="card-title">Llantas All-Season</h5>
-                        <p class="card-text text-gris">Tamaño 205/55R16 - Excelente tracción</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$79.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
-                        </div>
+                        <h5 class="card-title">Llantas All Season</h5>
+                        <p class="card-text text-muted">Tamaño 205/55R16 - Excelente tracción.</p>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Estas llantas all season ofrecen excelente tracción y durabilidad para cualquier clima.">Cotizar</button>
                     </div>
                 </div>
             </div>
+
             <!-- Producto 5 -->
             <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Accesorios de Auto">
+                <div class="card h-100 product-card animate-on-hover">
+                    <img src="https://via.placeholder.com/300x200?text=Accesorios+Interior" 
+                         class="card-img-top" alt="Accesorios de Interior">
                     <div class="card-body">
                         <h5 class="card-title">Juego de Accesorios de Interior</h5>
-                        <p class="card-text text-gris">Incluye tapetes y fundas de asiento</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$49.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
-                        </div>
+                        <p class="card-text text-muted">Incluye tapetes y fundas de asiento.</p>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este juego de accesorios incluye tapetes y fundas de asiento para proteger el interior de tu vehículo.">Cotizar</button>
                     </div>
                 </div>
             </div>
-            <!-- Producto 6 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="repuestos">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Frenos de Auto">
-                    <div class="card-body">
-                        <h5 class="card-title">Juego de Frenos</h5>
-                        <p class="card-text text-gris">Compatible con varios modelos</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$59.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
-                        </div>
-                    </div>
+        </div> <!-- Fin del grid de productos -->
+    </div> <!-- Fin del contenedor -->
+
+    <!-- Modal para Descripción del Producto -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel">Descripción del Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
-            <!-- Producto 7 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="lubricantes">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Aceite de Motor">
-                    <div class="card-body">
-                        <h5 class="card-title">Aceite de Motor 10W-40</h5>
-                        <p class="card-text text-gris">5L - Protección y rendimiento</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$29.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
-                        </div>
-                    </div>
+                <div class="modal-body">
+                    <p id="productDescription">Aquí va la descripción del producto.</p>
                 </div>
-            </div>
-            <!-- Producto 8 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="baterias">
-                <div class="card h-100 product-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Batería de Gel">
-                    <div class="card-body">
-                        <h5 class="card-title">Batería de Gel 12V</h5>
-                        <p class="card-text text-gris">Ideal para vehículos de alto rendimiento</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-azul">$129.99</span>
-                            <button class="btn btn-rojo btn-sm"><i class="fas fa-cart-plus"></i> Cotizar</button>
-                        </div>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Cotizar</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Estilos CSS -->
+<style>
+    .product-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .animate-on-hover img {
+        transition: transform 0.3s ease;
+    }
+
+    .animate-on-hover:hover img {
+        transform: rotate(3deg) scale(1.02);
+    }
+
+    .filter-btn.active {
+        background-color: #007bff;
+        color: white;
+    }
+</style>
+
+<!-- Script JavaScript -->
+<script>
+    // Filtrado de productos por categoría
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productItems = document.querySelectorAll('.product-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Eliminar la clase activa de todos los botones
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Agregar la clase activa al botón seleccionado
+            button.classList.add('active');
+
+            const category = button.getAttribute('data-filter');
+
+            // Mostrar u ocultar productos según la categoría seleccionada
+            productItems.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Mostrar descripción del producto en el modal
+    const productModal = document.getElementById('productModal');
+    const productDescription = document.getElementById('productDescription');
+
+    productModal.addEventListener('show.bs.modal', (event) => {
+        const button = event.relatedTarget; // Botón que abrió el modal
+        const description = button.getAttribute('data-description'); // Extraer la descripción del botón
+        productDescription.textContent = description; // Actualizar el contenido del modal
+    });
+</script>
 
 
 <section class="py-5 bg-light" id="marcas-section">
