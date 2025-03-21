@@ -6,6 +6,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const productItems = document.querySelectorAll(".product-item");
   const filterButtons = document.querySelectorAll(".filter-btn");
 
+  const marcasSection = document.getElementById("marcas-section");
+  const brandItems = document.querySelectorAll(".brand-item");
+
+  const sectionObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          brandItems.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add("brand-visible");
+            }, index * 150);
+          });
+          observer.unobserve(marcasSection);
+        }
+      });
+    },
+    {
+      threshold: 0.5,
+    }
+  );
+
+  sectionObserver.observe(marcasSection);
+
   // Configuración del IntersectionObserver genérico
   const createObserver = (
     elements,
@@ -193,4 +216,74 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // Filtrado de productos por categoría
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Eliminar la clase activa de todos los botones
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      // Agregar la clase activa al botón seleccionado
+      button.classList.add("active");
+
+      const category = button.getAttribute("data-filter");
+
+      // Mostrar u ocultar productos según la categoría seleccionada
+      productItems.forEach((item) => {
+        if (
+          category === "all" ||
+          item.getAttribute("data-category") === category
+        ) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+  });
+
+  // Mostrar descripción del producto en el modal
+  const productModal = document.getElementById("productModal");
+  const productDescription = document.getElementById("productDescription");
+
+  productModal.addEventListener("show.bs.modal", (event) => {
+    const button = event.relatedTarget; // Botón que abrió el modal
+    const description = button.getAttribute("data-description"); // Extraer la descripción del botón
+    productDescription.textContent = description; // Actualizar el contenido del modal
+  });
+
+  // JavaScript para la validación del formulario (Bootstrap)
+  (function () {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll("#contactForm");
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach((form) => {
+      form.addEventListener(
+        "submit",
+        (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          } else {
+            // Aquí puedes agregar la lógica para enviar el formulario (ej. AJAX)
+            event.preventDefault(); // Evita la recarga de la página por ahora
+            document.getElementById("form-message").innerText =
+              "¡Mensaje enviado! Nos pondremos en contacto contigo pronto.";
+            form.reset();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+
+  const copyrightElement = document.querySelector("footer .container p");
+  if (copyrightElement) {
+    const currentYear = new Date().getFullYear();
+    copyrightElement.textContent = `© ${currentYear} Tu Nombre de Empresa`;
+  }
 });
