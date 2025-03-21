@@ -168,6 +168,19 @@
     height: 200px;
 }
 
+footer {
+    background-color: var(--azul); /* Usar el color azul definido en :root */
+}
+
+footer .social-links .btn {
+    border: 1px solid white; /* Borde blanco para los botones sociales */
+}
+
+footer .social-links .btn:hover {
+    background-color: white; /* Cambia el fondo al pasar el mouse */
+    color: var(--azul); /* Cambia el color del texto al pasar el mouse */
+}
+
     </style>
 
 
@@ -210,13 +223,25 @@
         <div class="row mb-4">
             <div class="col-12">
                 <div class="d-flex flex-wrap justify-content-center gap-2">
-                    <button class="btn btn-outline-azul filter-btn active" data-filter="all">Todos</button>
-                    <button class="btn btn-outline-azul filter-btn" data-filter="repuestos">Repuestos</button>
-                    <button class="btn btn-outline-azul filter-btn" data-filter="lubricantes">Lubricantes</button>
-                    <button class="btn btn-outline-azul filter-btn" data-filter="baterias">Baterías</button>
-                    <button class="btn btn-outline-azul filter-btn" data-filter="llantas">Llantas</button>
-                    <button class="btn btn-outline-azul filter-btn" data-filter="accesorios">Accesorios</button>
-                </div>
+    <button class="btn btn-outline-azul filter-btn active" data-filter="all">
+        <i class="fas fa-th-large me-2"></i> Todos
+    </button>
+    <button class="btn btn-outline-azul filter-btn" data-filter="repuestos">
+        <i class="fas fa-cogs me-2"></i> Repuestos
+    </button>
+    <button class="btn btn-outline-azul filter-btn" data-filter="lubricantes">
+        <i class="fas fa-oil-can me-2"></i> Lubricantes
+    </button>
+    <button class="btn btn-outline-azul filter-btn" data-filter="baterias">
+        <i class="fas fa-car-battery me-2"></i> Baterías
+    </button>
+    <button class="btn btn-outline-azul filter-btn" data-filter="llantas">
+        <i class="fas fa-circle me-2"></i> Llantas <!-- Cambia el icono aquí si es necesario -->
+    </button>
+    <button class="btn btn-outline-azul filter-btn" data-filter="accesorios">
+        <i class="fas fa-tools me-2"></i> Accesorios
+    </button>
+</div>
             </div>
         </div>
         <div class="row g-4 product-grid">
@@ -347,7 +372,7 @@
                             <h4>Sucursal Ivan</h4>
                         </div>
                         <div class="card-body">
-                            <img src="https://via.placeholder.com/600x300" alt="Sucursal Centro" class="img-fluid mb-3 rounded">
+                            <img src="/Imagenes de referencia/sucursal-ivan-monteniegro.webp" alt="Sucursal-ivan-montenegro" class="img-fluid mb-3 rounded">
                             <div class="row">
                                 <div class="col-md-6">
                                     <h5 class="text-azul mb-3">Información</h5>
@@ -381,7 +406,7 @@
                             <h4>Sucursal Bello Horizonte</h4>
                         </div>
                         <div class="card-body">
-                            <img src="https://via.placeholder.com/600x300" alt="Sucursal Centro" class="img-fluid mb-3 rounded">
+                            <img src="./Imagenes de referencia/sucursal-bello-horizonte.webp" alt="Sucursal Bello Horizonte" class="img-fluid mb-3 rounded">
                             <div class="row">
                                 <div class="col-md-6">
                                     <h5 class="text-azul mb-3">Información</h5>
@@ -498,36 +523,62 @@
         </div>
     </section>
 
-    <section class="py-5" id="nosotros">
-        <div class="container">
-            <h2 class="section-title text-center mb-5">Sobre Nosotros</h2>
-            <div class="row">
-                <div class="col-lg-6">
-                    <img src="https://via.placeholder.com/600x400" alt="Imagen de la empresa" class="img-fluid rounded shadow-sm mb-4">
+   <section class="py-5 bg-light" id="nosotros">
+    <div class="container">
+        <h2 class="section-title text-center mb-5 animate__animated">Sobre Nosotros</h2>
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="about-image-wrapper">
+                    <img src="https://via.placeholder.com/600x400" alt="Equipo de AutoRepuestos Nicaragua" class="img-fluid rounded shadow-lg">
                 </div>
-                <div class="col-lg-6">
-                    <h3 class="text-azul mb-3">Nuestra Misión</h3>
-                    <p class="lead">Proporcionar repuestos y accesorios automotrices de alta calidad a precios competitivos.</p>
-                    <h3 class="text-azul mt-4 mb-3">Nuestra Visión</h3>
-                    <p>Ser líderes en la distribución de auto repuestos en Nicaragua.</p>
-                    <h3 class="text-azul mt-4 mb-3">Nuestros Valores</h3>
-                    <ul>
-                        <li><strong>Calidad:</strong> Productos confiables.</li>
-                        <li><strong>Servicio:</strong> Atención excepcional.</li>
-                        <li><strong>Compromiso:</strong> Satisfacción del cliente.</li>
-                        <li><strong>Integridad:</strong> Honestidad en todo.</li>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="about-content">
+                    <h3 class="text-azul mb-3 animate__animated">Nuestra Misión</h3>
+                    <p class="lead text-gris">Proporcionar repuestos y accesorios automotrices de alta calidad a precios competitivos, asegurando que cada vehículo en Nicaragua rinda al máximo.</p>
+                    
+                    <h3 class="text-azul mt-4 mb-3 animate__animated">Nuestra Visión</h3>
+                    <p class="text-gris">Convertirnos en los líderes indiscutibles en la distribución de autorepuestos en Nicaragua, siendo el aliado de confianza para conductores y talleres.</p>
+                    
+                    <h3 class="text-azul mt-4 mb-3 animate__animated">Nuestros Valores</h3>
+                    <ul class="list-unstyled values-list">
+                        <li class="mb-2"><span class="badge bg-azul text-white me-2">Calidad</span> Productos confiables y duraderos.</li>
+                        <li class="mb-2"><span class="badge bg-azul text-white me-2">Servicio</span> Atención excepcional y personalizada.</li>
+                        <li class="mb-2"><span class="badge bg-azul text-white me-2">Compromiso</span> Satisfacción total del cliente.</li>
+                        <li class="mb-2"><span class="badge bg-azul text-white me-2">Integridad</span> Honestidad en cada paso.</li>
                     </ul>
                 </div>
             </div>
-            <div class="row mt-5">
-                <div class="col-md-12 text-center">
-                    <p class="font-italic text-gris">¡Gracias por elegirnos!</p>
-                </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <blockquote class="blockquote text-gris font-italic p-3 bg-white rounded shadow-sm">
+                    <p class="mb-0">“Gracias por elegir AutoRepuestos Nicaragua, donde tu vehículo encuentra lo mejor.”</p>
+                </blockquote>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script  src="script.js"></script>
 </body>
+
+<footer class="py-4 bg-dark text-white">
+    <div class="container text-center">
+        <div class="social-links mb-3">
+            <a href="#" class="btn btn-outline-light btn-sm me-2" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="btn btn-outline-light btn-sm me-2" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/50522222222" class="btn btn-outline-light btn-sm" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+        <p class="mb-0">© 2025 AutoRepuestos Dios Se Proveera. Todos los derechos reservados.</p>
+        <p class="mb-0">Creado por Johnny Andino</p>
+    </div>
+</footer>
 </html>
