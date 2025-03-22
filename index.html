@@ -213,7 +213,7 @@
         #productos .filter-btn.active,
         #productos .filter-btn:hover {
             background-color: var(--primary); /* Usando el color primario de Bootstrap */
-            color: white;
+            color: var(--rojo);
             border-color: var(--primary);
         }
 
@@ -256,6 +256,30 @@
             opacity: 1;
             transform: translateY(0);
         }
+       /* Estilos para los botones de categorías */
+.btn-outline-azul {
+    color: var(--azul); /* Texto en azul */
+    border-color: var(--azul); /* Borde azul */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+.btn-outline-azul:hover {
+    background-color: var(--azul); /* Fondo azul al hacer hover */
+    color: white; /* Texto en blanco */
+    transform: translateY(-2px); /* Efecto de elevación */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.btn-outline-azul.active {
+    background-color: var(--rojo); /* Fondo rojo para el botón activo */
+    color: white; /* Texto en blanco */
+    border-color: var(--rojo); /* Borde rojo */
+}
+
+.btn-outline-azul.active:hover {
+    background-color: var(--rojo-hover); /* Fondo rojo más oscuro al hacer hover */
+    border-color: var(--rojo-hover);
+}
     </style>
 </head>
 <body>
@@ -323,65 +347,54 @@
         </div>
     </section>
 
-<section class="py-5 bg-light" id="productos">
-    <div class="container">
-        <h2 class="section-title text-center mb-5">Nuestros Productos</h2>
-
-        <!-- Botones de selección de categorías -->
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="d-flex flex-wrap justify-content-center gap-2">
-                    <button class="btn btn-outline-primary filter-btn active" data-filter="all">
-                        <i class="fas fa-th-large me-2"></i> Todos
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="repuestos">
-                        <i class="fas fa-cogs me-2"></i> Repuestos
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="lubricantes">
-                        <i class="fas fa-oil-can me-2"></i> Lubricantes
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="baterias">
-                        <i class="fas fa-car-battery me-2"></i> Baterías
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="llantas">
-                        <i class="fas fa-circle me-2"></i> Llantas
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="accesorios">
-                        <i class="fas fa-tools me-2"></i> Accesorios
-                    </button>
-                </div>
-            </div>
-        </div>
 
 <section class="py-5 bg-light" id="productos">
     <div class="container">
         <h2 class="section-title text-center mb-5">Nuestros Productos</h2>
 
-        <!-- Botones de selección de categorías -->
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="d-flex flex-wrap justify-content-center gap-2">
-                    <button class="btn btn-outline-primary filter-btn active" data-filter="all">
-                        <i class="fas fa-th-large me-2"></i> Todos
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="repuestos">
-                        <i class="fas fa-cogs me-2"></i> Repuestos
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="lubricantes">
-                        <i class="fas fa-oil-can me-2"></i> Lubricantes
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="baterias">
-                        <i class="fas fa-car-battery me-2"></i> Baterías
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="llantas">
-                        <i class="fas fa-circle me-2"></i> Llantas
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="accesorios">
-                        <i class="fas fa-tools me-2"></i> Accesorios
-                    </button>
-                </div>
-            </div>
+   <!-- Botones de selección de categorías -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+            <!-- Botón "Todos" -->
+            <button class="btn btn-outline-primary active filter-btn" data-filter="all">
+                <i class="fas fa-th-large me-2"></i> Todos
+            </button>
+
+            <!-- Botón "Repuestos" -->
+            <button class="btn btn-outline-primary filter-btn" data-filter="repuestos">
+                <i class="fas fa-cogs me-2"></i> Repuestos
+            </button>
+
+            <!-- Botón "Lubricantes" -->
+            <button class="btn btn-outline-primary filter-btn" data-filter="lubricantes">
+                <i class="fas fa-oil-can me-2"></i> Lubricantes
+            </button>
+
+            <!-- Botón "Baterías" -->
+            <button class="btn btn-outline-primary filter-btn" data-filter="baterias">
+                <i class="fas fa-car-battery me-2"></i> Baterías
+            </button>
+
+            <!-- Botón "Llantas" -->
+            <button class="btn btn-outline-primary filter-btn" data-filter="llantas">
+                <i class="fas fa-tire me-2"></i> Llantas
+            </button>
+
+            <!-- Botón "Filtros" -->
+            <button class="btn btn-outline-primary filter-btn" data-filter="filtros">
+                <i class="fas fa-filter me-2"></i> Filtros
+            </button>
+
+            <!-- Botón "Accesorios" -->
+            <button class="btn btn-outline-primary filter-btn" data-filter="accesorios">
+                <i class="fas fa-tools me-2"></i> Accesorios
+            </button>
         </div>
+    </div>
+</div>
+
+
 
         <!-- Productos -->
         <div class="row g-4 product-grid">
@@ -398,7 +411,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Kit de Embrague</h5>
                         <p class="card-text text-muted">Compatibilidad con múltiples marcas.</p>
-                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este kit de embrague es compatible con varias marcas y modelos, asegurando un rendimiento óptimo.">
+                        <button class="btn btn-rojo btn-sm cotizar-btn" data-product="Kit de Embrague">
                             <span class="cotizar-text">Cotizar</span>
                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         </button>
@@ -419,7 +432,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Aceite Sintético 5W30</h5>
                         <p class="card-text text-muted">Protección máxima para motores modernos.</p>
-                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este aceite sintético proporciona una excelente protección y rendimiento para motores modernos.">
+                        <button class="btn btn-rojo btn-sm cotizar-btn" data-product="Aceite Sintético 5W30">
                             <span class="cotizar-text">Cotizar</span>
                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         </button>
@@ -440,7 +453,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Batería de Auto 12V</h5>
                         <p class="card-text text-muted">Duración garantizada de 2 años.</p>
-                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Esta batería de 12V ofrece una duración garantizada de 2 años, ideal para tu vehículo.">
+                        <button class="btn btn-rojo btn-sm cotizar-btn" data-product="Batería de Auto 12V">
                             <span class="cotizar-text">Cotizar</span>
                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         </button>
@@ -461,7 +474,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Llantas All Season</h5>
                         <p class="card-text text-muted">Tamaño 205/55R16 - Excelente tracción.</p>
-                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Estas llantas all season ofrecen excelente tracción y durabilidad para cualquier clima.">
+                        <button class="btn btn-rojo btn-sm cotizar-btn" data-product="Llantas All Season">
                             <span class="cotizar-text">Cotizar</span>
                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         </button>
@@ -482,7 +495,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Llantas Firestone</h5>
                         <p class="card-text text-muted">Tamaño 205/55R16 - Excelente tracción.</p>
-                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Llantas Firestone con excelente durabilidad y rendimiento en carretera.">
+                        <button class="btn btn-rojo btn-sm cotizar-btn" data-product="Llantas Firestone">
                             <span class="cotizar-text">Cotizar</span>
                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         </button>
@@ -503,7 +516,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Juego de Accesorios de Interior</h5>
                         <p class="card-text text-muted">Incluye tapetes y fundas de asiento.</p>
-                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este juego de accesorios incluye tapetes y fundas de asiento para proteger el interior de tu vehículo.">
+                        <button class="btn btn-rojo btn-sm cotizar-btn" data-product="Juego de Accesorios de Interior">
                             <span class="cotizar-text">Cotizar</span>
                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         </button>
@@ -524,7 +537,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Volante Modelo1</h5>
                         <p class="card-text text-muted">Diseño ergonómico y duradero.</p>
-                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Volante de alta calidad con diseño ergonómico para mayor comodidad.">
+                        <button class="btn btn-rojo btn-sm cotizar-btn" data-product="Volante Modelo1">
                             <span class="cotizar-text">Cotizar</span>
                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         </button>
@@ -545,7 +558,49 @@
                     <div class="card-body">
                         <h5 class="card-title">Volante Modelo2</h5>
                         <p class="card-text text-muted">Agarre antideslizante y diseño deportivo.</p>
-                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Volante deportivo con agarre antideslizante para mayor seguridad.">
+                        <button class="btn btn-rojo btn-sm cotizar-btn" data-product="Volante Modelo2">
+                            <span class="cotizar-text">Cotizar</span>
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 9 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="repuestos">
+                <div class="card h-100 product-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://www.autozone.com/images/MEDIA_ProductCatalog/m3390011_alt1.png" 
+                             class="card-img-top" alt="Filtro de Aire">
+                        <div class="card-overlay">
+                            <p class="overlay-text">Filtro de aire de alta calidad para mejorar el rendimiento del motor.</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Filtro de Aire</h5>
+                        <p class="card-text text-muted">Compatibilidad con múltiples marcas.</p>
+                        <button class="btn btn-rojo btn-sm cotizar-btn" data-product="Filtro de Aire">
+                            <span class="cotizar-text">Cotizar</span>
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 10 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="lubricantes">
+                <div class="card h-100 product-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://www.castrol.com/content/dam/castrol/country-sites/en_au/australia/home-page/hero/hero-castrol-magnatec-stop-start-5w-30.png" 
+                             class="card-img-top" alt="Aceite Magnatec 5W30">
+                        <div class="card-overlay">
+                            <p class="overlay-text">Aceite Magnatec 5W30 para motores modernos con tecnología de protección inteligente.</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Aceite Magnatec 5W30</h5>
+                        <p class="card-text text-muted">Protección superior para motores.</p>
+                        <button class="btn btn-rojo btn-sm cotizar-btn" data-product="Aceite Magnatec 5W30">
                             <span class="cotizar-text">Cotizar</span>
                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         </button>
@@ -554,29 +609,29 @@
             </div>
         </div> <!-- Fin del grid de productos -->
     </div> <!-- Fin del contenedor -->
-
-    <!-- Modal para Descripción del Producto -->
-    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="productModalLabel">Descripción del Producto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p id="productDescription">Aquí va la descripción del producto.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Cotizar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 
 <!-- Estilos CSS -->
 <style>
+    /* Colores personalizados */
+    :root {
+        --azul: #007bff;
+        --rojo: #dc3545;
+        --gris: #6c757d;
+    }
+
+    /* Botón rojo */
+    .btn-rojo {
+        background-color: var(--rojo);
+        color: white;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-rojo:hover {
+        background-color: #c82333;
+    }
+
     /* Efectos de hover y diseño */
     .product-card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -651,8 +706,8 @@
     }
 
     .filter-btn.active {
-        background-color: #007bff;
-        color: white;
+        background-color: var(--rojo);
+        color: rgb(230, 20, 20);
     }
 </style>
 
@@ -682,24 +737,13 @@
         });
     });
 
-    // Mostrar descripción del producto en el modal
-    const productModal = document.getElementById('productModal');
-    const productDescription = document.getElementById('productDescription');
-
-    productModal.addEventListener('show.bs.modal', (event) => {
-        const button = event.relatedTarget; // Botón que abrió el modal
-        const description = button.getAttribute('data-description'); // Extraer la descripción del botón
-        productDescription.textContent = description; // Actualizar el contenido del modal
-    });
-
-    // Animación de "Cotizar"
+    // Redirigir a la sección de contacto con los datos del producto
     const cotizarButtons = document.querySelectorAll('.cotizar-btn');
     cotizarButtons.forEach(button => {
         button.addEventListener('click', () => {
-            button.classList.add('loading');
-            setTimeout(() => {
-                button.classList.remove('loading');
-            }, 2000); // Simula un tiempo de carga de 2 segundos
+            const productName = button.getAttribute('data-product'); // Obtener el nombre del producto
+            const url = `#contacto?product=${encodeURIComponent(productName)}`; // Redirigir con parámetro
+            window.location.href = url;
         });
     });
 </script>
@@ -1051,26 +1095,31 @@
     <div class="container">
         <h2 class="section-title text-center mb-5">Contáctanos</h2>
         <div class="row g-4">
+            <!-- Formulario de Cotización -->
             <div class="col-lg-6">
-                <div class="card shadow-sm border-0 rounded-4">
+                <div class="card shadow-sm border-0 rounded-4 h-100">
                     <div class="card-body p-4 p-lg-5">
                         <h5 class="section-subtitle mb-4 text-azul"><i class="fas fa-envelope fa-lg me-2"></i> Formulario de Cotización</h5>
                         <form id="contactForm" novalidate>
+                            <!-- Nombre -->
                             <div class="mb-3">
                                 <label for="firstName" class="form-label"><i class="fas fa-user me-2 text-rojo"></i> Nombre <span class="required-asterisk text-rojo">*</span></label>
                                 <input type="text" class="form-control rounded-pill" id="firstName" name="firstName" placeholder="Ingresa tu nombre" required>
                                 <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
                             </div>
+                            <!-- Apellidos -->
                             <div class="mb-3">
                                 <label for="lastName" class="form-label"><i class="fas fa-user-tag me-2 text-rojo"></i> Apellidos <span class="required-asterisk text-rojo">*</span></label>
                                 <input type="text" class="form-control rounded-pill" id="lastName" name="lastName" placeholder="Ingresa tus apellidos" required>
                                 <div class="invalid-feedback">Por favor, ingresa tus apellidos.</div>
                             </div>
+                            <!-- Correo Electrónico -->
                             <div class="mb-3">
                                 <label for="email" class="form-label"><i class="fas fa-envelope me-2 text-rojo"></i> Correo Electrónico <span class="required-asterisk text-rojo">*</span></label>
                                 <input type="email" class="form-control rounded-pill" id="email" name="email" placeholder="ejemplo@correo.com" required>
                                 <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
                             </div>
+                            <!-- Número de Contacto -->
                             <div class="mb-3">
                                 <label for="phone" class="form-label"><i class="fas fa-phone me-2 text-rojo"></i> Número de Contacto <span class="required-asterisk text-rojo">*</span></label>
                                 <div class="input-group">
@@ -1079,6 +1128,7 @@
                                 </div>
                                 <div class="invalid-feedback">Por favor, ingresa tu número de contacto.</div>
                             </div>
+                            <!-- Tipo de Producto -->
                             <div class="mb-3">
                                 <label class="form-label"><i class="fas fa-tools me-2 text-rojo"></i> Tipo de Producto <span class="required-asterisk text-rojo">*</span></label>
                                 <div class="form-check form-check-inline">
@@ -1099,31 +1149,38 @@
                                 </div>
                                 <div class="invalid-feedback d-block">Selecciona al menos un tipo de producto.</div>
                             </div>
+                            <!-- Marca de Carro -->
                             <div class="mb-3">
                                 <label for="carBrand" class="form-label"><i class="fas fa-car me-2 text-rojo"></i> Marca de Carro</label>
                                 <input type="text" class="form-control rounded-pill" id="carBrand" name="carBrand" placeholder="Ej: Toyota">
                             </div>
+                            <!-- Modelo de Carro -->
                             <div class="mb-3">
                                 <label for="carModel" class="form-label"><i class="fas fa-car-alt me-2 text-rojo"></i> Modelo de Carro</label>
                                 <input type="text" class="form-control rounded-pill" id="carModel" name="carModel" placeholder="Ej: Hilux">
                             </div>
+                            <!-- Año de Carro -->
                             <div class="mb-3">
                                 <label for="carYear" class="form-label"><i class="fas fa-calendar-alt me-2 text-rojo"></i> Año de Carro</label>
                                 <input type="number" class="form-control rounded-pill" id="carYear" name="carYear" placeholder="Ej: 2023">
                             </div>
+                            <!-- Más Detalles -->
                             <div class="mb-3">
                                 <label for="details" class="form-label"><i class="fas fa-comment-dots me-2 text-rojo"></i> Más Detalles <span class="required-asterisk text-rojo">*</span></label>
                                 <textarea class="form-control rounded-3" id="details" name="details" rows="4" placeholder="Describe qué repuesto o accesorio necesitas" required></textarea>
                                 <div class="invalid-feedback">Por favor, ingresa los detalles de tu consulta.</div>
                             </div>
+                            <!-- Botón de Enviar -->
                             <button type="submit" class="btn submit-button rounded-pill"><i class="fas fa-paper-plane me-2"></i> Enviar Cotización</button>
                             <div id="form-message" class="mt-3 text-success"></div>
                         </form>
                     </div>
                 </div>
             </div>
+
+            <!-- Información de Contacto -->
             <div class="col-lg-6">
-                <div class="card shadow-sm border-0 rounded-4">
+                <div class="card shadow-sm border-0 rounded-4 h-100">
                     <div class="card-body p-4 p-lg-5">
                         <h5 class="section-subtitle mb-4 text-azul"><i class="fas fa-info-circle fa-lg me-2"></i> Información de Contacto</h5>
                         <ul class="list-unstyled contact-info mb-4">
@@ -1146,8 +1203,16 @@
     </div>
 </section>
 
+<!-- Estilos CSS -->
 <style>
-    /* Estilos personalizados para la sección de contacto */
+    /* Colores personalizados */
+    :root {
+        --azul: #007bff;
+        --rojo: #dc3545;
+        --gris: #6c757d;
+    }
+
+    /* Estilos generales */
     .contact-section .section-title {
         color: var(--azul);
     }
@@ -1168,7 +1233,7 @@
 
     .contact-section .form-control:focus {
         border-color: var(--rojo);
-        box-shadow: 0 0 0 0.25rem rgba(204, 0, 0, 0.25);
+        box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
     }
 
     .contact-section .required-asterisk {
@@ -1182,7 +1247,7 @@
     }
 
     .contact-section .submit-button:hover {
-        background-color: #ff0000;
+        background-color: #c82333;
     }
 
     .contact-section .contact-info li {
@@ -1214,11 +1279,7 @@
     }
 
     .contact-section .social-button.instagram {
-        background: #f09433;
-        background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-        background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-        background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
     }
 
     .contact-section .social-button.whatsapp {
@@ -1226,110 +1287,31 @@
     }
 </style>
 
+<!-- Script JavaScript -->
 <script>
-    // JavaScript para la validación del formulario (Bootstrap)
+    // Validación del formulario
     (function () {
         'use strict'
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.querySelectorAll('#contactForm')
+        const forms = document.querySelectorAll('#contactForm');
 
-        // Loop over them and prevent submission
-        Array.from(forms)
-            .forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    } else {
-                        // Aquí puedes agregar la lógica para enviar el formulario (ej. AJAX)
-                        event.preventDefault(); // Evita la recarga de la página por ahora
-                        document.getElementById('form-message').innerText = '¡Mensaje enviado! Nos pondremos en contacto contigo pronto.';
-                        form.reset();
-                    }
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    event.preventDefault(); // Evita la recarga de la página
+                    document.getElementById('form-message').innerText = '¡Mensaje enviado! Nos pondremos en contacto contigo pronto.';
+                    form.reset();
+                }
 
-                    form.classList.add('was-validated')
-                }, false)
-            })
-    })()
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
 </script>
 
-<style>
-    /* Estilos personalizados para la sección de sucursales */
-    .branch-card .location-pin {
-        border-radius: 1rem 1rem 0 0 !important; /* Redondea solo la parte superior */
-    }
-
-    .branch-card:nth-child(odd) .location-pin {
-        background-color: var(--rojo); /* Usa la variable de color */
-    }
-
-    .branch-card:nth-child(even) .location-pin {
-        background-color: var(--azul); /* Usa la variable de color */
-    }
-
-    .branch-card .card-body {
-        padding: 20px;
-    }
-
-    .branch-card .card-title {
-        color: var(--azul);
-        font-weight: bold;
-        margin-bottom: 1rem;
-    }
-
-    .branch-card .card-body ul li {
-        margin-bottom: 0.5rem;
-        color: var(--gris);
-    }
-
-    .branch-card .card-body ul li i {
-        color: var(--rojo);
-        margin-right: 0.5rem;
-    }
-
-    .map-container {
-        height: 150px; /* Altura más pequeña para el mapa colapsado */
-    }
-
-    .social-links .btn {
-        font-size: 0.85rem;
-    }
-
-    /* Estilos adicionales para mejorar la apariencia */
-    .section-title {
-        color: var(--azul);
-        font-weight: bold;
-    }
-
-    .bg-light {
-        background-color: #f8f9fa !important; /* Un gris claro de fondo */
-    }
-
-    .rounded-4 {
-        border-radius: 1rem !important;
-    }
-
-    .rounded-3 {
-        border-radius: 0.75rem !important;
-    }
-
-    .shadow-sm {
-        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-    }
-
-    /* Estilos para el botón de "Más Información" */
-    .branch-card .card-body .btn-outline-azul {
-        color: var(--azul);
-        border-color: var(--azul);
-        transition: all 0.3s ease-in-out;
-    }
-
-    .branch-card .card-body .btn-outline-azul:hover {
-        background-color: var(--azul);
-        color: white;
-    }
-</style>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
