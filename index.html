@@ -59,6 +59,43 @@
             margin-left: auto;
         }
 
+        .social-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .social-icon {
+            font-size: 24px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+
+        /* Colores personalizados para cada icono */
+        .social-icon.facebook {
+            color: #1877F2; /* Azul de Facebook */
+        }
+
+        .social-icon.instagram {
+            color: #E4405F; /* Rojo de Instagram */
+        }
+
+        .social-icon.whatsapp {
+            color: #25D366; /* Verde de WhatsApp */
+        }
+
+        .social-icon.linkedin {
+            color: #0A66C2; /* Azul de LinkedIn */
+        }
+
         /* Hero Section */
         .hero-section {
             position: relative;
@@ -242,6 +279,14 @@
             </div>
         </div>
     </nav>
+
+    <!-- Redes sociales vertical -->
+    <div class="social-container">
+        <a href="#" class="social-icon facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="social-icon instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-icon linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
 
     <section class="hero-section" id="inicio">
         <div class="hero-carousel-container">
@@ -500,43 +545,82 @@
 <section class="py-5 bg-light" id="marcas-section">
     <div class="container-fluid">
         <h2 class="section-title text-center mb-4">Nuestras Marcas Aliadas</h2>
-        <div class="brands-carousel-wrapper overflow-hidden">
-            <div class="brands-carousel d-flex flex-nowrap">
-                <div class="brand-item brand-hidden">
+        <div class="brands-carousel-wrapper">
+            <div class="brands-carousel">
+                <!-- Marcas originales -->
+                <div class="brand-item">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkja-a8xRQ9jMd1GqUGsNz5TfgE9pNPZ2o6A&s" alt="Marca 1" class="img-fluid">
                 </div>
-                <div class="brand-item brand-hidden">
+                <div class="brand-item">
                     <img src="https://dojiw2m9tvv09.cloudfront.net/73154/brand/hibari-logo2209.png" alt="Marca 2" class="img-fluid">
                 </div>
-                <div class="brand-item brand-hidden">
+                <div class="brand-item">
                     <img src="https://completeautopart.com/wp-content/uploads/2020/03/R-TECH.png" alt="Marca 3" class="img-fluid">
                 </div>
-                <div class="brand-item brand-hidden">
+                <div class="brand-item">
                     <img src="https://hidropluviales.com/wp-content/uploads/2017/05/kayser.png" alt="Marca 4" class="img-fluid">
                 </div>
-                <div class="brand-item brand-hidden">
+                <div class="brand-item">
                     <img src="https://www.phckorea.com.ar/web/image/product.template/6647/image_1024?unique=2412b6f" alt="Marca 5" class="img-fluid">
                 </div>
-                <div class="brand-item brand-hidden">
+                <div class="brand-item">
                     <img src="https://repuestosfastcars.com.ve/wp-content/uploads/2024/06/HAN-280x280.png" alt="Marca 6" class="img-fluid">
                 </div>
-                <div class="brand-item brand-hidden">
-                    <img src="https://completeautopart.com/wp-content/uploads/2020/04/LOGO-DE-WELMET-AUTOPARTS.png" alt="Marca 1" class="img-fluid">
+                <div class="brand-item">
+                    <img src="https://completeautopart.com/wp-content/uploads/2020/04/LOGO-DE-WELMET-AUTOPARTS.png" alt="Marca 7" class="img-fluid">
                 </div>
-                <div class="brand-item brand-hidden">
-                    <img src="https://completeautopart.com/wp-content/uploads/2020/05/MOTORTEK-LOGO-300x217.png" alt="Marca 2" class="img-fluid">
+                <div class="brand-item">
+                    <img src="https://completeautopart.com/wp-content/uploads/2020/05/MOTORTEK-LOGO-300x217.png" alt="Marca 8" class="img-fluid">
                 </div>
-                <div class="brand-item brand-hidden">
-                    <img src="https://impocali.com/wp-content/uploads/2022/08/PARTES-ARTICULO-WOLF-HIBRIDOS-04-min-1024x883.png" alt="Marca 3" class="img-fluid">
+                <div class="brand-item">
+                    <img src="https://impocali.com/wp-content/uploads/2022/08/PARTES-ARTICULO-WOLF-HIBRIDOS-04-min-1024x883.png" alt="Marca 9" class="img-fluid">
                 </div>
-                <div class="brand-item brand-hidden">
-                    <img src="https://completeautopart.com/wp-content/uploads/2020/04/LOGO-SYNTECFIL.jpg" alt="Marca 4" class="img-fluid">
+                <div class="brand-item">
+                    <img src="https://completeautopart.com/wp-content/uploads/2020/04/LOGO-SYNTECFIL.jpg" alt="Marca 10" class="img-fluid">
                 </div>
-                <div class="brand-item brand-hidden">
-                    <img src="https://dojiw2m9tvv09.cloudfront.net/73154/brand/hibari-logo2209.png" alt="Marca 5" class="img-fluid">
+                <div class="brand-item">
+                    <img src="https://dojiw2m9tvv09.cloudfront.net/73154/brand/hibari-logo2209.png" alt="Marca 11" class="img-fluid">
                 </div>
-                <div class="brand-item brand-hidden">
+                <div class="brand-item">
+                    <img src="https://repuestosfastcars.com.ve/wp-content/uploads/2024/06/HAN-280x280.png" alt="Marca 12" class="img-fluid">
+                </div>
+
+                <!-- Marcas duplicadas para el efecto de loop -->
+                <div class="brand-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkja-a8xRQ9jMd1GqUGsNz5TfgE9pNPZ2o6A&s" alt="Marca 1" class="img-fluid">
+                </div>
+                <div class="brand-item">
+                    <img src="https://dojiw2m9tvv09.cloudfront.net/73154/brand/hibari-logo2209.png" alt="Marca 2" class="img-fluid">
+                </div>
+                <div class="brand-item">
+                    <img src="https://completeautopart.com/wp-content/uploads/2020/03/R-TECH.png" alt="Marca 3" class="img-fluid">
+                </div>
+                <div class="brand-item">
+                    <img src="https://hidropluviales.com/wp-content/uploads/2017/05/kayser.png" alt="Marca 4" class="img-fluid">
+                </div>
+                <div class="brand-item">
+                    <img src="https://www.phckorea.com.ar/web/image/product.template/6647/image_1024?unique=2412b6f" alt="Marca 5" class="img-fluid">
+                </div>
+                <div class="brand-item">
                     <img src="https://repuestosfastcars.com.ve/wp-content/uploads/2024/06/HAN-280x280.png" alt="Marca 6" class="img-fluid">
+                </div>
+                <div class="brand-item">
+                    <img src="https://completeautopart.com/wp-content/uploads/2020/04/LOGO-DE-WELMET-AUTOPARTS.png" alt="Marca 7" class="img-fluid">
+                </div>
+                <div class="brand-item">
+                    <img src="https://completeautopart.com/wp-content/uploads/2020/05/MOTORTEK-LOGO-300x217.png" alt="Marca 8" class="img-fluid">
+                </div>
+                <div class="brand-item">
+                    <img src="https://impocali.com/wp-content/uploads/2022/08/PARTES-ARTICULO-WOLF-HIBRIDOS-04-min-1024x883.png" alt="Marca 9" class="img-fluid">
+                </div>
+                <div class="brand-item">
+                    <img src="https://completeautopart.com/wp-content/uploads/2020/04/LOGO-SYNTECFIL.jpg" alt="Marca 10" class="img-fluid">
+                </div>
+                <div class="brand-item">
+                    <img src="https://dojiw2m9tvv09.cloudfront.net/73154/brand/hibari-logo2209.png" alt="Marca 11" class="img-fluid">
+                </div>
+                <div class="brand-item">
+                    <img src="https://repuestosfastcars.com.ve/wp-content/uploads/2024/06/HAN-280x280.png" alt="Marca 12" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -544,23 +628,22 @@
 </section>
 
 <style>
+    /* Estilos generales */
     #marcas-section {
         position: relative;
+        overflow: hidden;
     }
 
     .brands-carousel-wrapper {
         position: relative;
-        overflow: hidden;
-        padding: 0 20px; /* Añadido padding horizontal al contenedor */
+        padding: 0 20px;
     }
 
     .brands-carousel {
         display: flex;
-        flex-wrap: nowrap;
-        width: calc(180px * 12); /* Ancho total de las marcas */
-        animation: scroll-brands 15s linear infinite;
+        width: max-content;
+        animation: scroll-brands 20s linear infinite;
         padding: 20px 0;
-        margin-left: 150px; /* Añadido margen izquierdo para separar del borde */
     }
 
     .brand-item {
@@ -586,54 +669,34 @@
         filter: grayscale(0%);
     }
 
+    /* Animación del carrusel */
     @keyframes scroll-brands {
         0% {
             transform: translateX(0);
         }
         100% {
-            transform: translateX(calc(-150px * 6)); /* Mueve solo el ancho de las marcas originales */
+            transform: translateX(-50%);
         }
     }
 
-    /* Ajustes para pantallas más pequeñas */
+    /* Responsive */
     @media (max-width: 768px) {
         .brands-carousel {
-            width: calc(100px * 12); /* Marcas más pequeñas en pantallas pequeñas */
-            animation-duration: 20s; /* Un poco más lento en pantallas pequeñas */
-            margin-left: 10px;
+            animation-duration: 25s;
         }
+
         .brand-item img {
             height: 50px;
-        }
-        .brand-item {
-            padding: 0 10px;
-        }
-        @keyframes scroll-brands {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(calc(-100px * 6)); /* Mueve el ancho ajustado */
-            }
         }
     }
 
     @media (max-width: 576px) {
         .brands-carousel {
-            width: calc(80px * 12);
-            animation-duration: 25s;
-            margin-left: 5px;
+            animation-duration: 30s;
         }
+
         .brand-item img {
             height: 40px;
-        }
-        @keyframes scroll-brands {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(calc(-80px * 6));
-            }
         }
     }
 </style>
@@ -643,7 +706,7 @@
         const marcasSection = document.getElementById('marcas-section');
         const brandItems = document.querySelectorAll('.brand-item');
 
-        const sectionObserver = new IntersectionObserver((entries, observer) => {
+        const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     brandItems.forEach((item, index) => {
@@ -651,7 +714,7 @@
                             item.classList.add('brand-visible');
                         }, index * 150);
                     });
-                    observer.unobserve(marcasSection);
+                    sectionObserver.unobserve(marcasSection);
                 }
             });
         }, {
@@ -661,7 +724,6 @@
         sectionObserver.observe(marcasSection);
     });
 </script>
-
 
 <section class="py-5 bg-light" id="sucursales">
     <div class="container">
