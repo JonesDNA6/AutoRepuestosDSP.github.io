@@ -353,106 +353,202 @@
             </div>
         </div>
 
+<section class="py-5 bg-light" id="productos">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Nuestros Productos</h2>
+
+        <!-- Botones de selección de categorías -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                    <button class="btn btn-outline-primary filter-btn active" data-filter="all">
+                        <i class="fas fa-th-large me-2"></i> Todos
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="repuestos">
+                        <i class="fas fa-cogs me-2"></i> Repuestos
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="lubricantes">
+                        <i class="fas fa-oil-can me-2"></i> Lubricantes
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="baterias">
+                        <i class="fas fa-car-battery me-2"></i> Baterías
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="llantas">
+                        <i class="fas fa-circle me-2"></i> Llantas
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="accesorios">
+                        <i class="fas fa-tools me-2"></i> Accesorios
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <!-- Productos -->
         <div class="row g-4 product-grid">
             <!-- Producto 1 -->
             <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="repuestos">
-                <div class="card h-100 product-card animate-on-hover">
-                    <img src="https://assets-valeo.keepeek.com/medias/domain8143/media928/139345-hosr50hm7f-preview1.png" 
-                         class="card-img-top" alt="Kit de Embrague">
+                <div class="card h-100 product-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://assets-valeo.keepeek.com/medias/domain8143/media928/139345-hosr50hm7f-preview1.png" 
+                             class="card-img-top" alt="Kit de Embrague">
+                        <div class="card-overlay">
+                            <p class="overlay-text">Este kit de embrague es compatible con varias marcas y modelos, asegurando un rendimiento óptimo.</p>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Kit de Embrague</h5>
                         <p class="card-text text-muted">Compatibilidad con múltiples marcas.</p>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este kit de embrague es compatible con varias marcas y modelos, asegurando un rendimiento óptimo.">Cotizar</button>
+                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este kit de embrague es compatible con varias marcas y modelos, asegurando un rendimiento óptimo.">
+                            <span class="cotizar-text">Cotizar</span>
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
                     </div>
                 </div>
             </div>
 
             <!-- Producto 2 -->
             <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="lubricantes">
-                <div class="card h-100 product-card animate-on-hover">
-                    <img src="https://wolf-prd-pltn-ods-web.azurewebsites.net/api/assets/wolf/asset/d6e9c812-d955-4d8c-8d66460fb627fef3?v=7c33147df5e1ab87-638195007000000000&profile=product_detail" 
-                         class="card-img-top" alt="Aceite Sintético 5W30">
+                <div class="card h-100 product-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://wolf-prd-pltn-ods-web.azurewebsites.net/api/assets/wolf/asset/d6e9c812-d955-4d8c-8d66460fb627fef3?v=7c33147df5e1ab87-638195007000000000&profile=product_detail" 
+                             class="card-img-top" alt="Aceite Sintético 5W30">
+                        <div class="card-overlay">
+                            <p class="overlay-text">Este aceite sintético proporciona una excelente protección y rendimiento para motores modernos.</p>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Aceite Sintético 5W30</h5>
                         <p class="card-text text-muted">Protección máxima para motores modernos.</p>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este aceite sintético proporciona una excelente protección y rendimiento para motores modernos.">Cotizar</button>
+                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este aceite sintético proporciona una excelente protección y rendimiento para motores modernos.">
+                            <span class="cotizar-text">Cotizar</span>
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
                     </div>
                 </div>
             </div>
 
             <!-- Producto 3 -->
             <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="baterias">
-                <div class="card h-100 product-card animate-on-hover">
-                    <img src="https://www.napaautoparts.es/_next/image?url=https%3A%2F%2Fcms.napaspain.wolf.ef2.builders%2Fuploads%2FNapa_Batt_High_Power_6c07ffbcb6.png&w=1536&q=75" 
-                         class="card-img-top" alt="Batería de Auto 12V">
+                <div class="card h-100 product-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://www.napaautoparts.es/_next/image?url=https%3A%2F%2Fcms.napaspain.wolf.ef2.builders%2Fuploads%2FNapa_Batt_High_Power_6c07ffbcb6.png&w=1536&q=75" 
+                             class="card-img-top" alt="Batería de Auto 12V">
+                        <div class="card-overlay">
+                            <p class="overlay-text">Esta batería de 12V ofrece una duración garantizada de 2 años, ideal para tu vehículo.</p>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Batería de Auto 12V</h5>
                         <p class="card-text text-muted">Duración garantizada de 2 años.</p>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Esta batería de 12V ofrece una duración garantizada de 2 años, ideal para tu vehículo.">Cotizar</button>
+                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Esta batería de 12V ofrece una duración garantizada de 2 años, ideal para tu vehículo.">
+                            <span class="cotizar-text">Cotizar</span>
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
                     </div>
                 </div>
             </div>
 
             <!-- Producto 4 -->
             <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="llantas">
-                <div class="card h-100 product-card animate-on-hover">
-                    <img src="https://www.goodyear.com/dw/image/v2/BJQJ_PRD/on/demandware.static/-/Sites-goodyear-master-catalog/default/dw6d471938/images/large/Assurance_WeatherReady_2_24987.png?sw=400&sh=400&sm=fit&sfrm=png" 
-                         class="card-img-top" alt="Llantas All Season">
+                <div class="card h-100 product-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://www.goodyear.com/dw/image/v2/BJQJ_PRD/on/demandware.static/-/Sites-goodyear-master-catalog/default/dw6d471938/images/large/Assurance_WeatherReady_2_24987.png?sw=400&sh=400&sm=fit&sfrm=png" 
+                             class="card-img-top" alt="Llantas All Season">
+                        <div class="card-overlay">
+                            <p class="overlay-text">Estas llantas all season ofrecen excelente tracción y durabilidad para cualquier clima.</p>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Llantas All Season</h5>
                         <p class="card-text text-muted">Tamaño 205/55R16 - Excelente tracción.</p>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Estas llantas all season ofrecen excelente tracción y durabilidad para cualquier clima.">Cotizar</button>
-                    </div>
-                </div>
-            </div>
-             <!-- Producto 4 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="llantas">
-                <div class="card h-100 product-card animate-on-hover">
-                    <img src="https://www.bridgestonecomercial.com.mx/content/dam/bcs-latam-sites/productos/firestone/tbr/fd694/fd694-2.png" 
-                         class="card-img-top" alt="Llantas All Season">
-                    <div class="card-body">
-                        <h5 class="card-title">Llantas Firestone</h5>
-                        <p class="card-text text-muted">Tamaño 205/55R16 - Excelente tracción.</p>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Estas llantas all season ofrecen excelente tracción y durabilidad para cualquier clima.">Cotizar</button>
+                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Estas llantas all season ofrecen excelente tracción y durabilidad para cualquier clima.">
+                            <span class="cotizar-text">Cotizar</span>
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
                     </div>
                 </div>
             </div>
 
             <!-- Producto 5 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
-                <div class="card h-100 product-card animate-on-hover">
-                    <img src="https://innovacentro.com.do/product/image/medium/039283_0.png" 
-                         class="card-img-top" alt="Accesorios de Interior">
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="llantas">
+                <div class="card h-100 product-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://www.bridgestonecomercial.com.mx/content/dam/bcs-latam-sites/productos/firestone/tbr/fd694/fd694-2.png" 
+                             class="card-img-top" alt="Llantas Firestone">
+                        <div class="card-overlay">
+                            <p class="overlay-text">Llantas Firestone con excelente durabilidad y rendimiento en carretera.</p>
+                        </div>
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">Juego de Accesorios de Interior</h5>
-                        <p class="card-text text-muted">Incluye tapetes y fundas de asiento.</p>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este juego de accesorios incluye tapetes y fundas de asiento para proteger el interior de tu vehículo.">Cotizar</button>
+                        <h5 class="card-title">Llantas Firestone</h5>
+                        <p class="card-text text-muted">Tamaño 205/55R16 - Excelente tracción.</p>
+                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Llantas Firestone con excelente durabilidad y rendimiento en carretera.">
+                            <span class="cotizar-text">Cotizar</span>
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
                     </div>
                 </div>
             </div>
-<!-- Producto 6 -->
-             <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
-                <div class="card h-100 product-card animate-on-hover">
-                    <img src="https://simufy.com/cdn/shop/files/Volante-TRUCK-camion-MOZA-simufy_5_400x.png?v=1708098270" 
-                         class="card-img-top" alt="Accesorios de Interior">
+
+            <!-- Producto 6 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
+                <div class="card h-100 product-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://innovacentro.com.do/product/image/medium/039283_0.png" 
+                             class="card-img-top" alt="Accesorios de Interior">
+                        <div class="card-overlay">
+                            <p class="overlay-text">Este juego de accesorios incluye tapetes y fundas de asiento para proteger el interior de tu vehículo.</p>
+                        </div>
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">Volante Modelo1</h5>
+                        <h5 class="card-title">Juego de Accesorios de Interior</h5>
                         <p class="card-text text-muted">Incluye tapetes y fundas de asiento.</p>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este juego de accesorios incluye tapetes y fundas de asiento para proteger el interior de tu vehículo.">Cotizar</button>
+                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este juego de accesorios incluye tapetes y fundas de asiento para proteger el interior de tu vehículo.">
+                            <span class="cotizar-text">Cotizar</span>
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
                     </div>
                 </div>
             </div>
 
             <!-- Producto 7 -->
-             <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
-                <div class="card h-100 product-card animate-on-hover">
-                    <img src="https://www.hondanicaragua.com/images/turn.webp" 
-                         class="card-img-top" alt="Accesorios de Interior">
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
+                <div class="card h-100 product-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://simufy.com/cdn/shop/files/Volante-TRUCK-camion-MOZA-simufy_5_400x.png?v=1708098270" 
+                             class="card-img-top" alt="Volante Modelo1">
+                        <div class="card-overlay">
+                            <p class="overlay-text">Volante de alta calidad con diseño ergonómico para mayor comodidad.</p>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Volante Modelo1</h5>
-                        <p class="card-text text-muted">Incluye tapetes y fundas de asiento.</p>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Este juego de accesorios incluye tapetes y fundas de asiento para proteger el interior de tu vehículo.">Cotizar</button>
+                        <p class="card-text text-muted">Diseño ergonómico y duradero.</p>
+                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Volante de alta calidad con diseño ergonómico para mayor comodidad.">
+                            <span class="cotizar-text">Cotizar</span>
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 8 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
+                <div class="card h-100 product-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://www.hondanicaragua.com/images/turn.webp" 
+                             class="card-img-top" alt="Volante Modelo2">
+                        <div class="card-overlay">
+                            <p class="overlay-text">Volante deportivo con agarre antideslizante para mayor seguridad.</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Volante Modelo2</h5>
+                        <p class="card-text text-muted">Agarre antideslizante y diseño deportivo.</p>
+                        <button class="btn btn-primary btn-sm cotizar-btn" data-bs-toggle="modal" data-bs-target="#productModal" data-description="Volante deportivo con agarre antideslizante para mayor seguridad.">
+                            <span class="cotizar-text">Cotizar</span>
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -481,21 +577,77 @@
 
 <!-- Estilos CSS -->
 <style>
+    /* Efectos de hover y diseño */
     .product-card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        border: none;
+        border-radius: 10px;
     }
 
     .product-card:hover {
-        transform: scale(1.05);
+        transform: translateY(-5px);
         box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     }
 
-    .animate-on-hover img {
-        transition: transform 0.3s ease;
+    .card-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        height: 200px; /* Altura fija para las imágenes */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .animate-on-hover:hover img {
-        transform: rotate(3deg) scale(1.02);
+    .card-img-wrapper img {
+        width: auto;
+        height: 100%;
+        object-fit: contain; /* Ajusta la imagen sin recortar */
+    }
+
+    .card-overlay {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        transition: top 0.3s ease;
+    }
+
+    .product-card:hover .card-overlay {
+        top: 0;
+    }
+
+    .overlay-text {
+        font-size: 14px;
+        text-align: center;
+        margin: 0;
+    }
+
+    .cotizar-btn {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cotizar-btn .spinner-border {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .cotizar-btn.loading .cotizar-text {
+        visibility: hidden;
+    }
+
+    .cotizar-btn.loading .spinner-border {
+        display: inline-block !important;
     }
 
     .filter-btn.active {
@@ -539,8 +691,18 @@
         const description = button.getAttribute('data-description'); // Extraer la descripción del botón
         productDescription.textContent = description; // Actualizar el contenido del modal
     });
-</script>
 
+    // Animación de "Cotizar"
+    const cotizarButtons = document.querySelectorAll('.cotizar-btn');
+    cotizarButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.add('loading');
+            setTimeout(() => {
+                button.classList.remove('loading');
+            }, 2000); // Simula un tiempo de carga de 2 segundos
+        });
+    });
+</script>
 
 <section class="py-5 bg-light" id="marcas-section">
     <div class="container-fluid">
