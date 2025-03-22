@@ -891,6 +891,7 @@
     <div class="container">
         <h2 class="section-title text-center mb-5">Nuestras Sucursales</h2>
         <div class="row g-4">
+            <!-- Sucursal Ivan Montenegro -->
             <div class="col-lg-6">
                 <div class="branch-card card h-100 shadow-sm rounded-4 border-0">
                     <div class="location-pin bg-rojo text-white rounded-top-4 py-2 text-center">
@@ -925,6 +926,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Sucursal Bello Horizonte -->
             <div class="col-lg-6">
                 <div class="branch-card card h-100 shadow-sm rounded-4 border-0">
                     <div class="location-pin bg-azul text-white rounded-top-4 py-2 text-center">
@@ -959,9 +962,90 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
 </section>
+
+<!-- Estilos CSS -->
+<style>
+    /* Estilos generales */
+    .branch-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .branch-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .location-pin {
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+
+    .bg-rojo {
+        background-color: #dc3545; /* Rojo */
+    }
+
+    .bg-azul {
+        background-color: #007bff; /* Azul */
+    }
+
+    .text-azul {
+        color: #007bff; /* Azul */
+    }
+
+    .text-rojo {
+        color: #dc3545; /* Rojo */
+    }
+
+    .btn-outline-azul {
+        border-color: #007bff;
+        color: #007bff;
+    }
+
+    .btn-outline-azul:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .map-container {
+        position: relative;
+        padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+        height: 0;
+        overflow: hidden;
+    }
+
+    .map-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .social-links .btn {
+        transition: all 0.3s ease;
+    }
+
+    .social-links .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+<!-- Script JavaScript -->
+<script>
+    // Interacción para el botón de "Más Información"
+    document.querySelectorAll('.btn-outline-azul').forEach(button => {
+        button.addEventListener('click', () => {
+            const target = button.getAttribute('data-bs-target');
+            const collapse = document.querySelector(target);
+            collapse.classList.toggle('show');
+        });
+    });
+</script>
 
 <section class="py-5 bg-light contact-section" id="contacto">
     <div class="container">
