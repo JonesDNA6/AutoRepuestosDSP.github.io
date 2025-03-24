@@ -601,53 +601,127 @@
 }
 
 /* Badges estáticos */
-.badge {
-    border: 1px solid var(--azul);
-    background-color: var(--azul-light);
-    color: var(--azul);
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
 }
 
-  .hero-section {
-        position: relative;
-        overflow: hidden;
+.hero-carousel-container {
+    height: 100%;
+}
+
+.carousel-item {
+    height: 100vh;
+    min-height: 600px;
+}
+
+.carousel-item img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.6);
+    transform: scale(1.1);
+    transition: transform 10s linear;
+}
+
+.parallax:hover img {
+    transform: scale(1);
+}
+
+.hero-overlay {
+    background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-cta {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(204,0,0,0.4);
+}
+
+/* Animaciones */
+.text-reveal {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    animation: textReveal 1s ease forwards;
+}
+
+@keyframes textReveal {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.delay-1 { animation-delay: 0.3s; }
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.5rem;
     }
     
-    .carousel-inner {
-        border-radius: 0.5rem;
-        overflow: hidden;
+    .hero-subtitle {
+        font-size: 1.2rem;
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 80vh;
+        min-height: 500px;
     }
     
-    .img-cover {
-        object-fit: cover;
-        object-position: center;
-        width: 100%;
-        height: 100%;
+    .hero-title {
+        font-size: 2rem;
     }
     
-    .hero-overlay {
-        background: rgba(0, 0, 0, 0.4);
-        -webkit-backdrop-filter: blur(2px);
-        backdrop-filter: blur(2px);
+    .hero-cta {
+        font-size: 1rem;
+        padding: 0.8rem 2rem;
     }
     
-    .carousel-fade .carousel-item {
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
+    .carousel-item img {
+        object-position: 70% center;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 1.75rem;
     }
     
-    .carousel-fade .carousel-item.active {
-        opacity: 1;
+    .hero-subtitle {
+        font-size: 1rem;
     }
     
-    @media (min-width: 992px) {
-        .carousel-inner {
-            border-radius: 1rem;
-        }
-        
-        .hero-overlay {
-            background: rgba(0, 0, 0, 0.3);
-        }
+    .carousel-controls {
+        display: none;
     }
+}
 
     /* Estilos de Contactos */
         .contact-section .section-title {
@@ -784,49 +858,65 @@ a.text-dark:hover {
         <a href="https://wa.me/50555037724?text=Hola,%20estoy%20interesado%20en%20sus%20productos." class="social-icon whatsapp" title="WhatsApp Bello Horizonte" aria-label="WhatsApp Bello Horizonte"><i class="fab fa-whatsapp"></i></a>
     </div>
 
-    <section class="hero-section py-5" id="inicio">
+<section class="hero-section" id="inicio">
     <div class="hero-carousel-container position-relative">
         <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center">
             <div class="container text-center position-relative z-index-2">
-                <h2 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown">¡Encuentra el Repuesto Ideal para tu Vehículo!</h2>
-                <p class="lead mb-4 animate__animated animate__fadeIn">Calidad, Variedad y los Mejores Precios en Nicaragua</p>
-                <a href="#productos" class="btn btn-rojo btn-lg animate__animated animate__fadeInUp">
+                <h2 class="hero-title animate__animated animate__fadeInDown animate__delay-1s">
+                    <span class="text-reveal">¡Encuentra el Repuesto Ideal</span>
+                    <span class="text-reveal delay-1">para tu Vehículo!</span>
+                </h2>
+                <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-2s">Calidad, Variedad y los Mejores Precios en Nicaragua</p>
+                <a href="#productos" class="btn btn-rojo btn-lg hero-cta animate__animated animate__zoomIn animate__delay-3s">
                     Ver Productos <i class="fas fa-arrow-right ms-2"></i>
                 </a>
             </div>
         </div>
 
         <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner ratio ratio-21x9"> <!-- Relación de aspecto 21:9 -->
-                <div class="carousel-item active">
+            <div class="carousel-inner">
+                <div class="carousel-item active parallax">
                     <img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9" 
-                         class="d-block w-100 img-cover"
+                         class="d-block w-100"
                          alt="Repuestos automotrices"
-                         loading="eager">
+                         loading="eager"
+                         srcset="
+                             https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9 1920w,
+                             https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&w=800 800w
+                         ">
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item parallax">
                     <img src="https://images.unsplash.com/photo-1605515298946-d062f2e9da53" 
-                         class="d-block w-100 img-cover"
+                         class="d-block w-100"
                          alt="Accesorios para vehículos"
-                         loading="lazy">
+                         loading="lazy"
+                         srcset="
+                             https://images.unsplash.com/photo-1605515298946-d062f2e9da53 1920w,
+                             https://images.unsplash.com/photo-1605515298946-d062f2e9da53?auto=format&fit=crop&w=800 800w
+                         ">
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item parallax">
                     <img src="https://images.unsplash.com/photo-1605515103460-70fa2080bd9a" 
-                         class="d-block w-100 img-cover"
+                         class="d-block w-100"
                          alt="Taller especializado"
-                         loading="lazy">
+                         loading="lazy"
+                         srcset="
+                             https://images.unsplash.com/photo-1605515103460-70fa2080bd9a 1920w,
+                             https://images.unsplash.com/photo-1605515103460-70fa2080bd9a?auto=format&fit=crop&w=800 800w
+                         ">
                 </div>
             </div>
             
-            <!-- Controles del carrusel -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Siguiente</span>
-            </button>
+            <div class="carousel-controls">
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
         </div>
     </div>
 </section>
