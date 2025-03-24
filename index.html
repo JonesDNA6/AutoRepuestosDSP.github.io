@@ -9,336 +9,315 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- Material Design Icons CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
-    <style>
-    /* Variables de color */
-        :root {
-            --azul: #005aa3;
-            --rojo: #CC0000;
-            --gris: #666666;
-        }
+<style>
+    /* ===== VARIABLES Y ESTILOS BASE ===== */
+    :root {
+        --azul: #005aa3;
+        --rojo: #CC0000;
+        --gris: #666666;
+        --gris-claro: #f8f9fa;
+        --rojo-hover: #b30000;
+    }
 
-        .section-title {
-            color: var(--azul);
-        }
+    body {
+        font-family: 'Arial', sans-serif;
+        padding-top: 56px;
+    }
 
-        /* Estilos generales */
-        body {
-            font-family: 'Arial', sans-serif;
-        }
+    /* ===== COMPONENTES GENERALES ===== */
+    .section-title {
+        color: var(--azul);
+    }
 
+    /* Helpers de color */
+    .text-azul { color: var(--azul) !important; }
+    .text-rojo { color: var(--rojo) !important; }
+    .text-gris { color: var(--gris) !important; }
+    .bg-rojo { background-color: var(--rojo) !important; }
+    .bg-azul { background-color: var(--azul) !important; }
 
-        /* Navbar */
-       .navbar {
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+    /* ===== NAVBAR ===== */
+    .navbar {
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-scrolled {
+        background: rgba(0,0,0,0.9) !important;
+        padding: 0.5rem 0;
+    }
+    
+    .navbar-brand img {
+        transition: transform 0.3s ease;
+        max-height: 50px;
+    }
+    
+    .navbar-brand:hover img {
+        transform: scale(1.05);
+    }
+    
+    .nav-link {
+        position: relative;
+        padding: 0.5rem 1rem !important;
+        margin: 0 0.25rem;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #dc3545;
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+        width: 100%;
+    }
 
-.navbar-scrolled {
-    background: rgba(0,0,0,0.9) !important;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-}
+    /* ===== HERO SECTION ===== */
+    .hero-section {
+        position: relative;
+        overflow: hidden;
+        color: white;
+        padding: 0;
+    }
+    
+    .hero-carousel-container {
+        position: relative;
+    }
+    
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        z-index: 2;
+        padding: 20px;
+    }
+    
+    .hero-overlay h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        animation: fadeInDown 1s ease;
+    }
+    
+    .hero-overlay p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        animation: fadeIn 1s ease;
+    }
+    
+    .hero-overlay .cta-button {
+        background-color: var(--rojo);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .hero-overlay .cta-button:hover {
+        transform: scale(1.05);
+        background-color: #ff0000;
+    }
 
-.navbar-brand img {
-    transition: transform 0.3s ease;
-}
-
-.navbar-brand:hover img {
-    transform: scale(1.05);
-}
-
-.nav-link {
-    position: relative;
-    padding: 0.5rem 1rem !important;
-    margin: 0 0.25rem;
-    transition: all 0.3s ease;
-}
-
-.nav-link::after {
-    content: '';
+    /* ===== SECCIÓN PRODUCTOS ===== */
+    .product-card {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        background: white;
+        border-radius: 12px !important;
+        overflow: hidden;
+    }
+    
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-img-wrapper {
+        height: 240px;
+        overflow: hidden;
+        background: var(--gris-claro);
+    }
+    
+    .card-img-wrapper img {
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    .card-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0;
-    height: 2px;
-    background: #dc3545;
-    transition: width 0.3s ease;
-}
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 20%, transparent 100%);
+    color: white;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    }
+    
+     .product-card:hover .card-overlay {
+        opacity: 1;
+       
+    }
+     .product-card:hover .btn-zoom {
+        opacity: 1;
+    }
+    
+    .btn-filter {
+        border: 2px solid var(--azul);
+        color: var(--azul);
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+    
+    .btn-filter.active {
+        background: var(--rojo);
+        border-color: var(--rojo);
+        color: white;
+    }
+    
+    .btn-cotizar {
+        background-color: var(--azul) !important;
+    color: white !important;
+    border: none !important;
+    transition: none !important;
+    }
+    
+    .btn-cotizar:hover {
+        background: var(--rojo) !important;
+        color: white !important;
+    }
+    
+    .btn-zoom {
+         z-index: 2;
+    transition: transform 0.3s ease;
+    }
+    
+    .btn-zoom:hover {
+        transform: scale(1);
+        
+    }
 
-.nav-link:hover::after {
-    width: 100%;
-}
+     .card-img-wrapper {
+        background: #f8f9fa;
+        border-radius: 12px 12px 0 0;
+        overflow: hidden;
+    }
 
-        .social-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
-        }
+    .card-img-wrapper img {
+        padding: 1.5rem;
+        transition: transform 0.3s ease;
+    }
 
-        .social-icon {
-            font-size: 24px;
-            transition: color 0.3s, transform 0.3s;
-        }
+    /* ===== FOOTER ===== */
+    footer {
+        background-color: var(--azul);
+        color: white;
+        padding: 20px 0;
+    }
+    
+    footer .social-links .btn {
+        border: 1px solid white;
+    }
+    
+    footer .social-links .btn:hover {
+        background-color: white;
+        color: var(--azul);
+    }
 
-        .social-icon:hover {
-            transform: scale(1.2);
-        }
+    /* ===== COMPONENTES ADICIONALES ===== */
+    .social-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        position: fixed;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+    
+    .social-icon {
+        font-size: 24px;
+        transition: color 0.3s, transform 0.3s;
+    }
+    
+    .social-icon:hover {
+        transform: scale(1.2);
+    }
+    
+    .social-icon.facebook { color: #1877F2; }
+    .social-icon.instagram { color: #E4405F; }
+    .social-icon.whatsapp { color: #25D366; }
+    .social-icon.linkedin { color: #0A66C2; }
 
-        /* Colores personalizados para cada icono */
-        .social-icon.facebook {
-            color: #1877F2; /* Azul de Facebook */
-        }
+    .whatsapp-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25d366;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .whatsapp-button:hover {
+        background-color: #128c7e;
+        transform: scale(1.1);
+    }
 
-        .social-icon.instagram {
-            color: #E4405F; /* Rojo de Instagram */
-        }
-
-        .social-icon.whatsapp {
-            color: #25D366; /* Verde de WhatsApp */
-        }
-
-        .social-icon.linkedin {
-            color: #0A66C2; /* Azul de LinkedIn */
-        }
-
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            overflow: hidden;
-            color: white;
-            padding: 0; /* Ajustamos el padding para el carrusel */
-        }
-
-        .hero-carousel-container {
-            position: relative; /* Para posicionar el overlay */
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3); /* Fondo negro ligeramente transparente */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            z-index: 2; /* Aseguramos que esté encima del carrusel */
-            padding: 20px; /* Añadimos algo de padding interno */
-        }
-
-        .hero-overlay h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            animation: fadeInDown 1s ease;
-        }
-
-        .hero-overlay p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            animation: fadeIn 1s ease;
-        }
-
-        .hero-overlay .cta-button {
-            background-color: var(--rojo);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            text-decoration: none; /* Para que funcione como enlace */
-            display: inline-block; /* Para aplicar padding correctamente */
-        }
-
-        .hero-overlay .cta-button:hover {
-            transform: scale(1.05);
-            background-color: #ff0000;
-        }
-
-        .hero-section .carousel-item {
-            height: 70vh; /* Aumentamos la altura del carrusel */
-        }
-
-        .hero-section .carousel-item img {
-            object-fit: cover;
-            height: 100%;
-        }
-
-        /* Estilos de animación */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--azul);
-            color: white;
-            padding: 20px 0;
-        }
-
-        footer .social-links .btn {
-            border: 1px solid white;
-        }
-
-        footer .social-links .btn:hover {
-            background-color: white;
-            color: var(--azul);
-        }
-
-        /* Estilos personalizados para la sección de productos */
-        #productos .section-title {
-            color: var(--azul);
-        }
-
-        #productos .filter-btn {
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        #productos .filter-btn.active,
-        #productos .filter-btn:hover {
-            background-color: var(--primary); /* Usando el color primario de Bootstrap */
-            color: var(--rojo);
-            border-color: var(--primary);
-        }
-
-        #productos .product-card {
-            border: none;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        #productos .product-card:hover {
-            transform: scale(1.02);
-        }
-
-        #productos .card-title {
-            height: 50px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-        #productos .card-body {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-        }
-
-        #productos .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .slide-up-hidden {
+    /* ===== ANIMACIONES ===== */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    @keyframes fadeInDown {
+        from {
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            transform: translateY(-50px);
         }
-
-        .slide-up-visible {
+        to {
             opacity: 1;
             transform: translateY(0);
         }
-       /* Estilos para los botones de categorías */
-.btn-outline-azul {
-    color: var(--azul); /* Texto en azul */
-    border-color: var(--azul); /* Borde azul */
-    transition: all 0.3s ease; /* Transición suave */
-}
-
-.btn-outline-azul:hover {
-    background-color: var(--azul); /* Fondo azul al hacer hover */
-    color: white; /* Texto en blanco */
-    transform: translateY(-2px); /* Efecto de elevación */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-
-.btn-outline-azul.active {
-    background-color: var(--rojo); /* Fondo rojo para el botón activo */
-    color: white; /* Texto en blanco */
-    border-color: var(--rojo); /* Borde rojo */
-}
-
-.btn-outline-azul.active:hover {
-    background-color: var(--rojo-hover); /* Fondo rojo más oscuro al hacer hover */
-    border-color: var(--rojo-hover);
-}
-
-/* Estilos para el botón de WhatsApp */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25d366; /* Color de WhatsApp */
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000; /* Asegura que esté por encima de otros elementos */
-        }
-
-        .whatsapp-button:hover {
-            background-color: #128c7e; /* Color de WhatsApp más oscuro */
-            transform: scale(1.1); /* Efecto de escala al hacer hover */
-        }
-
-        /* Animación de latido (opcional) */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .whatsapp-button.pulse {
-            animation: pulse 2s infinite;
-        }
-
-        body {
-        padding-top: 56px;
     }
     
-    /* Logo responsive */
-    .navbar-logo {
-        max-height: 40px;
-        width: auto;
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
     }
-    
-    /* Menú móvil estilo completo */
+
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 991.98px) {
         .navbar-collapse {
             background-color: #343a40;
@@ -348,19 +327,149 @@
         .nav-item {
             margin: 5px 0;
         }
+        
+        .navbar-logo {
+            max-height: 40px;
+        }
+    }
+    .card-actions-custom {
+        z-index: 2;
+    }
+
+    .custom-line {
+    width: 120px;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.bg-dark-gradient {
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, transparent 100%);
+}
+
+.icon-xl {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.certification-img {
+    max-width: 80px;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .section-title .display-4 {
+        font-size: 2.5rem;
     }
     
-    /* Mejorar visibilidad del texto */
-    .text-primary {
-        color: #4d90fe !important;
+    .custom-line {
+        width: 80px;
+        height: 3px;
     }
-        .logo-img {
-            max-height: 50px;
-        }
-        .certification-img {
-            width: 60px;
-        }
-    </style>
+}
+
+/* Especialidades */
+
+.bg-dark-light {
+    background-color: rgba(255,255,255,0.05);
+}
+
+.hover-lift {
+    transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-3px);
+    background-color: rgba(255,255,255,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.shadow-hover-lg {
+    transition: box-shadow 0.3s ease;
+}
+
+.shadow-hover-lg:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.icon-wrapper {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.transition-all {
+    transition: all 0.3s ease;
+}
+
+/* Nuestra Filosofia  */
+
+.btn-rojo {
+    background-color: var(--rojo);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-rojo:hover {
+    background-color: #b30000; /* 10% más oscuro */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(204, 0, 0, 0.3);
+}
+
+.btn-rojo:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(204, 0, 0, 0.3);
+}
+
+.fa-shake-hover {
+    transition: transform 0.3s ease;
+}
+
+.btn-rojo:hover .fa-shake-hover {
+    transform: translateY(-2px) scale(1.1);
+}
+
+/* Efecto opcional de onda al hacer hover */
+.btn-rojo::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+}
+
+.btn-rojo:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .btn-rojo span {
+        font-size: 0.9rem;
+    }
+    .btn-rojo i {
+        font-size: 0.9rem;
+    }
+}
+
+
+</style>
 </head>
 
 
@@ -390,6 +499,7 @@
                 <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
             </ul>
+            
         </div>
     </div>
 </nav>
@@ -402,405 +512,452 @@
         <a href="https://wa.me/50555037724?text=Hola,%20estoy%20interesado%20en%20sus%20productos." class="social-icon whatsapp" title="WhatsApp Bello Horizonte" aria-label="WhatsApp Bello Horizonte"><i class="fab fa-whatsapp"></i></a>
     </div>
 
-    <section class="hero-section" id="inicio">
-        <div class="hero-carousel-container">
-            <div class="hero-overlay">
-                <div class="container text-center">
-                    <h2 class="animate__animated animate__fadeInDown">¡Encuentra el Repuesto Ideal para tu Vehículo!</h2>
-                    <p class="lead animate__animated animate__fadeIn">Calidad, Variedad y los Mejores Precios en Nicaragua.</p>
-                    <p class="lead animate__animated animate__fadeIn"><strong>¡Consulta nuestro catálogo y cotiza ahora!</strong></p>
-                    <a href="#productos" class="cta-button btn animate__animated animate__fadeInUp">Ver Productos</a>
-                </div>
-            </div>
-
-            <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="Imagen de Repuestos">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1605515298946-d062f2e9da53?q=80&w=2004&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="Imagen de Accesorios">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1605515103460-70fa2080bd9a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="Imagen de Taller">
-                    </div>
-                    </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Anterior</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Siguiente</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-
-
-<section class="hero-section py-5 bg-light " id="productos">
-    <div class="container">
-        <h2 class="section-title text-center mb-5">Nuestros Productos</h2>
-
-        <!-- Botones de selección de categorías -->
-        <div class="row mb-4">
-            <div class="col-12 ">
-                <div class="d-flex flex-wrap justify-content-center gap-2">
-                    <button class="btn btn-outline-primary filter-btn active" data-filter="all">
-                        <i class="fas fa-th-large me-2"></i> Todos
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="repuestos">
-                        <i class="fas fa-cogs me-2"></i> Repuestos
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="lubricantes">
-                        <i class="fas fa-oil-can me-2"></i> Lubricantes
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="baterias">
-                        <i class="mdi mdi-car-battery me-2"></i> Baterías
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="llantas">
-                        <i class="mdi mdi-tire me-2"></i> Llantas
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="filtros">
-                        <i class="mdi mdi-led-off me-2"></i> Filtros
-                    </button>
-                    <button class="btn btn-outline-primary filter-btn" data-filter="accesorios">
-                        <i class="fas fa-tools me-2"></i> Accesorios
-                    </button>
-                </div>
+    <section class="hero-section py-5" id="inicio">
+    <div class="hero-carousel-container position-relative">
+        <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center">
+            <div class="container text-center position-relative z-index-2">
+                <h2 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown">¡Encuentra el Repuesto Ideal para tu Vehículo!</h2>
+                <p class="lead mb-4 animate__animated animate__fadeIn">Calidad, Variedad y los Mejores Precios en Nicaragua</p>
+                <a href="#productos" class="btn btn-rojo btn-lg animate__animated animate__fadeInUp">
+                    Ver Productos <i class="fas fa-arrow-right ms-2"></i>
+                </a>
             </div>
         </div>
 
-        <!-- Productos -->
-        <div class="row g-4 product-grid">
-            <!-- Producto 1 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="repuestos">
-                <div class="card h-100 product-card d-flex flex-column">
-                    <div class="card-img-wrapper">
-                        <img src="https://assets-valeo.keepeek.com/medias/domain8143/media928/139345-hosr50hm7f-preview1.png" 
-                             class="card-img-top" alt="Kit de Embrague">
-                        <div class="card-overlay">
-                            <p class="overlay-text">Este kit de embrague es compatible con varias marcas y modelos, asegurando un rendimiento óptimo.</p>
-                        </div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Kit de Embrague</h5>
-                        <p class="card-text text-muted">Compatibilidad con múltiples marcas.</p>
-                        <div class="mt-auto">
-                            <button class="btn btn-outline-danger w-100" data-product="Kit de Embrague">
-                                <span class="cotizar-text">Cotizar</span>
-                                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner ratio ratio-21x9"> <!-- Relación de aspecto 21:9 -->
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9" 
+                         class="d-block w-100 img-cover"
+                         alt="Repuestos automotrices"
+                         loading="eager">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1605515298946-d062f2e9da53" 
+                         class="d-block w-100 img-cover"
+                         alt="Accesorios para vehículos"
+                         loading="lazy">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1605515103460-70fa2080bd9a" 
+                         class="d-block w-100 img-cover"
+                         alt="Taller especializado"
+                         loading="lazy">
                 </div>
             </div>
-
-            <!-- Producto 2 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="lubricantes">
-                <div class="card h-100 product-card d-flex flex-column">
-                    <div class="card-img-wrapper">
-                        <img src="https://wolf-prd-pltn-ods-web.azurewebsites.net/api/assets/wolf/asset/d6e9c812-d955-4d8c-8d66460fb627fef3?v=7c33147df5e1ab87-638195007000000000&profile=product_detail" 
-                             class="card-img-top" alt="Aceite Sintético 5W30">
-                        <div class="card-overlay">
-                            <p class="overlay-text">Este aceite sintético proporciona una excelente protección y rendimiento para motores modernos.</p>
-                        </div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Aceite Sintético 5W30</h5>
-                        <p class="card-text text-muted">Protección máxima para motores modernos.</p>
-                        <div class="mt-auto">
-                            <button class="btn btn-outline-danger w-100" data-product="Aceite Sintético 5W30">
-                                <span class="cotizar-text">Cotizar</span>
-                                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 3 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="baterias">
-                <div class="card h-100 product-card d-flex flex-column">
-                    <div class="card-img-wrapper">
-                        <img src="https://www.napaautoparts.es/_next/image?url=https%3A%2F%2Fcms.napaspain.wolf.ef2.builders%2Fuploads%2FNapa_Batt_High_Power_6c07ffbcb6.png&w=1536&q=75" 
-                             class="card-img-top" alt="Batería de Auto 12V">
-                        <div class="card-overlay">
-                            <p class="overlay-text">Esta batería de 12V ofrece una duración garantizada de 2 años, ideal para tu vehículo.</p>
-                        </div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Batería de Auto 12V</h5>
-                        <p class="card-text text-muted">Duración garantizada de 2 años.</p>
-                        <div class="mt-auto">
-                            <button class="btn btn-outline-danger w-100" data-product="Batería de Auto 12V">
-                                <span class="cotizar-text">Cotizar</span>
-                                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 4 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="llantas">
-                <div class="card h-100 product-card d-flex flex-column">
-                    <div class="card-img-wrapper">
-                        <img src="https://www.goodyear.com/dw/image/v2/BJQJ_PRD/on/demandware.static/-/Sites-goodyear-master-catalog/default/dw6d471938/images/large/Assurance_WeatherReady_2_24987.png?sw=400&sh=400&sm=fit&sfrm=png" 
-                             class="card-img-top" alt="Llantas All Season">
-                        <div class="card-overlay">
-                            <p class="overlay-text">Estas llantas all season ofrecen excelente tracción y durabilidad para cualquier clima.</p>
-                        </div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Llantas All Season</h5>
-                        <p class="card-text text-muted">Tamaño 205/55R16 - Excelente tracción.</p>
-                        <div class="mt-auto">
-                            <button class="btn btn-outline-danger w-100" data-product="Llantas All Season">
-                                <span class="cotizar-text">Cotizar</span>
-                                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 5 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="llantas">
-                <div class="card h-100 product-card d-flex flex-column">
-                    <div class="card-img-wrapper">
-                        <img src="https://www.bridgestonecomercial.com.mx/content/dam/bcs-latam-sites/productos/firestone/tbr/fd694/fd694-2.png" 
-                             class="card-img-top" alt="Llantas Firestone">
-                        <div class="card-overlay">
-                            <p class="overlay-text">Llantas Firestone con excelente durabilidad y rendimiento en carretera.</p>
-                        </div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Llantas Firestone</h5>
-                        <p class="card-text text-muted">Tamaño 205/55R16 - Excelente tracción.</p>
-                        <div class="mt-auto">
-                            <button class="btn btn-outline-danger w-100" data-product="Llantas Firestone">
-                                <span class="cotizar-text">Cotizar</span>
-                                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 6 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
-                <div class="card h-100 product-card d-flex flex-column">
-                    <div class="card-img-wrapper">
-                        <img src="https://innovacentro.com.do/product/image/medium/039283_0.png" 
-                             class="card-img-top" alt="Accesorios de Interior">
-                        <div class="card-overlay">
-                            <p class="overlay-text">Este juego de accesorios incluye tapetes y fundas de asiento para proteger el interior de tu vehículo.</p>
-                        </div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Juego de Accesorios de Interior</h5>
-                        <p class="card-text text-muted">Incluye tapetes y fundas de asiento.</p>
-                        <div class="mt-auto">
-                            <button class="btn btn-outline-danger w-100" data-product="Juego de Accesorios de Interior">
-                                <span class="cotizar-text">Cotizar</span>
-                                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 7 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
-                <div class="card h-100 product-card d-flex flex-column">
-                    <div class="card-img-wrapper">
-                        <img src="https://simufy.com/cdn/shop/files/Volante-TRUCK-camion-MOZA-simufy_5_400x.png?v=1708098270" 
-                             class="card-img-top" alt="Volante Modelo1">
-                        <div class="card-overlay">
-                            <p class="overlay-text">Volante de alta calidad con diseño ergonómico para mayor comodidad.</p>
-                        </div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Volante Modelo1</h5>
-                        <p class="card-text text-muted">Diseño ergonómico y duradero.</p>
-                        <div class="mt-auto">
-                            <button class="btn btn-outline-danger w-100" data-product="Volante Modelo1">
-                                <span class="cotizar-text">Cotizar</span>
-                                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 8 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
-                <div class="card h-100 product-card d-flex flex-column">
-                    <div class="card-img-wrapper">
-                        <img src="https://www.hondanicaragua.com/images/turn.webp" 
-                             class="card-img-top" alt="Volante Modelo2">
-                        <div class="card-overlay">
-                            <p class="overlay-text">Volante deportivo con agarre antideslizante para mayor seguridad.</p>
-                        </div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Volante Modelo2</h5>
-                        <p class="card-text text-muted">Agarre antideslizante y diseño deportivo.</p>
-                        <div class="mt-auto">
-                            <button class="btn btn-outline-danger w-100" data-product="Volante Modelo2">
-                                <span class="cotizar-text">Cotizar</span>
-                                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 9 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="repuestos">
-                <div class="card h-100 product-card d-flex flex-column">
-                    <div class="card-img-wrapper">
-                        <img src="https://www.densoautoparts.com/wp-content/uploads/2022/10/Oil-Filter-web2-400x250.png" 
-                             class="card-img-top" alt="Filtro de Aire">
-                        <div class="card-overlay">
-                            <p class="overlay-text">Filtro de aire de alta calidad para mejorar el rendimiento del motor.</p>
-                        </div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Filtro de Aire</h5>
-                        <p class="card-text text-muted">Compatibilidad con múltiples marcas.</p>
-                        <div class="mt-auto">
-                            <button class="btn btn-outline-danger w-100" data-product="Filtro de Aire">
-                                <span class="cotizar-text">Cotizar</span>
-                                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 10 -->
-            <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="lubricantes">
-                <div class="card h-100 product-card d-flex flex-column">
-                    <div class="card-img-wrapper">
-                        <img src="https://mekinaparts.es/wp-content/uploads/2023/03/magnatec-castrol-5w30-a5b5.png" 
-                             class="card-img-top" alt="Aceite Magnatec 5W30">
-                        <div class="card-overlay">
-                            <p class="overlay-text">Aceite Magnatec 5W30 para motores modernos con tecnología de protección inteligente.</p>
-                        </div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Aceite Magnatec 5W30</h5>
-                        <p class="card-text text-muted">Protección superior para motores.</p>
-                        <div class="mt-auto">
-                            <button class="btn btn-outline-danger w-100" data-product="Aceite Magnatec 5W30">
-                                <span class="cotizar-text">Cotizar</span>
-                                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- Fin del grid de productos -->
-    </div> <!-- Fin del contenedor -->
+            
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </div>
 </section>
 
-<!-- Estilos CSS -->
 <style>
-    /* Colores personalizados */
+    .hero-section {
+        position: relative;
+        overflow: hidden;
+    }
     
-    /* Botón rojo */
-    .btn-rojo {
-        background-color: var(--rojo);
-        color: white;
-        border: none;
-        transition: background-color 0.3s ease;
-    }
-
-    .btn-rojo:hover {
-        background-color: #c82333;
-    }
-
-    /* Efectos de hover y diseño */
-    .product-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .carousel-inner {
+        border-radius: 0.5rem;
         overflow: hidden;
-        border: none;
-        border-radius: 10px;
     }
-
-    .product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .card-img-wrapper {
-        position: relative;
-        overflow: hidden;
-        height: 200px; /* Altura fija para las imágenes */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .card-img-wrapper img {
-        width: auto;
+    
+    .img-cover {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
         height: 100%;
-        object-fit: contain; /* Ajusta la imagen sin recortar */
     }
-
-    .card-overlay {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 15px;
-        transition: top 0.3s ease;
+    
+    .hero-overlay {
+        background: rgba(0, 0, 0, 0.4);
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
     }
-
-    .product-card:hover .card-overlay {
-        top: 0;
+    
+    .carousel-fade .carousel-item {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
     }
-
-    .overlay-text {
-        font-size: 14px;
-        text-align: center;
-        margin: 0;
+    
+    .carousel-fade .carousel-item.active {
+        opacity: 1;
     }
-
-    .cotizar-btn {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .cotizar-btn .spinner-border {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .cotizar-btn.loading .cotizar-text {
-        visibility: hidden;
-    }
-
-    .cotizar-btn.loading .spinner-border {
-        display: inline-block !important;
-    }
-
-    .filter-btn.active {
-        background-color: var(--rojo);
-        color: rgb(230, 20, 20);
+    
+    @media (min-width: 992px) {
+        .carousel-inner {
+            border-radius: 1rem;
+        }
+        
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.3);
+        }
     }
 </style>
+
+   
+
+
+<section class="py-5 bg-light" id="productos">
+    <div class="container">
+        <h2 class="section-title text-center mb-5 fw-bold text-azul">Nuestros Productos</h2>
+
+        <!-- Filtros mejorados -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <button class="btn btn-filter rounded-pill px-4 py-2 active" data-filter="all">
+                        <i class="fas fa-th-large me-2"></i>Todos
+                    </button>
+                    <button class="btn btn-filter rounded-pill px-4 py-2" data-filter="repuestos">
+                        <i class="fas fa-cogs me-2"></i>Repuestos
+                    </button>
+                    <button class="btn btn-filter rounded-pill px-4 py-2" data-filter="lubricantes">
+                        <i class="fas fa-oil-can me-2"></i>Lubricantes
+                    </button>
+                    <button class="btn btn-filter rounded-pill px-4 py-2" data-filter="baterias">
+                        <i class="mdi mdi-car-battery me-2"></i>Baterías
+                    </button>
+                    <button class="btn btn-filter rounded-pill px-4 py-2" data-filter="llantas">
+                        <i class="mdi mdi-tire me-2"></i>Llantas
+                    </button>
+                    <button class="btn btn-filter rounded-pill px-4 py-2" data-filter="accesorios">
+                        <i class="fas fa-tools me-2"></i>Accesorios
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid de Productos -->
+        <div class="row g-4 product-grid">
+            <!-- Producto 1 -->
+            <div class="row g-4 product-grid">
+    <!-- Producto 1 - Kit de Embrague -->
+    <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="repuestos">
+        <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="card-img-wrapper position-relative">
+                <img src="https://assets-valeo.keepeek.com/medias/domain8143/media928/139345-hosr50hm7f-preview1.png" 
+                     class="card-img-top" 
+                     alt="Kit de Embrague"
+                     data-zoom-src="https://assets-valeo.keepeek.com/medias/domain8143/media928/139345-hosr50hm7f-preview1.png">
+                <div class="card-actions position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-zoom btn-sm bg-rojo text-white rounded-circle" title="Ampliar imagen">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+                <div class="card-overlay bg-dark-gradient">
+                    <div class="overlay-content">
+                        <p class="text-white mb-0 small">Este kit de embrague es compatible con varias marcas y modelos, asegurando un rendimiento óptimo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-azul mb-2">Kit de Embrague</h5>
+                <p class="card-text text-gris small mb-3">Compatibilidad con múltiples marcas</p>
+                <button class="btn btn-cotizar mt-auto w-100">
+                    <i class="fas fa-comment-dots me-2"></i>Cotizar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Producto 2 - Aceite Sintético 5W30 -->
+    <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="lubricantes">
+        <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="card-img-wrapper position-relative">
+                <img src="https://wolf-prd-pltn-ods-web.azurewebsites.net/api/assets/wolf/asset/d6e9c812-d955-4d8c-8d66460fb627fef3?v=7c33147df5e1ab87-638195007000000000&profile=product_detail" 
+                     class="card-img-top" 
+                     alt="Aceite Sintético 5W30"
+                     data-zoom-src="https://wolf-prd-pltn-ods-web.azurewebsites.net/api/assets/wolf/asset/d6e9c812-d955-4d8c-8d66460fb627fef3?v=7c33147df5e1ab87-638195007000000000&profile=product_detail">
+                <div class="card-actions position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-zoom btn-sm bg-rojo text-white rounded-circle" title="Ampliar imagen">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+                <div class="card-overlay bg-dark-gradient">
+                    <div class="overlay-content">
+                        <p class="text-white mb-0 small">Aceite de alto rendimiento para motores modernos con protección térmica avanzada.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-azul mb-2">Aceite Sintético 5W30</h5>
+                <p class="card-text text-gris small mb-3">Protección máxima para motores</p>
+                <button class="btn btn-cotizar mt-auto w-100">
+                    <i class="fas fa-comment-dots me-2"></i>Cotizar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Producto 3 - Batería 12V 60Ah -->
+    <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="baterias">
+        <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="card-img-wrapper position-relative">
+                <img src="https://www.napaautoparts.es/_next/image?url=https%3A%2F%2Fcms.napaspain.wolf.ef2.builders%2Fuploads%2FNapa_Batt_High_Power_6c07ffbcb6.png&w=1536&q=75" 
+                     class="card-img-top" 
+                     alt="Batería 12V 60Ah"
+                     data-zoom-src="URL_IMAGEN_HD_AQUI">
+                <div class="card-actions position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-zoom btn-sm bg-rojo text-white rounded-circle" title="Ampliar imagen">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+                <div class="card-overlay bg-dark-gradient">
+                    <div class="overlay-content">
+                        <p class="text-white mb-0 small">Batería de alto rendimiento con garantía de 2 años y 600 CCA.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-azul mb-2">Batería 12V 60Ah</h5>
+                <p class="card-text text-gris small mb-3">Duración garantizada</p>
+                <button class="btn btn-cotizar mt-auto w-100">
+                    <i class="fas fa-comment-dots me-2"></i>Cotizar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Producto 4 - Llantas All Season -->
+    <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="llantas">
+        <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="card-img-wrapper position-relative">
+                <img src="https://www.goodyear.com/dw/image/v2/BJQJ_PRD/on/demandware.static/-/Sites-goodyear-master-catalog/default/dw6d471938/images/large/Assurance_WeatherReady_2_24987.png?sw=400&sh=400&sm=fit&sfrm=png" 
+                     class="card-img-top" 
+                     alt="Llantas All Season"
+                     data-zoom-src="URL_IMAGEN_HD_AQUI">
+                <div class="card-actions position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-zoom btn-sm bg-rojo text-white rounded-circle" title="Ampliar imagen">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+                <div class="card-overlay bg-dark-gradient">
+                    <div class="overlay-content">
+                        <p class="text-white mb-0 small">Llantas para todo tipo de clima con diseño de tracción mejorada.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-azul mb-2">Llantas All Season</h5>
+                <p class="card-text text-gris small mb-3">205/55R16 - Tracción superior</p>
+                <button class="btn btn-cotizar mt-auto w-100">
+                    <i class="fas fa-comment-dots me-2"></i>Cotizar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Producto 5 - Llantas Firestone -->
+    <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="llantas">
+        <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="card-img-wrapper position-relative">
+                <img src="https://www.bridgestonecomercial.com.mx/content/dam/bcs-latam-sites/productos/firestone/tbr/fd694/fd694-2.png" 
+                     class="card-img-top" 
+                     alt="Llantas Firestone"
+                     data-zoom-src="URL_IMAGEN_HD_AQUI">
+                <div class="card-actions position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-zoom btn-sm bg-rojo text-white rounded-circle" title="Ampliar imagen">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+                <div class="card-overlay bg-dark-gradient">
+                    <div class="overlay-content">
+                        <p class="text-white mb-0 small">Diseño duradero para alto kilometraje y rendimiento en carretera.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-azul mb-2">Llantas Firestone</h5>
+                <p class="card-text text-gris small mb-3">205/55R16 - Durabilidad comprobada</p>
+                <button class="btn btn-cotizar mt-auto w-100">
+                    <i class="fas fa-comment-dots me-2"></i>Cotizar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Producto 6 - Accesorios de Interior -->
+    <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
+        <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="card-img-wrapper position-relative">
+                <img src="https://innovacentro.com.do/product/image/medium/039283_0.png" 
+                     class="card-img-top" 
+                     alt="Accesorios de Interior"
+                     data-zoom-src="URL_IMAGEN_HD_AQUI">
+                <div class="card-actions position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-zoom btn-sm bg-rojo text-white rounded-circle" title="Ampliar imagen">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+                <div class="card-overlay bg-dark-gradient">
+                    <div class="overlay-content">
+                        <p class="text-white mb-0 small">Kit completo de protección interior en materiales premium.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-azul mb-2">Accesorios de Interior</h5>
+                <p class="card-text text-gris small mb-3">Tapetes y fundas premium</p>
+                <button class="btn btn-cotizar mt-auto w-100">
+                    <i class="fas fa-comment-dots me-2"></i>Cotizar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Producto 7 - Volante Modelo1 -->
+    <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
+        <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="card-img-wrapper position-relative">
+                <img src="https://simufy.com/cdn/shop/files/Volante-TRUCK-camion-MOZA-simufy_5_400x.png?v=1708098270" 
+                     class="card-img-top" 
+                     alt="Volante Deportivo"
+                     data-zoom-src="URL_IMAGEN_HD_AQUI">
+                <div class="card-actions position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-zoom btn-sm bg-rojo text-white rounded-circle" title="Ampliar imagen">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+                <div class="card-overlay bg-dark-gradient">
+                    <div class="overlay-content">
+                        <p class="text-white mb-0 small">Diseño ergonómico con agarre antideslizante para máximo control.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-azul mb-2">Volante Deportivo</h5>
+                <p class="card-text text-gris small mb-3">Diseño ergonómico premium</p>
+                <button class="btn btn-cotizar mt-auto w-100">
+                    <i class="fas fa-comment-dots me-2"></i>Cotizar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Producto 8 - Volante Modelo2 -->
+    <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="accesorios">
+        <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="card-img-wrapper position-relative">
+                <img src="https://www.hondanicaragua.com/images/turn.webp" 
+                     class="card-img-top" 
+                     alt="Volante Deportivo Pro"
+                     data-zoom-src="URL_IMAGEN_HD_AQUI">
+                <div class="card-actions position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-zoom btn-sm bg-rojo text-white rounded-circle" title="Ampliar imagen">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+                <div class="card-overlay bg-dark-gradient">
+                    <div class="overlay-content">
+                        <p class="text-white mb-0 small">Versión profesional con materiales de competición.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-azul mb-2">Volante Deportivo Pro</h5>
+                <p class="card-text text-gris small mb-3">Agarre antideslizante</p>
+                <button class="btn btn-cotizar mt-auto w-100">
+                    <i class="fas fa-comment-dots me-2"></i>Cotizar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Producto 9 - Filtro de Aire -->
+    <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="repuestos">
+        <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="card-img-wrapper position-relative">
+                <img src="https://www.densoautoparts.com/wp-content/uploads/2022/10/Oil-Filter-web2-400x250.png" 
+                     class="card-img-top" 
+                     alt="Filtro de Aire"
+                     data-zoom-src="URL_IMAGEN_HD_AQUI">
+                <div class="card-actions position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-zoom btn-sm bg-rojo text-white rounded-circle" title="Ampliar imagen">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+                <div class="card-overlay bg-dark-gradient">
+                    <div class="overlay-content">
+                        <p class="text-white mb-0 small">Filtración de alta eficiencia para protección del motor.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-azul mb-2">Filtro de Aire</h5>
+                <p class="card-text text-gris small mb-3">Alta capacidad de filtrado</p>
+                <button class="btn btn-cotizar mt-auto w-100">
+                    <i class="fas fa-comment-dots me-2"></i>Cotizar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Producto 10 - Aceite Magnatec 5W30 -->
+    <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category="lubricantes">
+        <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="card-img-wrapper position-relative">
+                <img src="https://mekinaparts.es/wp-content/uploads/2023/03/magnatec-castrol-5w30-a5b5.png" 
+                     class="card-img-top" 
+                     alt="Aceite Magnatec 5W30"
+                     data-zoom-src="URL_IMAGEN_HD_AQUI">
+                <div class="card-actions position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-zoom btn-sm bg-rojo text-white rounded-circle" title="Ampliar imagen">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+                <div class="card-overlay bg-dark-gradient">
+                    <div class="overlay-content">
+                        <p class="text-white mb-0 small">Protección inteligente con tecnología de adherencia molecular.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-azul mb-2">Aceite Magnatec 5W30</h5>
+                <p class="card-text text-gris small mb-3">Tecnología de protección inteligente</p>
+                <button class="btn btn-cotizar mt-auto w-100">
+                    <i class="fas fa-comment-dots me-2"></i>Cotizar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- Resto de productos con misma estructura -->
+            <!-- ... (Insertar productos 2 al 10 aquí) ... -->
+            
+        </div>
+    </div>
+</section>
+
+<!-- Modal Zoom Único -->
+<div class="modal fade" id="zoomModal" tabindex="-1" aria-labelledby="zoomModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" 
+                        class="btn-close btn-close-white" 
+                        data-bs-dismiss="modal" 
+                        aria-label="Cerrar"
+                        title="Cerrar"></button>
+            </div>
+            <div class="modal-body text-center p-4">
+                <img src="" 
+                     class="img-fluid zoom-image" 
+                     alt="Vista ampliada del producto"
+                     style="max-height: 80vh; width: auto; object-fit: contain;">
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Script JavaScript -->
 <script>
@@ -835,6 +992,31 @@
             const productName = button.getAttribute('data-product'); // Obtener el nombre del producto
             const url = `#contacto?product=${encodeURIComponent(productName)}`; // Redirigir con parámetro
             window.location.href = url;
+        });
+    });
+
+     // Zoom de imágenes
+document.querySelectorAll('.btn-zoom').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const imgSrc = e.target.closest('.card-img-wrapper').querySelector('img').dataset.zoomSrc;
+        const zoomModal = new bootstrap.Modal(document.getElementById('zoomModal'));
+        document.querySelector('.zoom-image').src = imgSrc;
+        zoomModal.show();
+    });
+});
+
+    // Filtrado de productos
+    document.querySelectorAll('.btn-filter').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.dataset.filter;
+            document.querySelectorAll('.product-item').forEach(item => {
+                item.style.display = (filter === 'all' || item.dataset.category === filter) 
+                    ? 'block' 
+                    : 'none';
+            });
         });
     });
 </script>
@@ -1391,51 +1573,56 @@
 
 
 
-<section class="py-6 bg-light" id="nosotros">
-    <div class="container">
-        <h2 class="section-title text-center mb-5 animate__animated animate__fadeIn">
-            <span class="display-4 fw-bold text-primary position-relative">
-                <span class="text-dark">Sobre</span> AutoRepuestos
-                <div class="position-absolute bottom-0 start-50 translate-middle-x bg-accent" style="height: 3px; width: 80px;"></div>
+<section class="py-5 bg-light" id="nosotros">
+    <div class="container position-relative">
+        <h2 class="section-title text-center mb-5">
+            <span class="display-4 fw-bold text-azul position-relative d-inline-block">
+                <span class="text-dark">Sobre</span> AutoRepuestos Dios se Proveera
+                
+                <div class="position-absolute bottom-0 start-50 translate-middle-x bg-rojo custom-line"></div>
             </span>
         </h2>
 
         <div class="row align-items-center mb-5 g-4">
             <!-- Misión y Visión -->
-            <div class="col-lg-6 order-lg-1 order-2" data-aos="fade-right">
-                <div class="bg-white p-4 rounded-3 shadow-sm border-start border-4 border-primary">
-                    <h3 class="text-primary mb-3 fw-bold">
-                        <i class="fas fa-bullseye me-2"></i>Nuestra Misión
-                    </h3>
-                    <p class="lead text-dark mb-4">Ser el proveedor líder de repuestos automotrices en Nicaragua, ofreciendo productos de máxima calidad con servicio experto y entrega ágil.</p>
-
-                    <h3 class="text-primary mt-4 mb-3 fw-bold">
-                        <i class="fas fa-binoculars me-2"></i>Nuestra Visión
-                    </h3>
-                    <p class="text-dark mb-0">Convertirnos en el partner estratégico de talleres mecánicos y conductores exigentes, innovando constantemente en nuestro catálogo y servicios.</p>
+            <div class="col-lg-6 order-lg-1 order-2">
+                <div class="bg-white p-4 rounded-3 shadow-sm border-start border-4 border-azul">
+                    <div class="mb-4">
+                        <h3 class="text-azul mb-3 fw-bold">
+                            <i class="fas fa-bullseye me-2 text-rojo"></i>Nuestra Misión
+                        </h3>
+                        <p class="lead text-dark mb-0">Ser el proveedor líder de repuestos automotrices en Nicaragua, ofreciendo productos de máxima calidad con servicio experto y entrega ágil.</p>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h3 class="text-azul mb-3 fw-bold">
+                            <i class="fas fa-binoculars me-2 text-rojo"></i>Nuestra Visión
+                        </h3>
+                        <p class="text-dark mb-0">Convertirnos en el partner estratégico de talleres mecánicos y conductores exigentes, innovando constantemente en nuestro catálogo y servicios.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Imagen con overlay informativo -->
-            <div class="col-lg-6 order-lg-2 order-1" data-aos="fade-left">
-                <div class="position-relative overflow-hidden rounded-3">
+            <!-- Imagen con estadísticas -->
+            <div class="col-lg-6 order-lg-2 order-1">
+                <div class="position-relative overflow-hidden rounded-4 shadow-lg">
                     <img src="./Imagenes de referencia/sucursal-ivan-monteniegro.webp" 
-                         alt="Sucursal de AutoRepuestos - Venta de autopartes y repuestos automotrices en Nicaragua" 
+                         alt="Sucursal de AutoRepuestos - Especialistas en autopartes" 
                          class="img-fluid" 
                          loading="lazy">
                     <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-dark-gradient">
-                        <div class="row text-white small">
-                            <div class="col-4 text-center border-end">
-                                <div class="fs-4 fw-bold">15+</div>
-                                <div>Años de experiencia</div>
+                        <div class="row text-white text-center g-0">
+                            <div class="col-4 border-end border-light border-opacity-25 py-2">
+                                <div class="fs-3 fw-bold mb-1">15+</div>
+                                <div class="small">Años de experiencia</div>
                             </div>
-                            <div class="col-4 text-center border-end">
-                                <div class="fs-4 fw-bold">2</div>
-                                <div>Partes disponibles</div>
+                            <div class="col-4 border-end border-light border-opacity-25 py-2">
+                                <div class="fs-3 fw-bold mb-1">2+</div>
+                                <div class="small">Partes disponibles</div>
                             </div>
-                            <div class="col-4 text-center">
-                                <div class="fs-4 fw-bold">100%</div>
-                                <div>Satisfacción clientes</div>
+                            <div class="col-4 py-2">
+                                <div class="fs-3 fw-bold mb-1">100%</div>
+                                <div class="small">Satisfacción clientes</div>
                             </div>
                         </div>
                     </div>
@@ -1443,93 +1630,140 @@
             </div>
         </div>
 
-        <!-- Valores y CTA -->
-        <div class="row g-4 mt-2">
-            <div class="col-lg-4" data-aos="fade-up">
-                <div class="card h-100 border-0 bg-primary text-white shadow-lg">
-                    <div class="card-body p-4">
-                        <h3 class="mb-4">
-                            <i class="fas fa-tools me-2"></i>Nuestros Valores
-                        </h3>
-                        <div class="d-flex mb-3">
-                            <i class="fas fa-check-circle fa-2x text-accent me-3"></i>
-                            <div>
-                                <h5 class="mb-1">Expertos en Autopartes</h5>
-                                <p class="small mb-0 opacity-75">Asesoramiento técnico especializado</p>
-                            </div>
+        <!-- Tarjetas Informativas -->
+        <div class="row g-4">
+            <!-- Valores -->
+            <div class="col-lg-4 mb-4">
+    <div class="card h-100 border-0 overflow-hidden bg-azul text-white shadow-hover-lg transition-all">
+        <div class="card-body p-4 d-flex flex-column">
+            <div class="d-flex align-items-center mb-4">
+                <div class="icon-wrapper bg-rojo text-white rounded-circle p-3 me-3">
+                    <i class="fas fa-tools fa-lg"></i>
+                </div>
+                <h3 class="mb-0 fw-bold fs-2">Nuestra Filosofía</h3>
+            </div>
+            
+            <div class="flex-grow-1">
+                <div class="mb-4 p-3 rounded-3 bg-azul-light hover-lift">
+                    <div class="d-flex align-items-start">
+                        <i class="fas fa-check-circle fa-lg text-rojo mt-1 me-3"></i>
+                        <div>
+                            <h5 class="mb-2 fw-semibold">Expertos en Autopartes</h5>
+                            <p class="small opacity-75 mb-0">Asesoramiento técnico especializado por mecánicos certificados</p>
                         </div>
-                        <div class="d-flex mb-3">
-                            <i class="fas fa-shield-alt fa-2x text-accent me-3"></i>
-                            <div>
-                                <h5 class="mb-1">Garantía Certificada</h5>
-                                <p class="small mb-0 opacity-75">Todos nuestros productos incluyen garantía</p>
-                            </div>
+                    </div>
+                </div>
+                
+                <div class="mb-4 p-3 rounded-3 bg-azul-light hover-lift">
+                    <div class="d-flex align-items-start">
+                        <i class="fas fa-shield-alt fa-lg text-rojo mt-1 me-3"></i>
+                        <div>
+                            <h5 class="mb-2 fw-semibold">Garantía Certificada</h5>
+                            <p class="small opacity-75 mb-0">Todos los productos incluyen garantía extendida de 1 año</p>
                         </div>
-                        <div class="d-flex">
-                            <i class="fas fa-truck-moving fa-2x text-accent me-3"></i>
-                            <div>
-                                <h5 class="mb-1">Entrega Inmediata</h5>
-                                <p class="small mb-0 opacity-75">Disponibilidad en stock permanente</p>
-                            </div>
+                    </div>
+                </div>
+                
+                <div class="p-3 rounded-3 bg-azul-light hover-lift">
+                    <div class="d-flex align-items-start">
+                        <i class="fas fa-truck-moving fa-lg text-rojo mt-1 me-3"></i>
+                        <div>
+                            <h5 class="mb-2 fw-semibold">Entrega Inmediata</h5>
+                            <p class="small opacity-75 mb-0">Stock permanente con despacho en menos de 24 horas</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="card h-100 border-0 bg-dark text-white shadow-lg position-relative overflow-hidden">
-                    <div class="card-body p-4 d-flex flex-column">
-                        <h3 class="mb-4">
-                            <i class="fas fa-certificate me-2"></i>Especialistas En
-                        </h3>
-                        <ul class="list-unstyled mb-4 flex-grow-1">
-                            <li class="mb-3">
-                                <i class="fas fa-car-side text-accent me-2"></i>
-                                Sistema de Frenos
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-oil-can text-accent me-2"></i>
-                                Lubricantes Premium
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-cogs text-accent me-2"></i>
-                                Transmisiones
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-battery-full text-accent me-2"></i>
-                                Sistema Eléctrico
-                            </li>
-                        </ul>
-                        <div class="mt-auto">
-                            <a href="#catalogo" class="btn btn-accent w-100">
-                                <i class="fas fa-download me-2"></i>Descargar Catálogo
-                            </a>
+            
+        </div>
+    </div>
+</div>
+
+            <!-- Especialidades -->
+            <div class="col-lg-4 mb-4">
+    <div class="card h-100 border-0 overflow-hidden bg-dark text-white shadow-hover-lg transition-all">
+        <div class="card-body p-4 d-flex flex-column">
+            <div class="d-flex align-items-center mb-4">
+                <div class="icon-wrapper bg-rojo text-white rounded-circle p-3 me-3">
+                    <i class="fas fa-certificate fa-lg"></i>
+                </div>
+                <h3 class="mb-0 fw-bold fs-2">Especialidades Técnicas</h3>
+            </div>
+            
+            <ul class="list-unstyled mb-4 flex-grow-1">
+                <li class="mb-3 p-3 rounded-3 bg-dark-light hover-lift">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-car-side fa-lg text-rojo me-3"></i>
+                        <div>
+                            <h5 class="mb-1 fw-semibold">Sistema de Frenos</h5>
+                            <p class="small opacity-75 mb-0">Discos, tambores y componentes hidráulicos</p>
                         </div>
                     </div>
-                </div>
-            </div>
+                </li>
+                
+                <li class="mb-3 p-3 rounded-3 bg-dark-light hover-lift">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-oil-can fa-lg text-rojo me-3"></i>
+                        <div>
+                            <h5 class="mb-1 fw-semibold">Lubricantes</h5>
+                            <p class="small opacity-75 mb-0">Aceites sintéticos y grasas especializadas</p>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="mb-3 p-3 rounded-3 bg-dark-light hover-lift">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-cogs fa-lg text-rojo me-3"></i>
+                        <div>
+                            <h5 class="mb-1 fw-semibold">Transmisiones</h5>
+                            <p class="small opacity-75 mb-0">Manuales y automáticas</p>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="p-3 rounded-3 bg-dark-light hover-lift">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-battery-full fa-lg text-rojo me-3"></i>
+                        <div>
+                            <h5 class="mb-1 fw-semibold">Sistema Eléctrico</h5>
+                            <p class="small opacity-75 mb-0">Componentes y cableado especializado</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
 
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150">
-                <div class="card h-100 border-0 bg-white shadow-lg">
-                    <div class="card-body p-4 text-center">
-                        <div class="icon-xl bg-accent text-white rounded-circle mb-4 mx-auto">
+            <a href="#catalogo" class="btn w-100 mt-4 d-flex align-items-center justify-content-center">
+                <i class="fas fa-download me-2"></i>
+                <span>Descargar Catálogo Completo</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+            <!-- Certificaciones -->
+            <div class="col-lg-4">
+                <div class="card h-100 border-0 shadow-lg bg-white">
+                    <div class="card-body p-4 text-center d-flex flex-column">
+                        <div class="icon-xl bg-rojo text-white rounded-circle mb-4 mx-auto">
                             <i class="fas fa-quote-left"></i>
                         </div>
-                        <blockquote class="mb-4">
-                            <p class="lead fst-italic text-dark">
+                        <blockquote class="mb-4 flex-grow-1">
+                            <p class="lead fst-italic text-dark mb-4">
                                 "En cada auto hay una historia, nosotros proveemos los repuestos para que siga rodando"
                             </p>
-                            <img src="https://cdnmedia.mapei.com/images/librariesprovider22/app-icons/iso-9001.png?sfvrsn=2cd40088_1" 
-                                 alt="Certificación de calidad" 
-                                 class="me-3 certification-img">
-                                 alt="Certificación de calidad" 
-                                 class="me-3" 
-                                 style="width: 60px">
-                            <div class="text-start">
-                                <div class="fw-bold">Certificados por:</div>
-                                <div class="small">ANF • ISO 9001 • AAP</div>
+                           <div class="d-flex align-items-center justify-content-center">
+                                 <img 
+                                     src="https://cdnmedia.mapei.com/images/librariesprovider22/app-icons/iso-9001.png?sfvrsn=2cd40088_1" 
+                                     alt="Certificaciones de calidad" 
+                                     class="img-fluid certification-img me-3"
+                                     style="width: 80px; height: auto;">
+                                 <div class="text-start">
+                                     <div class="fw-bold text-azul">Certificados por:</div>
+                                     <div class="small text-gris">ANF • ISO 9001 • AAP</div>
+                                 </div>
                             </div>
-                        </div>
+                        </blockquote>
                     </div>
                 </div>
             </div>
@@ -1537,50 +1771,7 @@
     </div>
 </section>
 
-<style>
-    :root {
-        --primary: #1A3A5C;  /* Azul profesional */
-        --accent: #C2272D;   /* Rojo automotriz */
-        --dark: #2A2A2A;    /* Gris oscuro */
-    }
 
-    .bg-dark-gradient {
-        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
-    }
-
-    .icon-xl {
-        width: 80px;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-    }
-
-    .border-accent {
-        border-color: var(--accent) !important;
-    }
-
-    .btn-accent {
-        background: var(--accent);
-        color: white;
-        padding: 0.75rem 1.5rem;
-        transition: all 0.3s ease;
-    }
-
-    .btn-accent:hover {
-        background: #A71F24;
-        transform: translateY(-2px);
-    }
-</style>
 
 <footer class="hero-section bg-dark text-white py-3">
     <div class="container text-center">
