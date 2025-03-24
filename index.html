@@ -768,6 +768,97 @@
 a.text-dark:hover {
     color: var(--rojo) !important;
 }
+
+/* Animaciones mejoradas */
+.title-line {
+    display: inline-block;
+    position: relative;
+    animation: titleReveal 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes titleReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.highlight-word {
+    position: relative;
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.highlight-word::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--rojo, #CC0000);
+    animation: underlineExpand 0.5s ease forwards;
+    animation-delay: 2.5s;
+}
+
+@keyframes underlineExpand {
+    to { width: 100%; }
+}
+
+.hero-cta {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.hero-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    transition: all 0.4s ease;
+}
+
+.hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.hero-cta:hover::before {
+    left: 100%;
+}
+
+.hero-cta i {
+    transition: transform 0.3s ease;
+}
+
+.hero-cta:hover i {
+    transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .title-line {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+    
+    .hero-cta {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .highlight-word::after {
+        height: 2px;
+    }
+}
+
 </style>
 </head>
 
@@ -815,16 +906,31 @@ a.text-dark:hover {
 <section class="hero-section" id="inicio">
     <div class="hero-carousel-container position-relative">
         <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center">
-            <div class="container text-center position-relative z-index-2">
-                <h2 class="hero-title animate__animated animate__fadeInDown animate__delay-1s">
-                    <span class="text-reveal">¡Encuentra el Repuesto Ideal</span>
-                    <span class="text-reveal delay-1">para tu Vehículo!</span>
-                </h2>
-                <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-2s">Calidad, Variedad y los Mejores Precios en Nicaragua</p>
-                <a href="#productos" class="btn btn-rojo btn-lg hero-cta animate__animated animate__zoomIn animate__delay-3s">
-                    Ver Productos <i class="fas fa-arrow-right ms-2"></i>
-                </a>
-            </div>
+<div class="container text-center position-relative z-index-2">
+    <h2 class="hero-title">
+        <span class="d-block overflow-hidden">
+            <span class="animate__animated animate__fadeInDown animate__delay-1s title-line">¡Encuentra el Repuesto Ideal</span>
+        </span>
+        <span class="d-block overflow-hidden mt-2">
+            <span class="animate__animated animate__fadeInDown animate__delay-1-5s title-line">para tu Vehículo!</span>
+        </span>
+    </h2>
+    
+    <div class="overflow-hidden">
+        <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-2s">
+            <span class="highlight-word">Calidad</span>, 
+            <span class="highlight-word">Variedad</span> y 
+            <span class="highlight-word">Mejores Precios</span> en Nicaragua
+        </p>
+    </div>
+
+    <div class="overflow-hidden">
+        <a href="#productos" class="btn btn-rojo btn-lg hero-cta animate__animated animate__fadeIn animate__delay-3s">
+            Ver Productos
+            <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+    </div>
+</div>
         </div>
 
         <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
