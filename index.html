@@ -501,6 +501,111 @@
     .textarea-details {
         height: 120px;
     }
+
+    /* Certificaciones */
+
+    /* Tamaños responsive para icono */
+.icon-xl {
+    width: 70px;
+    height: 70px;
+}
+
+@media (min-width: 768px) {
+    .icon-xl {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+/* Ajustes de tipografía responsive */
+.fs-6 {
+    font-size: 1rem !important;
+}
+
+@media (min-width: 768px) {
+    .fs-md-5 {
+        font-size: 1.25rem !important;
+    }
+}
+
+/* Certificaciones responsive */
+.certification-img {
+    width: 70px;
+    height: auto;
+}
+
+@media (min-width: 768px) {
+    .certification-img {
+        width: 80px;
+    }
+}
+
+/* Ajustes de espaciado para móvil */
+@media (max-width: 767.98px) {
+    .gap-3 {
+        gap: 1rem !important;
+    }
+    
+    .card-body {
+        padding: 1.5rem !important;
+    }
+}
+
+/* Badges de certificaciones */
+.badge {
+    transition: all 0.3s ease;
+    border: 1px solid var(--azul);
+}
+
+.badge:hover {
+    background-color: var(--rojo) !important;
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* Estilos base responsive */
+.icon-xl {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.certification-img {
+    max-width: 80px;
+    height: auto;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    .icon-xl {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .certification-img {
+        max-width: 70px;
+    }
+}
+
+@media (min-width: 992px) {
+    .icon-xl {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+/* Badges estáticos */
+.badge {
+    border: 1px solid var(--azul);
+    background-color: var(--azul-light);
+    color: var(--azul);
+}
 </style>
 </head>
 
@@ -1490,7 +1595,7 @@ document.querySelectorAll('.btn-zoom').forEach(btn => {
     <div class="card-body p-4 p-lg-5">
         <div class="text-center mb-5">
             <div class="icon-xl bg-rojo text-white rounded-circle mb-3 mx-auto">
-                <i class="fas fa-envelope fa-2x"></i>
+                <i class="fa-solid fa-money-check"></i>
             </div>
             <h3 class="h2 text-primary mb-2">Solicitud de Cotización</h3>
             <p class="text-muted">Recibe una respuesta en menos de 24 horas</p>
@@ -1681,7 +1786,7 @@ document.querySelectorAll('.btn-zoom').forEach(btn => {
                 <a href="#" class="btn btn-danger px-4 py-2 rounded-pill bg-gradient instagram" target="_blank">
                     <i class="fab fa-instagram me-2"></i>Instagram
                 </a>
-                <a href="https://wa.me/50584281928" class="btn btn-success px-4 py-2 rounded-pill" target="_blank">
+                <a href="https://wa.me/50584281928" class="btn btn-success px-4 py-2 rounded-pill" target="_blank" rel="noopener">
                     <i class="fab fa-whatsapp me-2"></i>WhatsApp
                 </a>
             </div>
@@ -1724,27 +1829,26 @@ document.querySelectorAll('.btn-zoom').forEach(btn => {
 <section class="py-5 bg-light" id="nosotros">
     <div class="container position-relative">
         <h2 class="section-title text-center mb-5">
-            <span class="display-2 fw-bold text-azul position-relative d-inline-block">
-                <span class="text-dark">Sobre</span> AutoRepuestos Dios se Proveera
-                
-                <div class="position-absolute bottom-0 start-50 translate-middle-x bg-rojo custom-line"></div>
+            <span class="display-2 fw-bold text-azul position-relative d-inline-block hover-scale">
+                <span class="text-dark hover-underline">Sobre</span> AutoRepuestos Dios se Proveerá
+                <div class="position-absolute bottom-0 start-50 translate-middle-x bg-rojo custom-line animate-line"></div>
             </span>
         </h2>
 
         <div class="row align-items-center mb-5 g-4">
             <!-- Misión y Visión -->
             <div class="col-lg-6 order-lg-1 order-2">
-                <div class="bg-white p-4 rounded-3 shadow-sm border-start border-4 border-azul">
-                    <div class="mb-4">
+                <div class="bg-white p-4 rounded-3 shadow-sm border-start border-4 border-azul hover-lift">
+                    <div class="mb-4 animate-fadein">
                         <h3 class="text-azul mb-3 fw-bold">
-                            <i class="fas fa-bullseye me-2 text-rojo"></i>Nuestra Misión
+                            <i class="fas fa-bullseye me-2 text-rojo icon-pulse"></i>Nuestra Misión
                         </h3>
                         <p class="lead text-dark mb-0">Ser el proveedor líder de repuestos automotrices en Nicaragua, ofreciendo productos de máxima calidad con servicio experto y entrega ágil.</p>
                     </div>
                     
-                    <div class="mt-4">
+                    <div class="mt-4 animate-fadein delay-1">
                         <h3 class="text-azul mb-3 fw-bold">
-                            <i class="fas fa-binoculars me-2 text-rojo"></i>Nuestra Visión
+                            <i class="fas fa-binoculars me-2 text-rojo icon-float"></i>Nuestra Visión
                         </h3>
                         <p class="text-dark mb-0">Convertirnos en el partner estratégico de talleres mecánicos y conductores exigentes, innovando constantemente en nuestro catálogo y servicios.</p>
                     </div>
@@ -1753,23 +1857,23 @@ document.querySelectorAll('.btn-zoom').forEach(btn => {
 
             <!-- Imagen con estadísticas -->
             <div class="col-lg-6 order-lg-2 order-1">
-                <div class="position-relative overflow-hidden rounded-4 shadow-lg">
+                <div class="position-relative overflow-hidden rounded-4 shadow-lg hover-zoom">
                     <img src="./Imagenes de referencia/sucursal-ivan-monteniegro.webp" 
                          alt="Sucursal de AutoRepuestos - Especialistas en autopartes" 
-                         class="img-fluid" 
+                         class="img-fluid zoom-image" 
                          loading="lazy">
-                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-dark-gradient">
+                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-dark-gradient stats-overlay">
                         <div class="row text-white text-center g-0">
-                            <div class="col-4 border-end border-light border-opacity-25 py-2">
-                                <div class="fs-3 fw-bold mb-1">15+</div>
+                            <div class="col-4 border-end border-light border-opacity-25 py-2 counter-item">
+                                <div class="fs-3 fw-bold mb-1" data-count="15">0+</div>
                                 <div class="small">Años de experiencia</div>
                             </div>
-                            <div class="col-4 border-end border-light border-opacity-25 py-2">
-                                <div class="fs-3 fw-bold mb-1">2+</div>
+                            <div class="col-4 border-end border-light border-opacity-25 py-2 counter-item">
+                                <div class="fs-3 fw-bold mb-1" data-count="5000">0+</div>
                                 <div class="small">Partes disponibles</div>
                             </div>
-                            <div class="col-4 py-2">
-                                <div class="fs-3 fw-bold mb-1">100%</div>
+                            <div class="col-4 py-2 counter-item">
+                                <div class="fs-3 fw-bold mb-1" data-count="100">0%</div>
                                 <div class="small">Satisfacción clientes</div>
                             </div>
                         </div>
@@ -1782,143 +1886,198 @@ document.querySelectorAll('.btn-zoom').forEach(btn => {
         <div class="row g-4">
             <!-- Valores -->
             <div class="col-lg-4 mb-4">
-    <div class="card h-100 border-0 overflow-hidden bg-azul text-white shadow-hover-lg transition-all">
-        <div class="card-body p-4 d-flex flex-column">
-            <div class="d-flex align-items-center mb-4">
-                <div class="icon-wrapper bg-rojo text-white rounded-circle p-3 me-3">
-                    <i class="fas fa-tools fa-lg"></i>
+                <div class="card h-100 border-0 overflow-hidden bg-azul text-white shadow-hover-lg transition-all hover-tilt">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-wrapper bg-rojo text-white rounded-circle p-3 me-3 icon-spin">
+                                <i class="fas fa-tools fa-lg"></i>
+                            </div>
+                            <h3 class="mb-0 fw-bold fs-2">Nuestra Filosofía</h3>
+                        </div>
+                        
+                        <div class="flex-grow-1">
+                            <div class="mb-4 p-3 rounded-3 bg-azul-light hover-lift delay-1">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-check-circle fa-lg text-rojo mt-1 me-3 icon-bounce"></i>
+                                    <div>
+                                        <h5 class="mb-2 fw-semibold">Expertos en Autopartes</h5>
+                                        <p class="small opacity-75 mb-0">Asesoramiento técnico especializado por mecánicos certificados</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4 p-3 rounded-3 bg-azul-light hover-lift delay-2">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-shield-alt fa-lg text-rojo mt-1 me-3 icon-bounce"></i>
+                                    <div>
+                                        <h5 class="mb-2 fw-semibold">Garantía Certificada</h5>
+                                        <p class="small opacity-75 mb-0">Todos los productos incluyen garantía extendida de 1 año</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-3 rounded-3 bg-azul-light hover-lift delay-3">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-truck-moving fa-lg text-rojo mt-1 me-3 icon-bounce"></i>
+                                    <div>
+                                        <h5 class="mb-2 fw-semibold">Entrega Inmediata</h5>
+                                        <p class="small opacity-75 mb-0">Stock permanente con despacho en menos de 24 horas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="mb-0 fw-bold fs-2">Nuestra Filosofía</h3>
             </div>
-            
-            <div class="flex-grow-1">
-                <div class="mb-4 p-3 rounded-3 bg-azul-light hover-lift">
-                    <div class="d-flex align-items-start">
-                        <i class="fas fa-check-circle fa-lg text-rojo mt-1 me-3"></i>
-                        <div>
-                            <h5 class="mb-2 fw-semibold">Expertos en Autopartes</h5>
-                            <p class="small opacity-75 mb-0">Asesoramiento técnico especializado por mecánicos certificados</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mb-4 p-3 rounded-3 bg-azul-light hover-lift">
-                    <div class="d-flex align-items-start">
-                        <i class="fas fa-shield-alt fa-lg text-rojo mt-1 me-3"></i>
-                        <div>
-                            <h5 class="mb-2 fw-semibold">Garantía Certificada</h5>
-                            <p class="small opacity-75 mb-0">Todos los productos incluyen garantía extendida de 1 año</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="p-3 rounded-3 bg-azul-light hover-lift">
-                    <div class="d-flex align-items-start">
-                        <i class="fas fa-truck-moving fa-lg text-rojo mt-1 me-3"></i>
-                        <div>
-                            <h5 class="mb-2 fw-semibold">Entrega Inmediata</h5>
-                            <p class="small opacity-75 mb-0">Stock permanente con despacho en menos de 24 horas</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
-        </div>
-    </div>
-</div>
 
             <!-- Especialidades -->
             <div class="col-lg-4 mb-4">
-    <div class="card h-100 border-0 overflow-hidden bg-dark text-white shadow-hover-lg transition-all">
-        <div class="card-body p-4 d-flex flex-column">
-            <div class="d-flex align-items-center mb-4">
-                <div class="icon-wrapper bg-rojo text-white rounded-circle p-3 me-3">
-                    <i class="fas fa-certificate fa-lg"></i>
-                </div>
-                <h3 class="mb-0 fw-bold fs-2">Especialidades Técnicas</h3>
-            </div>
-            
-            <ul class="list-unstyled mb-4 flex-grow-1">
-                <li class="mb-3 p-3 rounded-3 bg-dark-light hover-lift">
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-car-side fa-lg text-rojo me-3"></i>
-                        <div>
-                            <h5 class="mb-1 fw-semibold">Sistema de Frenos</h5>
-                            <p class="small opacity-75 mb-0">Discos, tambores y componentes hidráulicos</p>
+                <div class="card h-100 border-0 overflow-hidden bg-dark text-white shadow-hover-lg transition-all hover-tilt">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-wrapper bg-rojo text-white rounded-circle p-3 me-3 icon-spin">
+                                <i class="fas fa-certificate fa-lg"></i>
+                            </div>
+                            <h3 class="mb-0 fw-bold fs-2">Especialidades Técnicas</h3>
                         </div>
-                    </div>
-                </li>
-                
-                <li class="mb-3 p-3 rounded-3 bg-dark-light hover-lift">
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-oil-can fa-lg text-rojo me-3"></i>
-                        <div>
-                            <h5 class="mb-1 fw-semibold">Lubricantes</h5>
-                            <p class="small opacity-75 mb-0">Aceites sintéticos y grasas especializadas</p>
-                        </div>
-                    </div>
-                </li>
-                
-                <li class="mb-3 p-3 rounded-3 bg-dark-light hover-lift">
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-cogs fa-lg text-rojo me-3"></i>
-                        <div>
-                            <h5 class="mb-1 fw-semibold">Transmisiones</h5>
-                            <p class="small opacity-75 mb-0">Manuales y automáticas</p>
-                        </div>
-                    </div>
-                </li>
-                
-                <li class="p-3 rounded-3 bg-dark-light hover-lift">
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-battery-full fa-lg text-rojo me-3"></i>
-                        <div>
-                            <h5 class="mb-1 fw-semibold">Sistema Eléctrico</h5>
-                            <p class="small opacity-75 mb-0">Componentes y cableado especializado</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+                        
+                        <ul class="list-unstyled mb-4 flex-grow-1">
+                            <li class="mb-3 p-3 rounded-3 bg-dark-light hover-lift delay-1">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-car-side fa-lg text-rojo me-3 icon-shake"></i>
+                                    <div>
+                                        <h5 class="mb-1 fw-semibold">Sistema de Frenos</h5>
+                                        <p class="small opacity-75 mb-0">Discos, tambores y componentes hidráulicos</p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li class="mb-3 p-3 rounded-3 bg-dark-light hover-lift delay-2">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-oil-can fa-lg text-rojo me-3 icon-shake"></i>
+                                    <div>
+                                        <h5 class="mb-1 fw-semibold">Lubricantes</h5>
+                                        <p class="small opacity-75 mb-0">Aceites sintéticos y grasas especializadas</p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li class="mb-3 p-3 rounded-3 bg-dark-light hover-lift delay-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-cogs fa-lg text-rojo me-3 icon-shake"></i>
+                                    <div>
+                                        <h5 class="mb-1 fw-semibold">Transmisiones</h5>
+                                        <p class="small opacity-75 mb-0">Manuales y automáticas</p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li class="p-3 rounded-3 bg-dark-light hover-lift delay-4">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-battery-full fa-lg text-rojo me-3 icon-shake"></i>
+                                    <div>
+                                        <h5 class="mb-1 fw-semibold">Sistema Eléctrico</h5>
+                                        <p class="small opacity-75 mb-0">Componentes y cableado especializado</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
 
-            <a href="#catalogo" class="btn btn-rojo text-white w-100 mt-4 d-flex align-items-center justify-content-center py-2 rounded-3">
-                <i class="fas fa-download me-2"></i>
-                <span>Descargar Catálogo Completo</span>
-            </a>
+                        <a href="#catalogo" class="btn btn-rojo text-white w-100 mt-4 d-flex align-items-center justify-content-center py-2 rounded-3 hover-icon">
+                            <i class="fas fa-download me-2 icon-bounce"></i>
+                            <span>Descargar Catálogo Completo</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificaciones -->
+  <div class="col-12 col-md-6 col-lg-4 mb-4">
+    <div class="card h-100 border-0 shadow-lg bg-white">
+        <div class="card-body p-3 p-md-4 text-center d-flex flex-column">
+            <!-- Icono de cita -->
+            <div class="icon-xl bg-rojo text-white rounded-circle mb-4 mx-auto" 
+                 aria-hidden="true"
+                 role="img"
+                 aria-label="Icono decorativo de comillas">
+                <i class="fas fa-quote-left"></i>
+            </div>
+
+            <!-- Contenido textual -->
+            <blockquote class="mb-4 flex-grow-1">
+                <p class="lead fst-italic text-dark mb-4"
+                   role="text"
+                   aria-label="Cita de la empresa">
+                    "En cada auto hay una historia, nosotros proveemos los repuestos para que siga rodando"
+                </p>
+
+                <!-- Certificaciones -->
+                <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3"
+                     role="region" 
+                     aria-label="Certificaciones obtenidas">
+                    <img src="https://cdnmedia.mapei.com/images/librariesprovider22/app-icons/iso-9001.png" 
+                         alt="Certificaciones ISO 9001 de calidad" 
+                         class="certification-img img-fluid"
+                         width="80" 
+                         height="80"
+                         loading="lazy">
+
+                    <div class="text-center text-md-start">
+                        <h3 class="h6 fw-bold text-azul mb-2">Certificados por:</h3>
+                        <ul class="list-unstyled small text-gris mb-0 d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+                            <li class="badge bg-azul-light text-azul px-3 py-2">ANF</li>
+                            <li class="badge bg-azul-light text-azul px-3 py-2">ISO 9001</li>
+                            <li class="badge bg-azul-light text-azul px-3 py-2">AAP</li>
+                        </ul>
+                    </div>
+                </div>
+            </blockquote>
         </div>
     </div>
 </div>
-
-            <!-- Certificaciones -->
-            <div class="col-lg-4">
-                <div class="card h-100 border-0 shadow-lg bg-white">
-                    <div class="card-body p-4 text-center d-flex flex-column">
-                        <div class="icon-xl bg-rojo text-white rounded-circle mb-4 mx-auto">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <blockquote class="mb-4 flex-grow-1">
-                            <p class="lead fst-italic text-dark mb-4">
-                                "En cada auto hay una historia, nosotros proveemos los repuestos para que siga rodando"
-                            </p>
-                           <div class="d-flex align-items-center justify-content-center">
-                                 <img 
-                                     src="https://cdnmedia.mapei.com/images/librariesprovider22/app-icons/iso-9001.png?sfvrsn=2cd40088_1" 
-                                     alt="Certificaciones de calidad" 
-                                     class="img-fluid certification-img me-3"
-                                     style="width: 80px; height: auto;">
-                                 <div class="text-start">
-                                     <div class="fw-bold text-azul">Certificados por:</div>
-                                     <div class="small text-gris">ANF • ISO 9001 • AAP</div>
-                                 </div>
-                            </div>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
 
+<style>
+    /* Animaciones personalizadas */
+    .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15)!important; }
+    
+    .animate-line { animation: lineGrowth 1s ease forwards; }
+    @keyframes lineGrowth { from { width: 0; } to { width: 120px; } }
+    
+    .icon-spin:hover { animation: spin 1s ease; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    
+    .hover-zoom { overflow: hidden; }
+    .zoom-image { transition: transform 0.5s ease; }
+    .hover-zoom:hover .zoom-image { transform: scale(1.05); }
+    
+    .stats-overlay { opacity: 0; transition: opacity 0.5s ease; }
+    .hover-zoom:hover .stats-overlay { opacity: 1; }
+    
+    .animate-fadein { opacity: 0; animation: fadeIn 1s ease forwards; }
+    .delay-1 { animation-delay: 0.3s; }
+    .delay-2 { animation-delay: 0.6s; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    
+    .icon-bounce { animation: bounce 1s infinite alternate; }
+    @keyframes bounce { to { transform: translateY(-3px); } }
+    
+    .hover-tilt { transition: transform 0.3s ease; }
+    .hover-tilt:hover { transform: perspective(1000px) rotateX(5deg) rotateY(5deg); }
+    
+    .animate-typing {
+        overflow: hidden;
+        border-right: 2px solid;
+        white-space: nowrap;
+        animation: typing 3s steps(40), blink-caret 0.75s step-end infinite;
+    }
+    
+    @keyframes typing { from { width: 0; } to { width: 100%; } }
+    @keyframes blink-caret { 50% { border-color: transparent; } }
+</style>
 
 
 <footer class="hero-section bg-dark text-white py-3">
