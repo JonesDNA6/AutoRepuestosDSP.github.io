@@ -319,42 +319,93 @@
         .whatsapp-button.pulse {
             animation: pulse 2s infinite;
         }
+
+        body {
+        padding-top: 56px;
+    }
+    
+    /* Logo responsive */
+    .navbar-logo {
+        max-height: 40px;
+        width: auto;
+    }
+    
+    /* Menú móvil estilo completo */
+    @media (max-width: 991.98px) {
+        .navbar-collapse {
+            background-color: #343a40;
+            padding: 20px;
+            margin-top: 10px;
+        }
+        .nav-item {
+            margin: 5px 0;
+        }
+    }
+    
+    /* Mejorar visibilidad del texto */
+    .text-primary {
+        color: #4d90fe !important;
+    }
     </style>
 </head>
 <body>
 
      <!-- Botón de WhatsApp -->
-    <a href="https://wa.me/50584281928?text=Hola,%20estoy%20interesado%20en%20sus%20productos." 
+<!--     <a href="https://wa.me/50584281928?text=Hola,%20estoy%20interesado%20en%20sus%20productos." 
        class="whatsapp-button pulse" target="_blank" rel="noopener" title="Contact us on WhatsApp">
         <i class="mdi mdi-whatsapp"></i>
-    </a>
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand text-white" href="#" rel="noopener">
-                <img src="./Imagenes de referencia/logo2.png" alt="Logo AutoRepuestos Nicaragua" class="navbar-logo" title="Logo AutoRepuestos Nicaragua">
-                AutoRepuestos Nicaragua
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#inicio"><strong class="text-azul">Inicio</strong></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#productos"><strong class="text-azul">Productos</strong></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sucursales"><strong class="text-azul">Sucursales</strong></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#nosotros"><strong class="text-azul">Sobre Nosotros</strong></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacto"><strong class="text-azul">Contáctanos</strong></a></li>
-                </ul>
-            </div>
+    </a> -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Logo y nombre de la marca -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="./Imagenes de referencia/logo2.png" 
+                 alt="Logo AutoRepuestos Dios se Proveera" 
+                 class="navbar-logo img-fluid me-2" 
+                 style="max-height: 50px;">
+            <span class="d-none d-md-inline text-white">AutoRepuestos Dios Se Proveerá</span>
+        </a>
+        
+        <!-- Botón hamburguesa para móviles -->
+        <button class="navbar-toggler" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" 
+                aria-expanded="false" 
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Elementos del menú -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link fw-bold text-primary" href="#inicio">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold text-primary" href="#productos">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold text-primary" href="#sucursales">Sucursales</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold text-primary" href="#nosotros">Sobre Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold text-primary" href="#contacto">Contáctanos</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Redes sociales vertical -->
     <div class="social-container">
         <a href="#" class="social-icon facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
         <a href="#" class="social-icon instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/50584281928?text=Hola,%20estoy%20interesado%20en%20sus%20productos." class="social-icon whatsapp" title="WhatsApp 1"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://wa.me/50555037724?text=Hola,%20estoy%20interesado%20en%20sus%20productos." class="social-icon whatsapp" title="WhatsApp 2"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://wa.me/50584281928?text=Hola,%20estoy%20interesado%20en%20sus%20productos." class="social-icon whatsapp" title="WhatsApp Ivan Montenegro"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://wa.me/50555037724?text=Hola,%20estoy%20interesado%20en%20sus%20productos." class="social-icon whatsapp" title="WhatsApp Bello Horizonte"><i class="fab fa-whatsapp"></i></a>
     </div>
 
     <section class="hero-section" id="inicio">
