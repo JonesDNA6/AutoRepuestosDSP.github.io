@@ -28,38 +28,46 @@
 
 
         /* Navbar */
-        .navbar {
-            background-color: #ffffff;
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+       .navbar {
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
 
-        .navbar .navbar-brand,
-        .navbar .nav-link {
-            color: #005aa3;
-            transition: color 0.3s;
-        }
+.navbar-scrolled {
+    background: rgba(0,0,0,0.9) !important;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
 
-        .navbar .nav-link:hover {
-            color: #ff4d4d;
-        }
+.navbar-brand img {
+    transition: transform 0.3s ease;
+}
 
-        .navbar-logo {
-            height: 40px;
-            margin-right: 10px;
-        }
+.navbar-brand:hover img {
+    transform: scale(1.05);
+}
 
-        .navbar-brand {
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-        }
+.nav-link {
+    position: relative;
+    padding: 0.5rem 1rem !important;
+    margin: 0 0.25rem;
+    transition: all 0.3s ease;
+}
 
-        .navbar-nav {
-            margin-left: auto;
-        }
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #dc3545;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
 
         .social-container {
             display: flex;
@@ -346,8 +354,16 @@
     .text-primary {
         color: #4d90fe !important;
     }
+        .logo-img {
+            max-height: 50px;
+        }
+        .certification-img {
+            width: 60px;
+        }
     </style>
 </head>
+
+
 <body>
 
      <!-- Botón de WhatsApp -->
@@ -355,46 +371,24 @@
        class="whatsapp-button pulse" target="_blank" rel="noopener" title="Contact us on WhatsApp">
         <i class="mdi mdi-whatsapp"></i>
     </a> -->
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-    <div class="container-fluid">
-        <!-- Logo y nombre de la marca -->
-        <a class="navbar-brand d-flex align-items-center" href="#">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark py-2">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/">
             <img src="./Imagenes de referencia/logo2.png" 
-                 alt="Logo AutoRepuestos Dios se Proveera" 
-                 class="navbar-logo img-fluid me-2" 
-                 style="max-height: 50px;">
-            <span class="d-none d-md-inline text-white">AutoRepuestos Dios Se Proveerá</span>
+                 alt="AutoRepuestos Dios se Proveerá - Repuestos automotrices en Nicaragua" 
+                 class="img-fluid me-2" 
+                 style="max-height: 50px; width: auto;">
+            <span class="d-none d-lg-block h4 mb-0 text-light">AutoRepuestos<br><small>Dios se Proveerá</small></span>
         </a>
-        
-        <!-- Botón hamburguesa para móviles -->
-        <button class="navbar-toggler" 
-                type="button" 
-                data-bs-toggle="collapse" 
-                data-bs-target="#navbarNav" 
-                aria-controls="navbarNav" 
-                aria-expanded="false" 
-                aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" title="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
-        <!-- Elementos del menú -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link fw-bold text-primary" href="#inicio">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-bold text-primary" href="#productos">Productos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-bold text-primary" href="#sucursales">Sucursales</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-bold text-primary" href="#nosotros">Sobre Nosotros</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-bold text-primary" href="#contacto">Contáctanos</a>
-                </li>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
             </ul>
         </div>
     </div>
@@ -402,10 +396,10 @@
 
     <!-- Redes sociales vertical -->
     <div class="social-container">
-        <a href="#" class="social-icon facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="social-icon instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/50584281928?text=Hola,%20estoy%20interesado%20en%20sus%20productos." class="social-icon whatsapp" title="WhatsApp Ivan Montenegro"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://wa.me/50555037724?text=Hola,%20estoy%20interesado%20en%20sus%20productos." class="social-icon whatsapp" title="WhatsApp Bello Horizonte"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-icon facebook" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="social-icon instagram" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/50584281928?text=Hola,%20estoy%20interesado%20en%20sus%20productos." class="social-icon whatsapp" title="WhatsApp Ivan Montenegro" aria-label="WhatsApp Ivan Montenegro"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://wa.me/50555037724?text=Hola,%20estoy%20interesado%20en%20sus%20productos." class="social-icon whatsapp" title="WhatsApp Bello Horizonte" aria-label="WhatsApp Bello Horizonte"><i class="fab fa-whatsapp"></i></a>
     </div>
 
     <section class="hero-section" id="inicio">
@@ -1400,50 +1394,143 @@
 <section class="py-6 bg-light" id="nosotros">
     <div class="container">
         <h2 class="section-title text-center mb-5 animate__animated animate__fadeIn">
-            <strong class="display-4 fw-bold text-primary">Sobre Nosotros</strong>
+            <span class="display-4 fw-bold text-primary position-relative">
+                <span class="text-dark">Sobre</span> AutoRepuestos
+                <div class="position-absolute bottom-0 start-50 translate-middle-x bg-accent" style="height: 3px; width: 80px;"></div>
+            </span>
         </h2>
-        <hr class="section-divider mb-5">
-        <div class="row align-items-center mb-5">
-            <div class="col-lg-6 col-md-12 order-lg-1 order-2 mb-4 mb-lg-0" data-aos="fade-right">
-                <div class="about-content">
-                    <h3 class="text-primary mb-3 animate__animated animate__fadeInLeft">Nuestra Misión</h3>
-                    <p class="lead text-secondary animate__animated animate__fadeInLeft animate__delay-1s">Proporcionar repuestos y accesorios automotrices de alta calidad a precios competitivos, asegurando que cada vehículo en Nicaragua rinda al máximo.</p>
 
-                    <h3 class="text-primary mt-4 mb-3 animate__animated animate__fadeInLeft animate__delay-2s">Nuestra Visión</h3>
-                    <p class="text-secondary animate__animated animate__fadeInLeft animate__delay-3s">Convertirnos en los líderes indiscutibles en la distribución de autorepuestos en Nicaragua, siendo el aliado de confianza para conductores y talleres.</p>
+        <div class="row align-items-center mb-5 g-4">
+            <!-- Misión y Visión -->
+            <div class="col-lg-6 order-lg-1 order-2" data-aos="fade-right">
+                <div class="bg-white p-4 rounded-3 shadow-sm border-start border-4 border-primary">
+                    <h3 class="text-primary mb-3 fw-bold">
+                        <i class="fas fa-bullseye me-2"></i>Nuestra Misión
+                    </h3>
+                    <p class="lead text-dark mb-4">Ser el proveedor líder de repuestos automotrices en Nicaragua, ofreciendo productos de máxima calidad con servicio experto y entrega ágil.</p>
+
+                    <h3 class="text-primary mt-4 mb-3 fw-bold">
+                        <i class="fas fa-binoculars me-2"></i>Nuestra Visión
+                    </h3>
+                    <p class="text-dark mb-0">Convertirnos en el partner estratégico de talleres mecánicos y conductores exigentes, innovando constantemente en nuestro catálogo y servicios.</p>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-12 order-lg-2 order-1" data-aos="fade-left">
-                <div class="about-image-wrapper">
-                    <img src="./Imagenes de referencia/sucursal-ivan-monteniegro.webp" alt="Equipo de AutoRepuestos Nicaragua" class="img-fluid rounded shadow-lg">
+
+            <!-- Imagen con overlay informativo -->
+            <div class="col-lg-6 order-lg-2 order-1" data-aos="fade-left">
+                <div class="position-relative overflow-hidden rounded-3">
+                    <img src="./Imagenes de referencia/sucursal-ivan-monteniegro.webp" 
+                         alt="Sucursal de AutoRepuestos - Venta de autopartes y repuestos automotrices en Nicaragua" 
+                         class="img-fluid" 
+                         loading="lazy">
+                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-dark-gradient">
+                        <div class="row text-white small">
+                            <div class="col-4 text-center border-end">
+                                <div class="fs-4 fw-bold">15+</div>
+                                <div>Años de experiencia</div>
+                            </div>
+                            <div class="col-4 text-center border-end">
+                                <div class="fs-4 fw-bold">2</div>
+                                <div>Partes disponibles</div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="fs-4 fw-bold">100%</div>
+                                <div>Satisfacción clientes</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="row mt-5">
-            <div class="col-lg-6 col-md-12 mb-4 mb-lg-0" data-aos="fade-up">
-                <div class="card shadow-sm border-0 rounded-4 h-100 value-card">
-                    <div class="card-body p-4 d-flex flex-column justify-content-center align-items-center">
-                        <div class="icon-wrapper mb-3">
-                            <i class="fas fa-handshake text-danger fa-3x"></i>
+        <!-- Valores y CTA -->
+        <div class="row g-4 mt-2">
+            <div class="col-lg-4" data-aos="fade-up">
+                <div class="card h-100 border-0 bg-primary text-white shadow-lg">
+                    <div class="card-body p-4">
+                        <h3 class="mb-4">
+                            <i class="fas fa-tools me-2"></i>Nuestros Valores
+                        </h3>
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-check-circle fa-2x text-accent me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Expertos en Autopartes</h5>
+                                <p class="small mb-0 opacity-75">Asesoramiento técnico especializado</p>
+                            </div>
                         </div>
-                        <h4 class="text-primary mb-3 text-center">Nuestros Valores</h4>
-                        <ul class="list-unstyled text-secondary values-list text-center">
-                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Calidad:</strong> Productos confiables y duraderos.</li>
-                            <li class="mb-2"><i class="fas fa-users text-primary me-2"></i> <strong>Servicio:</strong> Atención excepcional y personalizada.</li>
-                            <li class="mb-2"><i class="fas fa-thumbs-up text-primary me-2"></i> <strong>Compromiso:</strong> Dedicación a la satisfacción del cliente.</li>
-                            <li class="mb-2"><i class="fas fa-gavel text-primary me-2"></i> <strong>Integridad:</strong> Honestidad y transparencia.</li>
-                        </ul>
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-shield-alt fa-2x text-accent me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Garantía Certificada</h5>
+                                <p class="small mb-0 opacity-75">Todos nuestros productos incluyen garantía</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fas fa-truck-moving fa-2x text-accent me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Entrega Inmediata</h5>
+                                <p class="small mb-0 opacity-75">Disponibilidad en stock permanente</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="150">
-                <div class="card shadow-sm border-0 rounded-4 h-100 quote-card bg-primary text-white d-flex flex-column justify-content-center align-items-center p-5 text-center">
-                    <i class="fas fa-quote-left text-danger fa-2x mb-3"></i>
-                    <blockquote class="blockquote text-white font-italic">
-                        <p class="mb-0">"Gracias por elegir AutoRepuestos Dios Se Proveerá, donde tu vehículo encuentra lo mejor."</p>
-                    </blockquote>
-                    <i class="fas fa-quote-right text-danger fa-2x mt-3"></i>
+
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card h-100 border-0 bg-dark text-white shadow-lg position-relative overflow-hidden">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h3 class="mb-4">
+                            <i class="fas fa-certificate me-2"></i>Especialistas En
+                        </h3>
+                        <ul class="list-unstyled mb-4 flex-grow-1">
+                            <li class="mb-3">
+                                <i class="fas fa-car-side text-accent me-2"></i>
+                                Sistema de Frenos
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-oil-can text-accent me-2"></i>
+                                Lubricantes Premium
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-cogs text-accent me-2"></i>
+                                Transmisiones
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-battery-full text-accent me-2"></i>
+                                Sistema Eléctrico
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <a href="#catalogo" class="btn btn-accent w-100">
+                                <i class="fas fa-download me-2"></i>Descargar Catálogo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150">
+                <div class="card h-100 border-0 bg-white shadow-lg">
+                    <div class="card-body p-4 text-center">
+                        <div class="icon-xl bg-accent text-white rounded-circle mb-4 mx-auto">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <blockquote class="mb-4">
+                            <p class="lead fst-italic text-dark">
+                                "En cada auto hay una historia, nosotros proveemos los repuestos para que siga rodando"
+                            </p>
+                            <img src="https://cdnmedia.mapei.com/images/librariesprovider22/app-icons/iso-9001.png?sfvrsn=2cd40088_1" 
+                                 alt="Certificación de calidad" 
+                                 class="me-3 certification-img">
+                                 alt="Certificación de calidad" 
+                                 class="me-3" 
+                                 style="width: 60px">
+                            <div class="text-start">
+                                <div class="fw-bold">Certificados por:</div>
+                                <div class="small">ANF • ISO 9001 • AAP</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1451,99 +1538,49 @@
 </section>
 
 <style>
-    /* Define variables de color para facilitar la personalización */
     :root {
-        --primary: #007bff; /* Azul primario (puedes ajustarlo) */
-        --secondary: #6c757d; /* Gris secundario para el texto */
-        --accent: #dc3545; /* Rojo para acentos */
-        --light-bg: #f8f9fa; /* Fondo claro */
+        --primary: #1A3A5C;  /* Azul profesional */
+        --accent: #C2272D;   /* Rojo automotriz */
+        --dark: #2A2A2A;    /* Gris oscuro */
     }
 
-    /* Estilos generales de la sección */
-    #nosotros {
-        background-color: var(--light-bg);
-        padding-top: 4rem;
-        padding-bottom: 4rem;
+    .bg-dark-gradient {
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
     }
 
-    .section-title {
-        color: var(--primary);
-        margin-bottom: 1.5rem;
-    }
-
-    .section-divider {
-        width: 80px;
-        border-top: 3px solid var(--accent);
-        margin: 0 auto 1.5rem auto;
-    }
-
-    /* Estilos para la sección "Sobre Nosotros" */
-    .about-image-wrapper {
-        overflow: hidden;
-        border-radius: 0.5rem;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .about-image-wrapper img {
-        width: 100%;
-        height: auto;
-        transition: transform 0.3s ease-in-out; /* Transición suave */
-    }
-
-    .about-image-wrapper:hover img {
-        transform: scale(1.03); /* Ligeramente acercamiento al pasar el cursor */
-    }
-
-    .about-content h3 {
-        color: var(--primary);
-    }
-
-    .value-card {
-        border: 1px solid #e0e0e0;
-    }
-
-    .value-card .icon-wrapper {
-        border: 2px solid var(--accent);
-        border-radius: 50%;
+    .icon-xl {
         width: 80px;
         height: 80px;
         display: flex;
-        justify-content: center;
         align-items: center;
-        margin-bottom: 1rem;
+        justify-content: center;
     }
 
-    .values-list li i {
-        color: var(--primary);
-        margin-right: 0.5rem;
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .quote-card {
-        border-radius: 0.5rem;
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.12);
     }
 
-    .blockquote {
-        margin-bottom: 0;
+    .border-accent {
+        border-color: var(--accent) !important;
     }
 
-    /* Media queries para mejorar la responsividad (opcional, Bootstrap ya maneja mucho) */
-    @media (max-width: 992px) {
-        .about-content {
-            margin-bottom: 2rem;
-        }
+    .btn-accent {
+        background: var(--accent);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        transition: all 0.3s ease;
     }
 
-    @media (max-width: 768px) {
-        .section-title {
-            font-size: 2.5rem;
-        }
+    .btn-accent:hover {
+        background: #A71F24;
+        transform: translateY(-2px);
     }
 </style>
-
-<script>
-  AOS.init();
-</script>
-
 
 <footer class="hero-section bg-dark text-white py-3">
     <div class="container text-center">
@@ -1596,10 +1633,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 </body>
 </html>
