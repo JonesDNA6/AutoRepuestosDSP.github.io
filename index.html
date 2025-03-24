@@ -859,6 +859,70 @@ a.text-dark:hover {
     }
 }
 
+/* Animaciones de envíos */
+.shadow-hover {
+    transition: all 0.4s ease;
+    transform: translateY(0);
+}
+
+.shadow-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+.zoom-on-hover {
+    transition: transform 0.4s ease;
+    transform: scale(1);
+}
+
+.zoom-on-hover:hover {
+    transform: scale(1.03);
+}
+
+.pulsating-dot {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--rojo);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+    opacity: 0;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(4); opacity: 0; }
+}
+
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1s; }
+
+/* Animación de rastreo */
+.btn-rastrear {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-rastrear i {
+    transition: transform 0.3s ease;
+}
+
+.btn-rastrear:hover i {
+    transform: translateX(3px) rotate(45deg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .display-5 {
+        font-size: 2rem;
+    }
+    
+    .pulsating-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
 </style>
 </head>
 
@@ -1404,6 +1468,62 @@ document.querySelectorAll('.btn-zoom').forEach(btn => {
         });
     });
 </script>
+
+<section class="py-5 bg-light" id="envios">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <!-- Texto y características -->
+            <div class="col-lg-6 animate__animated animate__fadeInLeft">
+                <div class="mb-4 text-center text-lg-start">
+                    <h2 class="display-5 fw-bold text-azul mb-3">
+                        <i class="fas fa-truck-fast me-3"></i>Envíos a Todo el País
+                    </h2>
+                    <p class="lead text-muted">Tu repuesto automotriz donde lo necesites</p>
+                    
+                    <div class="row g-4 mt-4">
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-hover">
+                                <div class="card-body">
+                                    <i class="fas fa-map-marked-alt fs-1 text-rojo mb-3"></i>
+                                    <h3>Cobertura Nacional</h3>
+                                    <p class="text-muted">Llegamos a todos los departamentos y municipios</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-hover">
+                                <div class="card-body">
+                                    <i class="fas fa-clock fs-1 text-rojo mb-3"></i>
+                                    <h3>Entrega Rápida</h3>
+                                    <p class="text-muted">De 24 a 48 horas en principales ciudades</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagen animada -->
+            <!-- <div class="col-lg-6 animate__animated animate__fadeInRight">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com/photo-1603732551681-2e91159ca9df" 
+                         alt="Servicio de envíos nacionales" 
+                         class="img-fluid rounded-3 zoom-on-hover"
+                         loading="lazy">
+                         
+                    <div class="position-absolute top-50 start-50 translate-middle w-75 h-75">
+                        <div class="pulsating-dot"></div>
+                        <div class="pulsating-dot delay-1"></div>
+                        <div class="pulsating-dot delay-2"></div>
+                    </div>
+                </div>
+                
+                
+            </div> -->
+        </div>
+    </div>
+</section>
 
 <section class=" hero-section py-5 bg-light" id="marcas-section">
     <div class="container-fluid">
