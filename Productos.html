@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Auto Repuestos Dios Se Proveerá</title> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.4.47/css/materialdesignicons.min.css">
+    <style>
+        :root {
+            --brand-primary: #2A5B8C;
+            --brand-secondary: #C83E4D;
+            --text-color: #333;
+            --text-muted: #6c757d;
+            --background-light: #f8f9fa;
+            --background-white: #fff;
+            --border-color: #e0e0e0;
+            --animation-speed: 0.3s;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+            --focus-outline-color: rgba(42, 91, 140, 0.5); /* Color primario con opacidad */
+        }
+
+        /* --- Estilos Base --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente sugerida, puedes ajustarla */
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+
+        /* --- Tarjeta de Producto (Product Card - BEM) --- */
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: var(--background-white);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: transform var(--animation-speed) ease, box-shadow var(--animation-speed) ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .product-card__image-wrapper {
+            height: 220px;
+            background: var(--background-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            cursor: zoom-in;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card__image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform var(--animation-speed) ease;
+        }
+
+        .product-card__image-wrapper:hover .product-card__image {
+            transform: scale(1.05);
+        }
+
+        .product-card__content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            gap: 0.8rem;
+        }
+
+        .product-card__title {
+            font-size: 1.2rem;
+            color: var(--brand-primary);
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .product-card__description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+            min-height: 60px; /* Mantiene una altura mínima */
+            margin-bottom: 1rem;
+        }
+
+        .product-card__button {
+            background: var(--brand-primary); /* Eliminado !important si es posible */
+            color: white; /* Eliminado !important si es posible */
+            border: none; /* Eliminado !important si es posible */
+            border-radius: 8px;
+            padding: 0.8rem 1.5rem;
+            font-weight: 600;
+            transition: background var(--animation-speed) ease, transform var(--animation-speed) ease;
+            width: fit-content;
+            align-self: center;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .product-card__button:hover,
+        .product-card__button:focus-visible {
+            background: var(--brand-secondary);
+            transform: translateY(-2px);
+            outline: 2px solid var(--focus-outline-color);
+            outline-offset: 2px;
+        }
+
+        /* --- Buscador --- */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .search-input {
+            padding: 0.75rem 1.5rem;
+            padding-left: 2.5rem;
+            border-radius: 30px;
+            border: 2px solid var(--brand-primary);
+            width: 100%;
+            font-size: 1rem;
+            transition: border-color var(--animation-speed) ease, box-shadow var(--animation-speed) ease;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-input:focus {
+            border-color: var(--brand-secondary);
+            box-shadow: 0 0 0 3px var(--focus-outline-color);
+            outline: none;
+        }
+
+        /* --- Filtros de Categoría y Subcategoría --- */
+        .filter-container {
+            margin: 1rem 0 2.5rem;
+        }
+
+        .main-categories, .subcategory-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 1rem; /* Espacio entre categorías principales y subcategorías */
+        }
+
+        .subcategory-group {
+            margin-top: 1rem; /* Espacio entre el grupo de subcategorías y los main buttons */
+            padding-top: 1rem; /* Separación visual */
+            border-top: 1px solid var(--border-color); /* Línea divisoria */
+        }
+
+        .filter-button {
+            background-color: var(--background-white);
+            color: var(--brand-primary);
+            border: 2px solid var(--brand-primary); /* Borde primario por defecto */
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            transition: background-color var(--animation-speed), box-shadow var(--animation-speed), color var(--animation-speed), border-color var(--animation-speed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* Estilo específico para botones de subcategoría si se desea */
+        .subcategory-group .filter-button {
+            border-color: var(--brand-secondary); /* Borde secundario para subcategorías */
+            color: var(--brand-secondary);
+        }
+
+        .filter-button:hover {
+            background-color: var(--brand-primary);
+            color: var(--background-white);
+            box-shadow: var(--box-shadow); /* Menos box-shadow en hover para no competir */
+        }
+
+        .subcategory-group .filter-button:hover {
+            background-color: var(--brand-secondary); /* Hover para subcategorías */
+            color: var(--background-white);
+        }
+
+
+        /* Estado activo para botones de categoría principal */
+        .filter-button.active-category {
+             background-color: var(--brand-primary);
+             color: var(--background-white);
+             border-color: var(--brand-primary);
+             box-shadow: var(--box-shadow);
+        }
+
+         /* Estado activo para botones de subcategoría */
+        .filter-button.active-subcategory {
+             background-color: var(--brand-secondary);
+             color: var(--background-white);
+             border-color: var(--brand-secondary);
+             box-shadow: var(--box-shadow);
+        }
+
+        /* Ocultar grupos de subcategorías inicialmente */
+        .subcategory-group {
+            display: none;
+        }
+
+        /* Mensaje inicial */
+        .initial-message {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            border: 1px dashed var(--border-color);
+            border-radius: var(--border-radius);
+            background-color: var(--background-white);
+        }
+
+
+        /* --- Paginación --- */
+        .pagination-container {
+            margin-top: 3rem;
+            padding-bottom: 2rem;
+        }
+
+        .pagination .page-item .page-link {
+            color: var(--brand-primary);
+            transition: background-color var(--animation-speed) ease, color var(--animation-speed) ease;
+        }
+
+        .pagination .page-item .page-link:hover {
+            background-color: rgba(42, 91, 140, 0.1);
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: var(--brand-primary);
+            border-color: var(--brand-primary);
+            color: white;
+            z-index: 3;
+        }
+
+        .pagination .page-item.disabled .page-link {
+            color: var(--text-muted);
+            background-color: transparent;
+            border-color: var(--border-color);
+        }
+
+        .pagination .page-item:focus-visible .page-link {
+            box-shadow: 0 0 0 3px var(--focus-outline-color);
+            z-index: 4;
+        }
+
+        /* --- Zoom de Imagen --- */
+        .zoom-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--animation-speed) ease, visibility var(--animation-speed) ease;
+            cursor: zoom-out;
+        }
+
+        .zoom-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .zoomed-image {
+            max-width: 90vw;
+            max-height: 90vh;
+            transform: scale(0.95);
+            transition: transform var(--animation-speed) ease;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .zoom-overlay.active .zoomed-image {
+            transform: scale(1);
+        }
+
+        /* --- Media Queries (Responsividad) --- */
+        @media (max-width: 768px) {
+            .product-card__image-wrapper {
+                height: 180px;
+                padding: 1rem;
+            }
+
+            .product-card__title {
+                font-size: 1.1rem;
+            }
+
+            .product-card__button {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.95rem;
+                width: 100%;
+                justify-content: center;
+                margin-top: auto;
+            }
+
+            .search-input {
+                font-size: 0.9rem;
+                padding-left: 2.2rem;
+            }
+
+            .main-categories, .subcategory-group {
+                 gap: 0.5rem;
+                 justify-content: center; /* Centrar botones en móvil */
+            }
+
+             .filter-button {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="zoom-overlay" id="zoomOverlay">
+    <img src="" alt="Imagen ampliada" class="zoomed-image">
+</div>
+
+<section class="py-5">
+    <div class="container">
+        <div class="search-container">
+            <input type="text"
+                   class="form-control search-input"
+                   id="searchInput"
+                   placeholder="🔍 Buscar productos..."
+                   aria-label="Buscar productos">
+        </div>
+
+        <div class="filter-container">
+    <div class="main-categories" id="mainCategories">
+        <button class="btn filter-button d-flex align-items-center gap-2" data-category="repuestos">
+            <i class="mdi mdi-car-wrench"></i> Repuestos
+        </button>
+        <button class="btn filter-button d-flex align-items-center gap-2" data-category="lubricantes">
+            <i class="mdi mdi-oil"></i> Lubricantes
+        </button>
+        <button class="btn filter-button d-flex align-items-center gap-2" data-category="llantas">
+            <i class="mdi mdi-tire"></i> Llantas
+        </button>
+        <button class="btn filter-button d-flex align-items-center gap-2" data-category="baterias">
+            <i class="mdi mdi-car-battery"></i> Baterías
+        </button>
+        <button class="btn filter-button d-flex align-items-center gap-2" data-category="accesorios">
+            <i class="mdi mdi-tools"></i> Accesorios
+        </button>
+        </div>
+
+    <div class="subcategory-group" id="subcategoryGroup-repuestos" data-main-category="repuestos">
+        <button class="btn filter-button d-flex align-items-center gap-2" data-subcategory="filtros"><i class="mdi mdi-circle-small"></i> Filtros</button>
+        <button class="btn filter-button d-flex align-items-center gap-2" data-subcategory="bombas"><i class="mdi mdi-circle-small"></i> Bombas</button>
+        <button class="btn filter-button d-flex align-items-center gap-2" data-subcategory="motor"><i class="mdi mdi-circle-small"></i> Motor</button>
+        <button class="btn filter-button d-flex align-items-center gap-2" data-subcategory="fricciones"><i class="mdi mdi-circle-small"></i> Fricciones</button>
+        <button class="btn filter-button d-flex align-items-center gap-2" data-subcategory="suspension"><i class="mdi mdi-circle-small"></i> Sistema de Suspensión</button>
+        <button class="btn filter-button d-flex align-items-center gap-2" data-subcategory="direccion"><i class="mdi mdi-circle-small"></i> Sistema de Dirección</button>
+        <button class="btn filter-button d-flex align-items-center gap-2" data-subcategory="clutch"><i class="mdi mdi-circle-small"></i> Discos de Clutch</button>
+        <button class="btn filter-button d-flex align-items-center gap-2" data-subcategory="flexibles"><i class="mdi mdi-circle-small"></i> Flexibles</button>
+        </div>
+
+    <div class="subcategory-group" id="subcategoryGroup-lubricantes" data-main-category="lubricantes">
+        <button class="btn filter-button d-flex align-items-center gap-2" data-subcategory="benzol"><i class="mdi mdi-circle-small"></i> Benzol</button>
+        <button class="btn filter-button d-flex align-items-center gap-2" data-subcategory="wolf"><i class="mdi mdi-circle-small"></i> Wolf</button>
+        </div>
+
+    </div>
+
+        <div class="initial-message" id="initialMessage">
+            <p>Por favor, seleccione una **categoría** para ver los productos disponibles.</p>
+             <p>Luego, podrá filtrar por **subcategoría** (si aplica) o usar el buscador.</p>
+        </div>
+
+
+        <div class="row g-4" id="productList">
+            </div>
+
+        <div class="pagination-container">
+            <nav aria-label="Navegación de productos">
+                <ul class="pagination justify-content-center" id="pagination"></ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Inicializar AOS
+    AOS.init({
+        duration: 800, // Duración de la animación en ms
+        once: true // Si la animación debe ocurrir solo una vez al hacer scroll hacia abajo
+    });
+
+
+    // Datos de productos con subcategorías
+    const productos = [
+        // REPUESTOS - FILTROS
+        { nombre: "Filtro DENSO", descripcion: "Filtro de aceite de alta eficiencia.", imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/filtro-de-aceite-denso_tracer.webp", categoria: "repuestos", subcategoria: "filtros", alt: "Filtro de aceite DENSO" },
+        // REPUESTOS - SISTEMA DE DIRECCION
+        { nombre: "Cremallera de Dirección", descripcion: "Cremallera de dirección de alta calidad.", imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/cremallera_inspyrenet.webp", categoria: "repuestos", subcategoria: "direccion", alt: "Cremallera de Dirección" },
+         // REPUESTOS - BOMBAS
+        { nombre: "Bomba de Gasolina Eléctrica", descripcion: "Bomba de gasolina fiable y duradera.", imagenSrc: "placeholder-bomba.jpg", categoria: "repuestos", subcategoria: "bombas", alt: "Bomba de Gasolina" },
+         // REPUESTOS - MOTOR
+        { nombre: "Pistones Forjados", descripcion: "Pistones de alta resistencia para motores de rendimiento.", imagenSrc: "placeholder-pistones.jpg", categoria: "repuestos", subcategoria: "motor", alt: "Pistones Forjados" },
+         // REPUESTOS - FRICCIONES
+        { nombre: "Pastillas de Freno Cerámicas", descripcion: "Frenada silenciosa y de alto rendimiento.", imagenSrc: "placeholder-pastillas.jpg", categoria: "repuestos", subcategoria: "fricciones", alt: "Pastillas de Freno Cerámicas" },
+        // REPUESTOS - SUSPENSION
+        { nombre: "Amortiguador Delantero", descripcion: "Amortiguador para una conducción suave y estable.", imagenSrc: "placeholder-amortiguador.jpg", categoria: "repuestos", subcategoria: "suspension", alt: "Amortiguador Delantero" },
+        // REPUESTOS - CLUTCH
+        { nombre: "Kit de Clutch Completo", descripcion: "Kit que incluye disco, plato y balinera.", imagenSrc: "placeholder-clutch.jpg", categoria: "repuestos", subcategoria: "clutch", alt: "Kit de Clutch" },
+        // REPUESTOS - FLEXIBLES
+        { nombre: "Flexible de Freno", descripcion: "Flexible hidráulico resistente para sistema de frenos.", imagenSrc: "placeholder-flexible.jpg", categoria: "repuestos", subcategoria: "flexibles", alt: "Flexible de Freno" },
+
+        // LUBRICANTES - BENZOL
+        { nombre: "Aceite BENZOL 20W50", descripcion: "Aceite multigrado para motor.", imagenSrc: "placeholder-benzol.jpg", categoria: "lubricantes", subcategoria: "benzol", alt: "Aceite BENZOL 20W50" },
+         // LUBRICANTES - WOLF
+        { nombre: "Aceite WOLF Sintético 5W30", descripcion: "Aceite sintético de alto rendimiento.", imagenSrc: "placeholder-wolf.jpg", categoria: "lubricantes", subcategoria: "wolf", alt: "Aceite WOLF 5W30" },
+
+        // LLANTAS (Sin subcategoría definida explicitamente en tu lista - Trataremos como filtro final al seleccionar la categoría principal)
+        { nombre: "Llanta R15 Deportiva", descripcion: "Llanta con agarre excepcional.", imagenSrc: "placeholder-llanta.jpg", categoria: "llantas", subcategoria: null, alt: "Llanta Deportiva R15" },
+         { nombre: "Llanta Camioneta Todoterreno", descripcion: "Llanta resistente para todo terreno.", imagenSrc: "placeholder-llanta-suv.jpg", categoria: "llantas", subcategoria: null, alt: "Llanta Camioneta Todoterreno" },
+
+
+         // BATERIAS (Sin subcategoría definida explicitamente en tu lista - Trataremos como filtro final al seleccionar la categoría principal)
+        { nombre: "Batería 12V Automotriz", descripcion: "Batería de larga duración.", imagenSrc: "placeholder-bateria.jpg", categoria: "baterias", subcategoria: null, alt: "Batería Automotriz 12V" },
+
+         // ACCESORIOS (Sin subcategoría definida explicitamente en tu lista - Trataremos como filtro final al seleccionar la categoría principal)
+        { nombre: "Kit de Herramientas Básico", descripcion: "Herramientas esenciales para el auto.", imagenSrc: "placeholder-herramientas.jpg", categoria: "accesorios", subcategoria: null, alt: "Kit de Herramientas" },
+        { nombre: "Alfombras para Auto", descripcion: "Set de alfombras universales.", imagenSrc: "placeholder-alfombras.jpg", categoria: "accesorios", subcategoria: null, alt: "Alfombras para Auto" },
+
+
+        // Agrega más productos aquí con su categoria y subcategoria (o null si no tiene sub)
+    ];
+
+    // Elementos del DOM
+    const productList = document.getElementById('productList');
+    const pagination = document.getElementById('pagination');
+    const searchInput = document.getElementById('searchInput');
+    const zoomOverlay = document.getElementById('zoomOverlay');
+    const mainCategoryButtons = document.querySelectorAll('#mainCategories .filter-button');
+    const subcategoryGroups = document.querySelectorAll('.subcategory-group');
+    const initialMessage = document.getElementById('initialMessage');
+
+
+    // Estado de filtro
+    let selectedCategory = null; // Categoría principal seleccionada
+    let selectedSubcategory = null; // Subcategoría seleccionada (null si no se ha seleccionado sub)
+
+    let filteredProducts = []; // Productos después de aplicar filtros y búsqueda
+
+    // Configuración de paginación
+    let currentPage = 1;
+    const itemsPerPage = 6;
+
+    // Mapa para saber qué categorías principales tienen subcategorías definidas en el HTML
+    const categoriesWithSubgroups = Array.from(subcategoryGroups).map(group => group.dataset.mainCategory);
+
+
+    // --- Funciones ---
+
+    // Renderizar productos
+    function renderProducts() {
+        // Mostrar productos solo si se ha seleccionado algo (categoría principal SIN subcategorías O una subcategoría)
+        const showProducts = selectedCategory !== null && (selectedSubcategory !== null || !categoriesWithSubgroups.includes(selectedCategory));
+
+        if (!showProducts) {
+            productList.innerHTML = ''; // Asegura que la lista esté vacía
+             // Mostrar un mensaje más contextual dependiendo de si hay categoría principal seleccionada
+             if (selectedCategory && categoriesWithSubgroups.includes(selectedCategory)) {
+                  initialMessage.innerHTML = '<p class="text-center text-muted">Por favor, seleccione una **subcategoría** para ver los productos.</p>';
+             } else {
+                  initialMessage.innerHTML = '<p class="text-center text-muted">Por favor, seleccione una **categoría** para ver los productos disponibles.</p>';
+             }
+             initialMessage.style.display = 'block'; // Mostrar mensaje
+             pagination.innerHTML = ''; // Vaciar paginación
+             AOS.refresh(); // Refrescar AOS aunque no haya elementos
+            return; // Salir de la función
+        }
+
+         initialMessage.style.display = 'none'; // Ocultar mensaje si se muestran productos
+
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const paginatedProducts = filteredProducts.slice(start, end);
+
+        if (paginatedProducts.length === 0) {
+             productList.innerHTML = '<div class="col-12"><p class="text-center text-muted">No se encontraron productos con los criterios seleccionados.</p></div>';
+        } else {
+             productList.innerHTML = paginatedProducts.map(product => `
+                <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up"> <div class="product-card">
+                        <div class="product-card__image-wrapper" onclick="showZoom('${product.imagenSrc}')">
+                            <img src="${product.imagenSrc}" alt="${product.alt}" loading="lazy" class="product-card__image">
+                        </div>
+                        <div class="product-card__content">
+                            <h3 class="product-card__title">${product.nombre}</h3>
+                            ${product.descripcion ? `<p class="product-card__description">${product.descripcion}</p>` : ''}
+                            <button class="btn product-card__button" onclick="cotizarProducto('${product.nombre}')">
+                                <i class="fas fa-comment-dollar"></i>
+                                Cotizar ahora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        AOS.refresh(); // Refrescar AOS después de renderizar
+    }
+
+    // Función de filtrado (basada en categoría principal Y/O subcategoría, y búsqueda)
+    function filterAndSearchProducts() {
+        const searchTerm = searchInput.value.toLowerCase();
+        let productsToFilter = productos; // Empezamos con todos los productos
+
+        // Si no hay categoría principal seleccionada, no hay productos que filtrar
+        if (!selectedCategory) {
+            return [];
+        }
+
+        // Primero, filtrar por la categoría principal seleccionada
+        productsToFilter = productsToFilter.filter(producto => producto.categoria === selectedCategory);
+
+        // Si hay una subcategoría seleccionada, filtrar ADICIONALMENTE por subcategoría
+        if (selectedSubcategory) {
+            productsToFilter = productsToFilter.filter(producto => producto.subcategoria === selectedSubcategory);
+        }
+
+        // Finalmente, aplicar el filtro de búsqueda sobre el resultado
+        productsToFilter = productsToFilter.filter(producto =>
+            producto.nombre.toLowerCase().includes(searchTerm) ||
+            (producto.descripcion && producto.descripcion.toLowerCase().includes(searchTerm))
+        );
+
+        return productsToFilter;
+    }
+
+    // Actualizar productos (re-filtra, re-renderiza, re-pagina)
+    function updateProductsDisplay() {
+        filteredProducts = filterAndSearchProducts(); // Obtiene productos filtrados
+        currentPage = 1; // Reset a la primera página
+        renderProducts(); // Renderiza la página actual (considerando si hay filtro suficiente para mostrar)
+        renderPagination(); // Renderiza la paginación para los productos filtrados
+    }
+
+
+    // --- Manejo de Eventos de Filtro ---
+
+    mainCategoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.dataset.category;
+
+            // Remover clases activas de TODOS los botones (categoría y subcategoría)
+            document.querySelectorAll('.filter-button').forEach(btn => {
+                btn.classList.remove('active-category');
+                btn.classList.remove('active-subcategory');
+            });
+
+            // Activar el botón de categoría principal clickeado
+            this.classList.add('active-category');
+
+            // Actualizar estado de la categoría principal
+            selectedCategory = category;
+
+             // Ocultar todos los grupos de subcategorías
+             subcategoryGroups.forEach(group => {
+                 group.style.display = 'none';
+             });
+
+            // Verificar si esta categoría principal tiene un grupo de subcategorías definido en el HTML
+            const hasSubcategoriesDefined = categoriesWithSubgroups.includes(category);
+            const targetSubgroup = document.getElementById(`subcategoryGroup-${category}`);
+
+
+            if (hasSubcategoriesDefined) {
+                // Si tiene subcategorías definidas:
+                // - Resetear la subcategoría seleccionada
+                selectedSubcategory = null;
+                // - Mostrar el grupo de subcategorías relevante
+                if (targetSubgroup) {
+                    targetSubgroup.style.display = 'flex';
+                     // Asegurarse que ninguna subcategoría esté activa visualmente en el nuevo grupo
+                    targetSubgroup.querySelectorAll('.filter-button').forEach(subBtn => subBtn.classList.remove('active-subcategory'));
+                }
+                 // - No mostrar productos aún (updateProductsDisplay lo manejará porque selectedSubcategory es null)
+            } else {
+                // Si NO tiene subcategorías definidas:
+                // - Considerar que la selección de la categoría principal ES el filtro final
+                selectedSubcategory = null; // Asegurarse de que subcategoría es null
+                 // - Llamar a updateProductsDisplay para que muestre los productos de esta categoría
+            }
+
+             // Forzar actualización para mostrar lo que corresponda (productos o mensaje)
+            updateProductsDisplay();
+
+            // Opcional: Scroll hacia el grupo de subcategorías si está fuera de vista (solo si existe)
+             if(targetSubgroup && targetSubgroup.offsetParent !== null) { // Check if element exists and is visible
+                 targetSubgroup.scrollIntoView({ behavior: 'smooth', block: 'start' });
+             } else {
+                  // Si no hay subcategorías para mostrar, scrollear hacia la sección de productos/mensaje
+                  window.scrollTo({ top: document.getElementById('productList').offsetTop - 50, behavior: 'smooth' });
+             }
+        });
+    });
+
+     subcategoryGroups.forEach(group => {
+        group.querySelectorAll('.filter-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const subcategory = this.dataset.subcategory;
+                const parentCategory = this.closest('.subcategory-group').dataset.mainCategory;
+
+                 // Remover clases activas de subcategoría en *todos* los botones de subcategoría
+                document.querySelectorAll('.subcategory-group .filter-button').forEach(btn => {
+                    btn.classList.remove('active-subcategory');
+                });
+                 // Remover clase activa de categoría principal en todos los botones principales
+                 document.querySelectorAll('.main-categories .filter-button').forEach(btn => {
+                     btn.classList.remove('active-category');
+                 });
+
+
+                // Activar el botón de subcategoría clickeado
+                this.classList.add('active-subcategory');
+                // Re-activar visualmente la categoría principal padre
+                document.querySelector(`.main-categories .filter-button[data-category="${parentCategory}"]`).classList.add('active-category');
+
+
+                // Actualizar estado: Ahora sí se selecciona la subcategoría
+                selectedSubcategory = subcategory;
+                 selectedCategory = parentCategory; // Asegurar que la categoría principal también esté seteada
+
+
+                // Ahora sí llamamos a updateProductsDisplay, que renderizará porque selectedSubcategory no es null
+                updateProductsDisplay();
+            });
+        });
+     });
+
+
+    // --- Manejo de Buscador ---
+    searchInput.addEventListener('input', () => {
+        // El buscador filtra dentro de la selección actual (categoría principal Y/O subcategoría)
+        updateProductsDisplay();
+    });
+
+
+    // --- Manejo de Paginación ---
+
+    function renderPagination() {
+        const totalItems = filteredProducts.length;
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        const isMobile = window.innerWidth < 768;
+        let paginationHTML = '';
+
+        if (totalPages <= 1) {
+            pagination.innerHTML = ''; // No mostrar paginación si hay 1 o menos páginas
+            return;
+        }
+
+        // Botón Anterior
+        paginationHTML += `
+            <li class="page-item navigation-item ${currentPage === 1 ? 'disabled' : ''}">
+                <button class="page-link" onclick="changePage(${currentPage - 1})" aria-label="Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </li>`;
+
+        // Números de página
+        if (!isMobile) {
+            const startPage = Math.max(1, currentPage - 2);
+            const endPage = Math.min(totalPages, currentPage + 2);
+
+            // Mostrar "1" si no está en el rango visible
+             if (startPage > 1) {
+                paginationHTML += `
+                    <li class="page-item">
+                        <button class="page-link" onclick="changePage(1)">1</button>
+                    </li>`;
+                 if (startPage > 2) {
+                    paginationHTML += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+                 }
+             }
+
+
+            for (let i = startPage; i <= endPage; i++) {
+                paginationHTML += `
+                    <li class="page-item ${i === currentPage ? 'active' : ''}">
+                        <button class="page-link" onclick="changePage(${i})">${i}</button>
+                    </li>`;
+            }
+
+             // Mostrar "..." y última página si no están en el rango visible
+             if (endPage < totalPages) {
+                 if (endPage < totalPages - 1) {
+                     paginationHTML += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+                 }
+                 paginationHTML += `
+                    <li class="page-item">
+                        <button class="page-link" onclick="changePage(${totalPages})">${totalPages}</button>
+                    </li>`;
+             }
+
+        } else {
+            // Solo muestra página actual en móviles
+            paginationHTML += `
+                <li class="page-item active">
+                    <button class="page-link">${currentPage} / ${totalPages}</button>
+                </li>`;
+        }
+
+        // Botón Siguiente
+        paginationHTML += `
+            <li class="page-item navigation-item ${currentPage === totalPages ? 'disabled' : ''}">
+                <button class="page-link" onclick="changePage(${currentPage + 1})" aria-label="Siguiente">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </li>`;
+
+        pagination.innerHTML = paginationHTML;
+    }
+
+    // Añadir listener para cambios de tamaño (para adaptar paginación)
+    window.addEventListener('resize', () => {
+        renderPagination();
+    });
+
+    // Cambiar página (Función global para que los onclick en HTML la llamen)
+    window.changePage = (page) => {
+        if (page < 1 || page > Math.ceil(filteredProducts.length / itemsPerPage)) return;
+        currentPage = page;
+        renderProducts(); // Re-renderiza solo los productos de la nueva página
+        renderPagination(); // Actualiza la paginación activa
+        // Scroll a la lista de productos solo si hay productos mostrados
+         if(filteredProducts.length > 0) {
+            window.scrollTo({ top: document.getElementById('productList').offsetTop - 50, behavior: 'smooth' });
+         }
+    };
+
+    // --- Manejo de Zoom de Imagen ---
+    // Función global para que los onclick en HTML la llamen
+    window.showZoom = (src) => {
+        const zoomOverlay = document.getElementById('zoomOverlay');
+        const body = document.body;
+
+        // Activar overlay
+        zoomOverlay.classList.add('active');
+        body.style.overflow = 'hidden'; // Bloquear scroll
+
+        // Cargar imagen
+        zoomOverlay.querySelector('.zoomed-image').src = src; // Asegura que selecciona la imagen dentro del overlay
+
+        // Cerrar al hacer click en cualquier parte del overlay
+        zoomOverlay.onclick = (event) => {
+             // Opcional: asegurar que no se cierre si se clickea *en* la imagen zoomed-image
+             if (event.target === zoomOverlay || event.target.classList.contains('zoomed-image')) {
+                zoomOverlay.classList.remove('active');
+                body.style.overflow = 'auto'; // Restaurar scroll
+                 document.removeEventListener('keydown', handleKeyDown); // Remover listener de ESC
+             }
+        };
+
+        // Cerrar con tecla ESC
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') {
+                zoomOverlay.classList.remove('active');
+                body.style.overflow = 'auto';
+                document.removeEventListener('keydown', handleKeyDown);
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+    };
+
+
+    // --- Manejo de Cotización ---
+     // Función global para que los onclick en HTML la llamen
+    window.cotizarProducto = (nombre) => {
+        const mensaje = `Hola, estoy interesado en cotizar el producto: ${nombre}.\n\nPor favor, necesito información sobre:\n- Precio unitario\n- Disponibilidad\n- Tiempo de entrega`;
+        // Reemplaza 505XXXXXXXX con el número de WhatsApp real
+        const whatsappURL = `https://wa.me/50584281928?text=${encodeURIComponent(mensaje)}`;
+        window.open(whatsappURL, '_blank');
+    };
+
+
+    // --- Inicialización ---
+    // No renderizamos productos al inicio. Solo mostramos el mensaje inicial.
+    // La lista de productos y la paginación estarán vacías hasta que se seleccione un filtro.
+    // updateProductsDisplay(); // No llamar al inicio
+    initialMessage.style.display = 'block'; // Asegurarse de que el mensaje inicial esté visible
+    initialMessage.innerHTML = '<p class="text-center text-muted">Por favor, seleccione una **categoría** para ver los productos disponibles.</p>'; // Mensaje inicial por defecto
+
+     // Ocultar todos los grupos de subcategorías al cargar la página
+     subcategoryGroups.forEach(group => {
+        group.style.display = 'none';
+     });
+
+
+}); // Fin DOMContentLoaded
+</script>
+</body>
+</html>
