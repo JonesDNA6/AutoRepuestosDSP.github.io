@@ -392,10 +392,10 @@
 
     </div>
 
-        <div class="initial-message" id="initialMessage">
+        <!-- <div class="initial-message" id="initialMessage">
             <p>Por favor, seleccione una **categoría** para ver los productos disponibles.</p>
              <p>Luego, podrá filtrar por **subcategoría** (si aplica) o usar el buscador.</p>
-        </div>
+        </div> -->
 
 
         <div class="row g-4" id="productList">
@@ -428,39 +428,871 @@ document.addEventListener('DOMContentLoaded', () => {
     // Datos de productos con subcategorías
     const productos = [
         // REPUESTOS - FILTROS
-        { nombre: "Filtro DENSO", descripcion: "Filtro de aceite de alta eficiencia.", imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/filtro-de-aceite-denso_tracer.webp", categoria: "repuestos", subcategoria: "filtros", alt: "Filtro de aceite DENSO" },
-        // REPUESTOS - SISTEMA DE DIRECCION
-        { nombre: "Cremallera de Dirección", descripcion: "Cremallera de dirección de alta calidad.", imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/cremallera_inspyrenet.webp", categoria: "repuestos", subcategoria: "direccion", alt: "Cremallera de Dirección" },
-         // REPUESTOS - BOMBAS
-        { nombre: "Bomba de Gasolina Eléctrica", descripcion: "Bomba de gasolina fiable y duradera.", imagenSrc: "placeholder-bomba.jpg", categoria: "repuestos", subcategoria: "bombas", alt: "Bomba de Gasolina" },
-         // REPUESTOS - MOTOR
-        { nombre: "Pistones Forjados", descripcion: "Pistones de alta resistencia para motores de rendimiento.", imagenSrc: "placeholder-pistones.jpg", categoria: "repuestos", subcategoria: "motor", alt: "Pistones Forjados" },
-         // REPUESTOS - FRICCIONES
-        { nombre: "Pastillas de Freno Cerámicas", descripcion: "Frenada silenciosa y de alto rendimiento.", imagenSrc: "placeholder-pastillas.jpg", categoria: "repuestos", subcategoria: "fricciones", alt: "Pastillas de Freno Cerámicas" },
-        // REPUESTOS - SUSPENSION
-        { nombre: "Amortiguador Delantero", descripcion: "Amortiguador para una conducción suave y estable.", imagenSrc: "placeholder-amortiguador.jpg", categoria: "repuestos", subcategoria: "suspension", alt: "Amortiguador Delantero" },
-        // REPUESTOS - CLUTCH
-        { nombre: "Kit de Clutch Completo", descripcion: "Kit que incluye disco, plato y balinera.", imagenSrc: "placeholder-clutch.jpg", categoria: "repuestos", subcategoria: "clutch", alt: "Kit de Clutch" },
-        // REPUESTOS - FLEXIBLES
-        { nombre: "Flexible de Freno", descripcion: "Flexible hidráulico resistente para sistema de frenos.", imagenSrc: "placeholder-flexible.jpg", categoria: "repuestos", subcategoria: "flexibles", alt: "Flexible de Freno" },
+        { 
+            nombre: "Filtro DENSO",
+            descripcion: "", 
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/filtro-de-aceite-denso_tracer.webp", 
+            categoria: "repuestos", 
+            subcategoria: "filtros", 
+            alt: "Filtro de aceite DENSO" 
+        },
+        
+        { 
+            nombre: "Cremallera de Dirección", 
+            descripcion: "Cremallera de dirección de alta calidad.", 
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/cremallera_inspyrenet.webp", 
+            categoria: "repuestos", 
+            subcategoria: "direccion", 
+            alt: "Cremallera de Dirección" 
+        },
 
-        // LUBRICANTES - BENZOL
-        { nombre: "Aceite BENZOL 20W50", descripcion: "Aceite multigrado para motor.", imagenSrc: "placeholder-benzol.jpg", categoria: "lubricantes", subcategoria: "benzol", alt: "Aceite BENZOL 20W50" },
-         // LUBRICANTES - WOLF
-        { nombre: "Aceite WOLF Sintético 5W30", descripcion: "Aceite sintético de alto rendimiento.", imagenSrc: "placeholder-wolf.jpg", categoria: "lubricantes", subcategoria: "wolf", alt: "Aceite WOLF 5W30" },
+        {
+            nombre: "cremallera",
+            descripcion: "Cremallera de dirección de alta calidad",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/cremallera_inspyrenet.webp",
+            categoria: "repuestos",
+            subcategoria: "",             
+            alt: "Cremallera"
+        },
+        
+        {
+            nombre: "Cinta Timon",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/cinta-timon_inspyrenet.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Cinta Timon"
+        },
+        {
+            nombre: "Bomba de frenos",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/Bomba-de-freno_inspyrenet.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Bomba de frenos"
+        },
+        {
+            nombre: "Bomba de aceite",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/Bomba-de-aceite_inspyrenet.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Bomba de aceite"
+        },
+         {
+            nombre: "Bendix arranque",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/Bendix-arranque_isnet-anime.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Bendix arranque"
+        },
+         {
+            nombre: "Amortiguador",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/AMORTIGUADOR_isnet-general-use.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Amortiguador"
+        },
+         {
+            nombre: "Punta de flecha",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/wingster.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Punta de flecha"
+        },
+         {
+            nombre: "Ventilador",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/ventilador_bria.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Ventilador"
+        },
+         {
+            nombre: "Tijera 5",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/tijera-5_isnet-general-use.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Tijera 5"
+        },
+         {
+            nombre: "Tijera 4",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/tijera-4_inspyrenet.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Tijera 4"
+        },
+         {
+            nombre: "Tijera 3",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/tijera-3_isnet-general-use.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Tijera 3",
+        },
+         {
+            nombre: "Tijera 2",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/tijera-2_inspyrenet.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Tijera 2",
+        },
+         {
+            nombre: "Tijera 1",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/tijera_isnet-general-use.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Tijera 1"
+        },
+         {
+            nombre: "Soporte para motor",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/soporte-de-motor_isnet-general-use.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Soporte para motor"
+        },
+         {
+            nombre: "Rotula",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/rotula_isnet-general-use.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Rotula"
+        },
+         {
+            nombre: "Piñon y engranaje",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/pinon-y-engranaje_bria.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Piñon y engranaje"
+        },
+         {
+            nombre: "Disco para clutch",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/Grupo-2-copia_bria.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Disco para clutch"
+        },
+         {
+            nombre: "Collarin",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/Grupo-2-copia-4_bria.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Collarin"
+        },
+         {
+            nombre: "Collarin 2",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/Grupo-2-copia-3_bria.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Collarin 2"
+        },
+         {
+            nombre: "Kit de Clutch",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/Grupo-2-copia-2_bria.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Kit de Clutch"
+        },
+         {
+            nombre: "Fricción PCM",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/Friccion-pmc_isnet-general-use.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Fricción PCM"
+        },
+         {
+            nombre: "Fricción MotorTek",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/friccion-motortek_bria.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Fricción MotorTek"
+        },
+         {
+            nombre: "Fricción HAN",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/friccion-han_isnet-general-use.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Fricción HAN",
+        },
+         {
+            nombre: "Flexibles",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/Flexibles_isnet-general-use.webp",
+            categoria: "repuestos",
+            subcategoria: "", 
+            alt: "Flexibles"
+        },
+         {
+            nombre: "ACEITE 10W30 ECOTECH 1L API SP_RC_G6",
+            descripcion: "Wolf",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/ACEITE-10W30-ECOTECH-1L-API-SP_RC_G6.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "ACEITE 10W30 ECOTECH 1L API SP_RC_G6"
+        },
+         {
+            nombre: "ACEITE 5W30 ECOTECH 1L API SP_RC_G6",
+            descripcion: "Wolf",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/ACEITE-5W30-ECOTECH-1L-API-SP_RC_G6.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "ACEITE 5W30 ECOTECH 1L API SP_RC_G6"
+        },
+         {
+            nombre: "ACEITE VITALTECH 5L 15W40 API CI-4",
+            descripcion: "Wolf",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/ACEITE-VITALTECH-5L-15W40-API-CI-4.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "ACEITE VITALTECH 5L 15W40 API CI-4"
+        },
+         {
+            nombre: "ACEITE VITALTECH 1L 15W40 1L_API CI-4",
+            descripcion: "Wolf",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/ACEITE-VITALTECH-1L-15W40-1L_API-CI-4.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "ACEITE VITALTECH 1L 15W40 1L_API CI-4"
+        },
+         {
+            nombre: "ACEITE MOTO 1L 4T 20W50 1L ACEITE MINERAL PARA MOTOR",
+            descripcion: "Wolf",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/ACEITE-MOTO-1L-4T-20W50-1L-ACEITE-MINERAL-PARA-MOTOR.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "ACEITE MOTO 1L 4T 20W50 1L ACEITE MINERAL PARA MOTOR"
+        },
+         {
+            nombre: "ACEITE GUARDTECH 4L 20W50 SN_CF",
+            descripcion: "Wolf",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/ACEITE-GUARDTECH-4L-20W50-SN_CF.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "ACEITE GUARDTECH 4L 20W50 SN_CF"
+        },
+         {
+            nombre: "ACEITE GUARDTECH 1L 20W50 SN_CF",
+            descripcion: "Wolf",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/ACEITE-GUARDTECH-1L-20W50-SN_CF.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "ACEITE GUARDTECH 1L 20W50 SN_CF"
+        },
+         {
+            nombre: "ACEITE ECOTECH 4L 5W30 SP_RC G6",
+            descripcion: "Wolf",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/ACEITE-ECOTECH-4L-5W30-SP_RC-G6.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "ACEITE ECOTECH 4L 5W30 SP_RC G6"
+        },
+         {
+            nombre: "ACEITE COOLANT 4L STANDARD-G11",
+            descripcion: "Wolf",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/ACEITE-COOLANT-4L-STANDARD-G11.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "ACEITE COOLANT 4L STANDARD-G11"
+        }, {
+            nombre: "ACEITE 10W30 ECOTECH 4L API SP_RC_G6",
+            descripcion: "Wolf",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/ACEITE-10W30-ECOTECH-4L-API-SP_RC_G6.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "ACEITE 10W30 ECOTECH 4L API SP_RC_G6"
+        }, {
+            nombre: "BENZOL 5W-30 4L API SN CFACEA C3",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-5W-30-4L-API-SN-CFACEA-C3.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL 5W-30 4L API SN CFACEA C3"
+        }, {
+            nombre: "BENZOL 5W-30 1L API SN CFACEA C3",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-5W-30-1L-API-SN-CFACEA-C3-.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL 5W-30 1L API SN CFACEA C3"
+        }, {
+            nombre: "BENZOL DOT3 250 ML",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-DOT3-250-ML.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL DOT3 250 ML"
+        }, {
+            nombre: "BENZOL DEX VI 1L",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-DEX-VI-1L-.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL DEX VI 1L"
+        }, 
+        {
+            nombre: "BENZOL 15W-40 5L API CK-4 SNACEA E9",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-15W-40-5L-API-CK-4-SNACEA-E9.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL 15W-40 5L API CK-4 SNACEA E9"
+        },
+        {
+            nombre: "BENZOL 15W-40 5L API CI-4 SLACEA E7",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-15W-40-5L-API-CI-4-SLACEA-E7.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL 15W-40 5L API CI-4 SLACEA E7"
+        },
+        {
+            nombre: "BENZOL 15W-40 1L API CK-4 SNACEA E9",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-15W-40-1L-API-CK-4-SNACEA-E9.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL 15W-40 1L API CK-4 SNACEA E9"
+        },
+        {
+            nombre: "BENZOL 15W-40 1L API CI-4 SLACEA E7",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-15W-40-1L-API-CI-4-SLACEA-E7.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL 15W-40 1L API CI-4 SLACEA E7"
+        },
+        {
+            nombre: "BENZOL 10W-30 4L API SN SFACEA A3 B4 DIESEL Y GASOLINA",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-10W-30-4L-API-SN-SFACEA-A3-B4-DIESEL-Y-GASOLINA.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL 10W-30 4L API SN SFACEA A3 B4 DIESEL Y GASOLINA"
+        },
+        {
+            nombre: "BENZOL 10W-30 4L API SP GASOLINA",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-10W-30-4L-API-SP-GASOLINA.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL 10W-30 4L API SP GASOLINA"
+        },
+        {
+            nombre: "BENZOL 10W-30 4L API SN CFACEA A3 B4 DIESEL Y GASOLINA",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-10W-30-4L-API-SN-CFACEA-A3-B4-DIESEL-Y-GASOLINA.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL 10W-30 4L API SN CFACEA A3 B4 DIESEL Y GASOLINA"
+        },
+        {
+            nombre: "BENZOL 10W 30 1L GASOLINA API SP GASOLINA",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-10W-30-1L-GASOLINA-API-SP-GASOLINA.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL 10W 30 1L GASOLINA API SP GASOLINA"
+        },
+        {
+            nombre: "BENZOL 5W-40 4L API SN CFACEA C3",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-5W-40-4L-API-SN-CFACEA-C3.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL 5W-40 4L API SN CFACEA C3"
+        },
+        {
+            nombre: "BENZOL 5W-40 1L API SN CFACEA C3",
+            descripcion: "BENZOL",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/BENZOL-5W-40-1L-API-SN-CFACEA-C3.webp",
+            categoria: "lubricantes",
+            subcategoria: "", 
+            alt: "BENZOL 5W-40 1L API SN CFACEA C3"
+        },
+        {
+            nombre: "JUEGO DE DESTORNILLADORES",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/2-JUEGO-DE-DESTORNILLADOR.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "JUEGO DE DESTORNILLADORES"
+        },
+        {
+            nombre: "LLAVE PARA BUJIAS",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/1-LLAVE-PARA-BUJIAS.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "LLAVE PARA BUJIAS"
+        },
+        {
+            nombre: "TOALLA DE MICROFIBRA PARA VENTANAS",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/TOALLA-DE-MICROFIBRA-PARA-VENTANAS.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "TOALLA DE MICROFIBRA PARA VENTANAS"
+        },
+        {
+            nombre: "TOALLA DE MICROFIBRA PARA VENTANAS",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/TOALLA-DE-MICROFIBRA-PARA-VENTANAS-copia.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "TOALLA DE MICROFIBRA PARA VENTANAS"
+        },
+        {
+            nombre: "TOALLA DE LIMPIEZA",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/TOALLA-DE-LIMPIEZA.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "TOALLA DE LIMPIEZA"
+        },
+        {
+            nombre: "TAPAFUGAS DE DIRECCION HIDRAULICA",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/TAPAFUGAS-DE-DIRECCION-HIDRAULICA.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "TAPAFUGAS DE DIRECCION HIDRAULICA"
+        },
+        {
+            nombre: "SOGA ELASTICA PARA REMOLQUE",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/SOGA-ELASTICA-PARA-REMOLQUE.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "SOGA ELASTICA PARA REMOLQUE"
+        },
+        {
+            nombre: "RETROVISOR INTERNO",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/RETROVISOR-INTERNO.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "RETROVISOR INTERNO"
+        },
+        {
+            nombre: "RESTAURADOR DE VIDRIOS",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/RESTAURADOR-DE-VIDRIOS.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "RESTAURADOR DE VIDRIOS"
+        },
+        {
+            nombre: "RESTAURADOR DE BRILLO",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/RESTAURADOR-DE-BRILLO.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "RESTAURADOR DE BRILLO"
+        },
+        {
+            nombre: "REFRIGERANTE",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/REFRIGERANTE.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "REFRIGERANTE"
+        },
+        {
+            nombre: "PROTECTOR PARA CUERO",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/PROTECTOR-PARA-CUERO.jpg.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "PROTECTOR PARA CUERO"
+        },
+        {
+            nombre: "PROTECTOR LIMPIADOR",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/PROTECTO-LIMPIADOR.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "PROTECTOR LIMPIADOR"
+        },
+        {
+            nombre: "PROTECTOR LIMPIADOR INTERNO",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/PROTECTO-LIMPIADOR-copia.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "PROTECTOR LIMPIADOR INTERNO"
+        },
+        {
+            nombre: "DESENGRASANTE ",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/PRODUCTOS-GOODYEAR-PLANTILLA-2.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "DESENGRASANTE "
+        },
+        {
+            nombre: "PITOS PARA VEHICULO",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/PITOS-PARA-VEHICULO.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "PITOS PARA VEHICULO"
+        },
+        {
+            nombre: "MINI VENTILADOR PARA AUTOS",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/mini-ventilador-para-autos.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "MINI VENTILADOR PARA AUTOS"
+        },
+        {
+            nombre: "LUBRICANTE DE CADENAS",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/LUBRICANTE-DE-CADENAS.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "LUBRICANTE DE CADENAS"
+        },
+        {
+            nombre: "LIQUIDO LIMPIAPARABRISAS",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/LIQUIDO-LIMPIAPARABRISAS-2.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "LIQUIDO LIMPIAPARABRISAS"
+        },
+        {
+            nombre: "LIQUIDO LIMPIAPARABRISAS 1 gal",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/LIQUIDO-LIMPIAPARABRISAS.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "LIQUIDO LIMPIAPARABRISAS 1 gal"
+        },
+        {
+            nombre: "LIMPIADOR PARAN RADIADORES",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/LIMPIADOR-PARAN-RADIADORES.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "LIMPIADOR PARAN RADIADORES"
+        },
+        {
+            nombre: "LIMPIADOR PARA CARBURADORES, INYECTORES Y AHOGADORES",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/LIMPIADOR-PARA-CARBURADORES-INYECTORES-Y-AHOGADORES.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "LIMPIADOR PARA CARBURADORES, INYECTORES Y AHOGADORES"
+        },
+        {
+            nombre: "LIMPIADOR DE SISTEMA DE COMBUSTIBLE",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/LIMPIADOR-DE-SISTEMA-DE-COMBUSTIBLE.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "LIMPIADOR DE SISTEMA DE COMBUSTIBLE"
+        },
+        {
+            nombre: "LIMPIADOR DE PRODUCTOS DE AIRE ACONDICIONADO",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/LIMPIADOR-DE-PRODUCTOS-DE-A_C.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "LIMPIADOR DE PRODUCTOS DE AIRE ACONDICIONADO"
+        },
+        {
+            nombre: "LIMPIADOR DE CONTACTOS ELECTRICO",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/LIMPIADOR-DE-CONTACTOS-ELECTRICO.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "LIMPIADOR DE CONTACTOS ELECTRICO"
+        },
+        {
+            nombre: "LIMPIADO DE LLANTAS Y RINES",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/LIMPIADO-DE-LLANTAS-Y-RINES.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "LIMPIADO DE LLANTAS Y RINES"
+        },
+        {
+            nombre: "KIT DE REPARACIÓN DE BICICLETAS",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/KIT-DE-REPARACION-DE-BICICLETAS.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "KIT DE REPARACIÓN DE BICICLETAS"
+        },
+        {
+            nombre: "KIT DE HERRAMIENTAS",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/KIT-DE-HERRAMIENTAS.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "KIT DE HERRAMIENTAS"
+        },
+        {
+            nombre: "KIT DE EMERGENCIA",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/KIT-DE-EMERGENCIA.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "KIT DE EMERGENCIA"
+        },
+        {
+            nombre: "JUEGO CASERO DE HERRIENTAS",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/JUEGO-CASERO-DE-HERRIENTAS.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "JUEGO CASERO DE HERRIENTAS"
+        },
+        {
+            nombre: "GUANTES PARA MECANICO",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/GUANTES-PARA-MECANICO.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "GUANTES PARA MECANICO"
+        },
+        {
+            nombre: "FLUIDO PARA DIRECCION HIDRAULICA",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/FLUIDO-PARA-DIRECCION-HIDRAULICA.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "FLUIDO PARA DIRECCION HIDRAULICA"
+        },
+        {
+            nombre: "ESPUMA LIMPIA TAPICES",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/ESPUMA-LIMPIA-TAPICES.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "ESPUMA LIMPIA TAPICES"
+        },
+        {
+            nombre: "ELIMINADOR DE MALOS OLORES",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/ELIMINADOR-DE-MALOS-OLORES.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "ELIMINADOR DE MALOS OLORES"
+        },
+        {
+            nombre: "DESENGRSANTE DE MOTORES Y PIEZAS",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/DESENGRSANTE-DE-MOTORES.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "DESENGRSANTE DE MOTORES Y PIEZAS"
+        },
+        {
+            nombre: "DESENGRASANTE 946ML",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/DESENGRASANTE-946ML.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "DESENGRASANTE 946ML"
+        },
+        {
+            nombre: "CONO PLEGABLE DE SEGURIDAD",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/CONO-PLEGABLE-DE-SEGURIDAD.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "CONO PLEGABLE DE SEGURIDAD"
+        },
+        {
+            nombre: "CHAMPU PARA AUTOS",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/CHAMPU-PARA-AUTOS.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "CHAMPU PARA AUTOS"
+        },
+        {
+            nombre: "ADITIVO PARA RADIADOR ROSA",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/ADITIVO-PARA-RADIADOR-ROSA.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "ADITIVO PARA RADIADOR ROSA"
+        },
+        {
+            nombre: "ABRILLANTADOR MULTIUSO DE SILICONA",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/ABRILLANTADOR-MULTIUSO-DE-SILICONA.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "ABRILLANTADOR MULTIUSO DE SILICONA"
+        },
+        {
+            nombre: "5 JUEGO DE LLAVES DE DOBLE BOCA",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/5-JUEGO-DE-LLAVES-DE-DOBLE-BOCA.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "5 JUEGO DE LLAVES DE DOBLE BOCA"
+        },
+        {
+            nombre: "4 SET DE LLAVE DE 1_2 PARA PERNOS DE RUEDAS",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/4-SET-DE-LLAVE-DE-1_2-PARA-PERNOS-DE-RUEDAS.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "4 SET DE LLAVE DE 1_2 PARA PERNOS DE RUEDAS"
+        },
+        {
+            nombre: "3 LLAVE PLEGABLE TRANVERSAL",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/03/3-LLAVE-PLEGABLE-TRANVERSAL.webp",
+            categoria: "accesorios",
+            subcategoria: "", 
+            alt: "3 LLAVE PLEGABLE TRANVERSAL"
+        },
+        {
+            nombre: "SDR 900",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/SDR-900.webp",
+            categoria: "llantas",
+            subcategoria: "", 
+            alt: "SDR 900"
+        },
+        {
+            nombre: "SDR 590",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/SDR-590.webp",
+            categoria: "llantas",
+            subcategoria: "", 
+            alt: "SDR 590"
+        },
+        {
+            nombre: "SDR 550",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/SDR-550.webp",
+            categoria: "llantas",
+            subcategoria: "", 
+            alt: "SDR 550"
+        },
+        {
+            nombre: "RS ZERO",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/RSZERO.webp",
+            categoria: "llantas",
+            subcategoria: "", 
+            alt: "RS ZERO"
+        },
+        {
+            nombre: "HUNTSMAN R15LT",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/PROPUESTA-4.webp",
+            categoria: "llantas",
+            subcategoria: "", 
+            alt: "HUNTSMAN R15LT"
+        },
+        {
+            nombre: "HUNTSMAN LT285 / 70R17",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/PROPUESTA-1.webp",
+            categoria: "llantas",
+            subcategoria: "", 
+            alt: "HUNTSMAN LT285 / 70R17"
+        },
+        {
+            nombre: "HUNTSMAN",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/HUNTSMAN.webp",
+            categoria: "llantas",
+            subcategoria: "", 
+            alt: "HUNTSMAN"
+        },
+        {
+            nombre: "DUREVOLE AT",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/DUREVOLE-AT.webp",
+            categoria: "llantas",
+            subcategoria: "", 
+            alt: "DUREVOLE AT"
+        },
+        {
+            nombre: "SMX330 149 / 146L",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/SMX330-149146L.webp",
+            categoria: "llantas",
+            subcategoria: "", 
+            alt: "SMX330 149 / 146L"
+        },
+        {
+            nombre: "SMX 300",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/SMX300.webp",
+            categoria: "llantas",
+            subcategoria: "", 
+            alt: "SMX 300"
+        },
+        {
+            nombre: "SMX300 149 / 146L",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/SMX300-149146L.webp",
+            categoria: "llantas",
+            subcategoria: "", 
+            alt: "SMX300 149 / 146L"
+        },
+        {
+            nombre: "SHW 230 295 / 75R22.5",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/SHW230.webp",
+            categoria: "llantas",
+            subcategoria: "", 
+            alt: "SHW 230 295 / 75R22.5"
+        },
+        {
+            nombre: "SHW 200",
+            descripcion: "",
+            imagenSrc: "https://autorepuestosdsp.com/wp-content/uploads/2025/04/SHW200.webp",
+            categoria: "llantas",
+            subcategoria: "", 
+            alt: "SHW 200"
+        },
+        /* {
+            nombre: "",
+            descripcion: "",
+            imagenSrc: "",
+            categoria: "llantas",
+            alt: ""
+        },
+        {
+            nombre: "",
+            descripcion: "",
+            imagenSrc: "",
+            categoria: "",
+            alt: ""
+        }, */
 
-        // LLANTAS (Sin subcategoría definida explicitamente en tu lista - Trataremos como filtro final al seleccionar la categoría principal)
-        { nombre: "Llanta R15 Deportiva", descripcion: "Llanta con agarre excepcional.", imagenSrc: "placeholder-llanta.jpg", categoria: "llantas", subcategoria: null, alt: "Llanta Deportiva R15" },
-         { nombre: "Llanta Camioneta Todoterreno", descripcion: "Llanta resistente para todo terreno.", imagenSrc: "placeholder-llanta-suv.jpg", categoria: "llantas", subcategoria: null, alt: "Llanta Camioneta Todoterreno" },
 
-
-         // BATERIAS (Sin subcategoría definida explicitamente en tu lista - Trataremos como filtro final al seleccionar la categoría principal)
-        { nombre: "Batería 12V Automotriz", descripcion: "Batería de larga duración.", imagenSrc: "placeholder-bateria.jpg", categoria: "baterias", subcategoria: null, alt: "Batería Automotriz 12V" },
-
-         // ACCESORIOS (Sin subcategoría definida explicitamente en tu lista - Trataremos como filtro final al seleccionar la categoría principal)
-        { nombre: "Kit de Herramientas Básico", descripcion: "Herramientas esenciales para el auto.", imagenSrc: "placeholder-herramientas.jpg", categoria: "accesorios", subcategoria: null, alt: "Kit de Herramientas" },
-        { nombre: "Alfombras para Auto", descripcion: "Set de alfombras universales.", imagenSrc: "placeholder-alfombras.jpg", categoria: "accesorios", subcategoria: null, alt: "Alfombras para Auto" },
-
+        // Agrega más productos aquí...
+  
+        
 
         // Agrega más productos aquí con su categoria y subcategoria (o null si no tiene sub)
     ];
